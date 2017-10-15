@@ -10,3 +10,9 @@ class HomePageView(TemplateView):
 class ItineraryBuilderPageView(TemplateView):
     def get(self, request, **kwargs):
         return render(request, 'itinBuilder.html', context=None)
+
+class LoginPageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, 'login.html', context=None)
+
+
