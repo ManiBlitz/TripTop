@@ -20,16 +20,37 @@
 
 
     <!-- Main CSS and JS Files -->
-
+    <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
     <link href="../../static/triptop/css/main.css" rel="stylesheet">
     <link href="../../static/triptop/css/base.css" rel="stylesheet">
     <link href="../../static/triptop/css/style.css" rel="stylesheet">
 
 
-  <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
-  <script type="text/javascript" src="../../static/triptop/js/ipgetandset.js"></script>
-  <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
-  <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+
+      <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/ipgetandset.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+
+
+
+
+
+
+      <script type="text/javascript">
+            $(document).ajaxSend(function(event, request, settings) {
+                $('#loading-indicator').show();
+            });
+
+            $(document).ajaxComplete(function(event, request, settings) {
+                $('#loading-indicator').hide();
+            });
+
+            $('.body').css({'padding-right':'0px'});
+      </script>
+
+  </head>
 
 
 
@@ -112,7 +133,7 @@
 
                             <li><a href="#">"The Perfect Itinerary" Quiz</a></li>
 
-                            <li><a href="#">Custom Itinerary Generator</a></li>
+                            <li><a href="#">Random Itinerary Generator</a></li>
 
                             <li><a href="#">Account Settings</a></li>
 
@@ -141,6 +162,8 @@
 
   </header>
 
+  <body></body>
+
   <div class="container-fluid">
       <div id="firstSlider" class="carousel slide">
 
@@ -159,7 +182,7 @@
                   <div class="item active">
                       <img src="../../static/triptop/img/Carousel1_1.png" alt="TripTop Travel" class="img-responsive"/>
                       <div class="carousel-caption">
-                          <h1 class="carouselh1">Planning A Trip Has Never Been Easier</h1>
+                          <h1>Planning A Trip Has Never Been Easier</h1>
                           <button class="btn-lg btn-primary">Get Started</button>
                       </div>
                   </div>
@@ -167,7 +190,7 @@
                   <div class="item">
                       <img src="../../static/triptop/img/Carousel1_2.png" alt="TripTop Travel" class="img-responsive"/>
                       <div class="carousel-caption">
-                          <h1 class="carouselh1">Start Building Your Perfect Itinerary Below</h1>
+                          <h1>Start Building Your Perfect Itinerary Below</h1>
                           <button class="bigcaret"><span id="carouselcaret" class="glyphicon glyphicon-chevron-down"></span></button>
                       </div>
                   </div>
@@ -175,7 +198,7 @@
                   <div class="item">
                       <img src="../../static/triptop/img/Carousel1_3.png" alt="TripTop Travel" class="img-responsive"/>
                       <div class="carousel-caption">
-                          <h1 class="carouselh1">Sign Up Now To Save And Share Your Itineraries</h1>
+                          <h1>Sign Up Now To Save And Share Your Itineraries</h1>
                           <button class="btn-lg btn-primary">Create A TripTop Account</button>
                       </div>
                   </div>
@@ -183,8 +206,8 @@
                   <div class="item">
                       <img src="../../static/triptop/img/Carousel1_4.png" alt="TripTop Travel" class="img-responsive"/>
                       <div class="carousel-caption">
-                          <h1 class="carouselh1">Take Our "Perfect Itinerary" Quiz!</h1>
-                          <button class="btn-lg btn-primary">I Love Quizzes!</button>
+                          <h1>Take Our "Perfect Itinerary" Quiz!</h1>
+                          <button class="btn-lg btn-primary">Take The Quiz!</button>
                       </div>
                   </div>
 
@@ -214,7 +237,9 @@
 
       $('.carousel-caption').css({'color':'#fff','background':'rgba(10,10,10,.5)', 'padding':'4em 2em 1em 2em'});
 
-      $('.carouselh1').css({'padding-bottom':'1.6em','font-size':'4em'});
+      $('.carousel-caption h1').css({'font-size':'4rem','padding':'1rem .5rem 1rem .5rem'});
+
+      $('.carousel-caption h1').append("<style type='text/css'>@media screen and (min-width: 1000px) { .carousel-caption h1 {display: none;} }</style>");
 
       $('#carouselcaret').css({'margin-bottom':'1em','font-size':'3em'});
 
@@ -223,7 +248,7 @@
       $('.btn-lg').css({'margin-bottom':'1em'});
 
       $('.carousel').carousel({
-        interval: 3000
+        interval: 6000
       });
       </script>
 
@@ -241,25 +266,143 @@
 
       <section class="module content">
         <div class="container">
-            <h2>Build Your Itinerary Here</h2>
-            <p>Start your personalized itinerary with the right flight, courtesy of Google flights.</p>
+            <h2>Pick A Flight...</h2>
+            <p>Start your personalized itinerary with the right flight, courtesy of <a href="https://www.google.com/flights/">Google Flights</a>.</p>
 
-            <ul class="col-1">
-                <li>
-                 <div class="form-inline">
-                    <input type="text" name="origin" class="form-control" placeholder="Where from?" id="org">
-                 </div>
-                </li>
-                <li>
-                 <div class="form-inline">
-                    <input type="text" name="destination" class="form-control" placeholder="Where to?" id="dst">
-                 </div>
-                </li>
-            </ul>
+            <form>
+                <div class="btn-group">
+                      <button type="button" class="btn btn-primary">Roundtrip</button>
+                      <button type="button" class="btn btn-primary">One Way</button>
+                      <button type="button" class="btn btn-primary">Multi-City</button>
+                </div>
+             <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                            <input class="form-control" placeholder="Where From?"
+                                    type="text" id="inputOrigin" />
+                            </td>
+                            <td>
+                             <input class="form-control" placeholder="Where To?"
+                                    type="text" id="inputDestination" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="depdate" id="depdate" placeholder="When Will You Depart?"/>
+                            </td>
+                            <td>
+                                <input type="text" name="retdate" id="retdate" placeholder="When Will You Return?"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                  <label for="sel1">Adults:</label>
+                                  <select class="form-control" id="sel1">
+                                      <option>0</option>
+                                      <option class="active">1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="sel2">Children:</label>
+                                  <select class="form-control" id="sel2">
+                                      <option class="active">0</option>
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                  </select>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-block" data-target="#flightsModal" data-toggle="modal">Get Flights</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+            </form>
+        </div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="modal fade modal-content" id="flightsModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Choose A Flight</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">
+                                    <table id="flightsTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <label type="text">Price</label>
+                                            </th>
 
+                                            <th>
+                                                <label type="text">Airline</label>
+                                            </th>
+
+                                            <th>
+                                                <label type="text">Dates/Times</label>
+                                            </th>
+
+                                            <th>
+                                                <label type="text">Duration</label>
+                                            </th>
+
+                                            <th>
+                                                <label type="text">Stops</label>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
       </section>
+
 
       <section class="module parallax parallax-2">
         <div class="container">
@@ -299,9 +442,28 @@
         </div>
       </section>
 
+      <!--Javascript for Datepicker-->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+
+          <script>
+
+              $('modal-content.h4').css({
+                  'font-size':'1.6em','color':'#000','font-weight':'bold'
+              });
+
+              $(function(){
+                   $('#depdate').datepicker({
+                      format: 'mm/dd/yyyy'
+                   });
+                   $('#retdate').datepicker({
+                       format: 'mm/dd/yyyy'
+                   });
+              });
+          </script>
 
   </main>
 
+      <img src="../../static/triptop/img/Preloader_3.gif" id="loading-indicator" style="display:none" />
 
       <!--Footer-->
 <footer class="page-footer center-on-small-only stylish-color-dark">
@@ -313,7 +475,7 @@
             <!--First column-->
             <div class="col-md-4">
                 <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
-                <p>Please create an account so that we can share updates, special offers, and more with you! Happy Travels!</p>
+                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
             </div>
             <!--/.First column-->
 
@@ -394,7 +556,7 @@
     <!--Copyright-->
     <div class="footer-copyright">
         <div class="container-fluid">
-            © 2017 Copyright: <a href="https://triptop.today"> TripTop.today </a>
+            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
 
         </div>
     </div>
