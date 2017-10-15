@@ -13,6 +13,6 @@ class ItineraryBuilderPageView(TemplateView):
 
 class LoginPageView(TemplateView):
     def get(self, request, **kwargs):
-        return render(request, 'login.html', context=None)
+        return render(request, 'loginRegister.html', context=None)
 
 
