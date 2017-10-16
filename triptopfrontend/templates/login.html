@@ -24,6 +24,8 @@
     <link rel="stylesheet" type="text/css" href="../../static/triptop/css/login.css">
     <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
 	<script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+	<script src="../../static/triptop/js/aws-cognito-sdk.min.js"></script>
+    <script src="../../static/triptop/js/amazon-cognito-identity.min.js"></script>
 
 
 </head>
@@ -155,7 +157,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+								<form id="login-form" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder=" Username" value="">
 									</div>
@@ -177,15 +179,15 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="text-center">
-													<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+													<a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
 												</div>
 											</div>
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
+								<form id="register-form" method="post" role="form" style="display: none;">
 									<div class="form-group">
-										<input type="text" name="username" id="username2" tabindex="1" class="form-control" placeholder=" Username" value="">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder=" Username" value="">
 									</div>
 									<div class="form-group">
 										<input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder=" First name" value="">
@@ -197,10 +199,10 @@
 										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder=" Email Address" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder=" Password">
+										<input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder=" Password" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder=" Confirm Password">
+										<input type="password" name="repeatpassword" id="repeatpassword" tabindex="1" class="form-control" placeholder=" Repeat Password" value="">
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -217,8 +219,96 @@
 			</div>
 		</div>
 	</div>
+
 <script>
-	$(function() {
+
+	$('#login-submit').click(function() {
+	   var y = document.getElementById("login-form");
+
+	   var authenticationData = {
+        Username : x.element[0].value, // your username here
+        Password : x.element[1].value // your password here
+    };
+    var authenticationDetails =
+new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
+
+    var cognitoUser =
+new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            console.log('access token + ' + result.getAccessToken().getJwtToken());
+        },
+
+        onFailure: function(err) {
+            alert(err);
+        },
+        mfaRequired: function(codeDeliveryDetails) {
+            var verificationCode = prompt('Please input verification code' ,'');
+            cognitoUser.sendMFACode(verificationCode, this);
+        }
+    });
+	});
+
+	$('#register-submit').click(function() {
+
+	AWSCognito.config.region = 'us-east-2';
+
+	var poolData = {
+        UserPoolId : 'us-east-2_BBMoH7MxY', // Your user pool id here
+        ClientId : '4a9d0u8plkdkitqn9nivig4gce' // Your client id here
+    };
+	var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+
+    var attributeList = [];
+
+    var x = document.getElementById("register-form");
+
+    var username = {
+        Name: 'username',
+		Value: x.elements[0].value
+	};
+
+    var dataEmail = {
+        Name : 'email',
+        Value : x.elements[3].value
+    };
+
+    var firstName = {
+        Name : 'first_name',
+        Value : x.elements[1].value
+    };
+
+    var lastName = {
+        Name : 'last_name',
+        Value : x.elements[2].value
+    };
+
+    var password = {
+        Name : 'password',
+		Value : x.elements[4].value
+	}
+
+    var attributeEmail = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataEmail);
+	var attributefirstName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(firstName);
+	var attributelastName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(lastName);
+
+
+    attributeList.push(attributeEmail);
+    attributeList.push(attributefirstName);
+    attributeList.push(attributelastName);
+
+
+    userPool.signUp('username', 'password', attributeList, null, function(err, result){
+        if (err) {
+            alert(err);
+            return;
+        }
+        cognitoUser = result.user;
+        console.log('user name is ' + cognitoUser.getUsername());
+    });
+    });
+
+    $(function() {
 
     $('#login-form-link').click(function(e) {
 		$("#login-form").delay(100).fadeIn(100);
