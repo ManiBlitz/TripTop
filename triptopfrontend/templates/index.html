@@ -319,6 +319,9 @@
                              <input class="form-control" placeholder="Where To?"
                                     type="text" id="inputDestination" />
                             </td>
+                            <td>
+                                <button class="btn btn-primary btn-info" type ="button" id ="getAirports">Get Airports</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -545,19 +548,19 @@
                                         </tr>
                                         <tr id="flight9">
                                             <td>
-
+                                                <a href="itinBuilder.html" id="flight9price pricetag" value=""></a>
                                             </td>
                                             <td>
-
+                                                <label id="flight9airline" value=""></label>
                                             </td>
                                             <td>
-
+                                                <label id="flight9dates" value=""></label>
                                             </td>
                                             <td>
-
+                                                <label id="flight9duration" value=""></label>
                                             </td>
                                             <td>
-
+                                                <label id="flight9stops" value=""></label>
                                             </td>
                                         </tr>
                                         <tr id="flight10">
@@ -701,13 +704,67 @@
           <script>
 
               var $container = $('#flightsTable'),
-              $scrollTo = $('#flight5');
+              $scrollTo = $('#flight15');
               $('findFlights').click([],$container.scrollTop($scrollTo.offset().top - $container.offset().top + $container.scrollTop());
 
+
+              $('#getAirports').click(
+              function getListAirports() {
+                  var orgString = $('#inputOrigin').val();
+                  var desString = $('#inputDestination').val();
+
+                  var myJson = JSON.stringify({"origin": orgString, "destination": desString});
+
+                  var url = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports"
+
+                  $.ajax( {
+                      type : 'POST',
+                      url : url,
+                      data : myJson,
+                      success: function(results){
+                           var origin = results.origin;
+                           var destination = results.destination;
+                           $('#inputOrigin').setValue(origin);
+                           $('#inputDestination').setValue(destination);
+                       },
+                      contentType: 'application/json'
+
+
+                   });
+              });
+              
+
+              function getListFlights() {
+                   var adultCount = $('#sel1').val();
+                   var childCount = $('#sel2').val();
+                   var org = '';  // Fill in from above choices
+                   var des = '';
+                   var depDate = $('#depdate').val();
+                   var url = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?adultcount=" + adultCount + "&childcount=" + childCount + "&origin=" + org + "&destination=" + des + "&date=" + depDate +
+
+                   $.ajax({
+                       url: url,
+                       dataType: 'jsonp',
+                       success: function(results){
+                           var price = results.Status;
+                           var airline = results.Name;
+                           $('#flight1').append(status + '. Company is: ' + company);
+                       }
+                   });
+                };
 
               $('modal-content.h4').css({
                   'font-size':'1.6em','color':'#000','font-weight':'bold'
               });
+
+              var ipAddress = "";
+              var country = "";
+
+              $.get("https://ipinfo.io", function(response) {
+                  ipAddress = response.ip;
+                  country = response.country;
+                }, "jsonp");
+
 
               $(function(){
                    $('#depdate').datepicker({
