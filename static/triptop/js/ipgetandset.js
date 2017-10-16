@@ -7,4 +7,3 @@
         var latlongString = response.loc;
         
     }, "jsonp")
-

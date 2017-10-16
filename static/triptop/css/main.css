@@ -1,0 +1,30 @@
+.navbar-default {
+    background: linear-gradient(#265889,#2d91c2);
+    background-color: blue;
+}
+
+body {
+    padding-right: 0 !important
+}
+
+.login-button {
+    margin-right: 2em;
+}
+
+html,body{
+    height:100%;
+}
+
+.carousel,.item,.active{
+    height:100%;
+}
+
+.carousel-inner{
+    height:100%;
+}
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
