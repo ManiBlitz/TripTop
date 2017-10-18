@@ -39,6 +39,8 @@
 
 
 
+
+
       <script type="text/javascript">
             $(document).ajaxSend(function(event, request, settings) {
                 $('#loading-indicator').show();
@@ -710,8 +712,8 @@
 
               $('#getAirports').click(
               function getListAirports() {
-                  var orgString = $('#inputOrigin').val();
-                  var desString = $('#inputDestination').val();
+                  var orgString = $('#inputOrigin').string();
+                  var desString = $('#inputDestination').string();
 
                   var myJson = JSON.stringify({"origin": orgString, "destination": desString});
 
@@ -720,19 +722,22 @@
                   $.ajax( {
                       type : 'POST',
                       url : url,
+                      contentType: 'application/json',
                       data : myJson,
                       success: function(results){
-                           var origin = results.origin;
-                           var destination = results.destination;
+                           var response = $.parseJSON(results);
+                           var origin = response.origin;
+                           var destination = response.destination;
                            $('#inputOrigin').setValue(origin);
                            $('#inputDestination').setValue(destination);
                        },
-                      contentType: 'application/json'
+
 
 
                    });
+
               });
-              
+
 
               function getListFlights() {
                    var adultCount = $('#sel1').val();
