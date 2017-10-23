@@ -1,10 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TripTop | My Itinerary</title>
+
+
+
+    <!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Footer Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+
+
+    <!-- Main CSS and JS Files -->
+    <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+    <link href="../../static/triptop/css/main.css" rel="stylesheet">
+    <link href="../../static/triptop/css/base.css" rel="stylesheet">
+    <link href="../../static/triptop/css/style.css" rel="stylesheet">
+    <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
+
+
+      <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/ipgetandset.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+
+
+
+
+
+
+
+
+      <script type="text/javascript">
+            $(document).ajaxSend(function(event, request, settings) {
+                $('#loading-indicator').show();
+            });
+
+            $(document).ajaxComplete(function(event, request, settings) {
+                $('#loading-indicator').hide();
+            });
+
+            $('.body').css({'padding-right':'0px'});
+      </script>
+
+  </head>
+
+
+
+  <header>
+      <nav class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+            </button>
+
+            <a href="#"><img class="navbar-brand" id="currentPhoto" src="../../static/triptop/img/TripTopLogo.png" width="170.25em" height="36.75em"></a>
+
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li><a href="#">Home</a></li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">About<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">About TripTop</a></li>
+
+                        <li><a href="#">Our Team</a></li>
+
+                        <li><a href="#">Contact Us</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Forum <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">New Post</a></li>
+
+                        <li><a href="#">My Posts</a></li>
+
+                        <li><a href="#">Subscribed Threads</a></li>
+
+                        <li><a href="#">Invite A Friend</a></li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="active"><a href="">My Itinerary</a></li>
+
+                <li><a href="#">Sign Up</a></li>
+
+                <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Profile<b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#">My Saved Itineraries</a></li>
+
+                            <li><a href="#">"The Perfect Itinerary" Quiz</a></li>
+
+                            <li><a href="#">Random Itinerary Generator</a></li>
+
+                            <li><a href="#">Account Settings</a></li>
+
+                            <li><a href="#">Sign Out</a></li>
+
+                        </ul>
+
+                </li>
+
+            </ul>
+
+
+
+
+        </div>
+
+          <script>
+
+                $('.navbar').css({'margin-bottom':'0px','background' : '#333','border-color':'#000'})
+
+          </script>
+
+    </nav>
+
+
+
+  </header>
+
+ <head>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+
+.main {
+    margin-left: auto;
+
+
+}
+
+.main h1 {
+    margin-left: 20%;
+    font-size: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 </head>
-<body>
+
+ <body>
+
+<div class="sidenav">
+  <a href="#">FILL IN LATER</a>
+</div>
+
+<div class="main">
+    <h1>My Itinerary</h1>
+    <p>This sidenav is always shown.</p>
+    <section class="trip_info_display">
+        <p>hello</p>
+        <hr>
+    </section>
+</div>
 
 </body>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Flight Information</h2>
+
+    <div style="border: 2px solid black" class="w3-panel">
+        <p>Destination</p>
+        <p>hello</p>
+    </div>
+
+
+  <div class="w3-panel w3-border-left">
+    <p>I have only a left border.</p>
+  </div>
+
+  <div class="w3-panel w3-border-right">
+    <p>I have only a right border.</p>
+  </div>
+
+  <div class="w3-panel w3-border-top w3-border-bottom">
+    <p>I have top and bottom borders.</p>
+  </div>
+
+</div>
+
+</body>
+
+<body>
+
+
+</body>
+
+<footer class="page-footer center-on-small-only stylish-color-dark">
+
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-4">
+                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
+                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="call-to-action">
+        <ul>
+            <li>
+                <h5 class="mb-1">Sign Up For Free!</h5>
+            </li>
+            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
+        </ul>
+    </div>
+    <!--/.Call to action-->
+
+    <hr>
+
+    <!--Social buttons-->
+    <div class="social-section text-center">
+        <ul>
+
+            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
+        </ul>
+    </div>
+    <!--/.Social buttons-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+
+    <script>
+        $('footer.page-footer').css({'margin-top':'0px'});
+
+    </script>
+</footer>
 </html>
