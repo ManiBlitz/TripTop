@@ -196,14 +196,21 @@ body {
 
 }
 
+.sidenav h1 {
+    margin-left: 30%;
+}
+
+.sidenav h2 {
+    margin-left: 40%;
+}
+
 
 .main {
     margin-left: 0;
+    height: auto;
     width: 60%;
     background-color: white;
-    overflow-y: scroll;
-
-
+    border: 1px solid black;
 }
 
 .main h1 {
@@ -239,32 +246,94 @@ div.schedule {
 }
 
 
-table, th, tr {
+table, th, tr, td {
     border: 1px solid black;
 }
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 150px;
+    overflow: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
 
 </style>
 </head>
 
 
+<body>
 
- <body>
 
-<!--
 <div class="sidenav">
-  <a href="#">Top 5 Database</a>
+  <h1>Top 5 Database</h1>
+  <h2 style="font-size:90%;">with Google Places</h2>
+
+  <div class="dropdown">
+  <button onclick="typeSearch()" class="dropbtn">Type</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#All">All</a>
+    <a href="#Day_Trip">Day Trip</a>
+    <a href="#Lodging">Lodging</a>
+    <a href="#Food">Food</a>
+    <a href="#Tours">Tours</a>
+    <a href="#Museums">Museums</a>
+    <a href="#Drinks">Drinks</a>
+    <a href="#Clubs">Clubs</a>
+    <a href="#Entertainment">Entertainment</a>
+    <a href="#Parks">Parks</a>
+    <a href="#Shopping">Shopping</a>
+  </div>
 </div>
--->
+</div>
+
 <div class="main">
     <h1>My Itinerary</h1>
     <hr style="border: 2px solid black">
-    <!--
-    <p>This sidenav is always shown.</p>
-    <section class="trip_info_display">
-        <p>hello</p>
-        <hr>
-    </section>
-    -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -305,43 +374,7 @@ table, th, tr {
 <th>Link</th>
 <th>Cost</th>-->
 </tr>
-<!--
-<tr id="row1">
-<td id="location_row1">Ankit</td>
-<td id="address_row1">India</td>
-<td id="link_row1">20</td>
-<td id="cost_row1">2000</td>
-<td>
-<input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
-<input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('1')">
-</td>
-</tr>-->
-<!--
-<tr id="row2">
-<td id="name_row2">Shawn</td>
-<td id="country_row2">Canada</td>
-<td id="age_row2">26</td>
-<td id="cost_row2">2000</td>
-<td>
-<input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
-<input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('2')">
-</td>
-</tr>
 
-<tr id="row3">
-<td id="name_row3">Rahul</td>
-<td id="country_row3">India</td>
-<td id="age_row3">19</td>
-<td id="cost_row3">2000</td>
-<td>
-<input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3')">
-<input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3')">
-<input type="button" value="Delete" class="delete" onclick="delete_row('3')">
-</td>
-</tr>
--->
 <tr>
 <td><input type="text" id="new_location"></td>
 <td><input type="text" id="new_address"></td>
@@ -357,17 +390,8 @@ table, th, tr {
 </div>
 
 
-
 <script>
-function AddTop5() {
-    var para = document.createElement("P");
-    var t = document.createTextNode("Top 5 thing. <hr>");
-    para.appendChild(t);
-    document.getElementById("myDIV").appendChild(para);
-}
-</script>
-
-<script>
+/* schedule maker */
 function edit_row(no)
 {
  document.getElementById("edit_button"+no).style.display="none";
@@ -415,7 +439,6 @@ function add_row()
  var new_location=document.getElementById("new_location").value;
  var new_address=document.getElementById("new_address").value;
  var new_link=document.getElementById("new_link").value;
-
  var new_cost=document.getElementById("new_cost").value;
 
  var table=document.getElementById("data_table");
@@ -425,8 +448,31 @@ function add_row()
  document.getElementById("new_location").value="";
  document.getElementById("new_address").value="";
  document.getElementById("new_link").value="";
-
  document.getElementById("new_cost").value="";
+
+
+}
+</script>
+
+<script>
+/* Drop down menu in top 5 database side nav */
+function typeSearch() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
 }
 </script>
 
