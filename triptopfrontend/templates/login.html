@@ -5,7 +5,24 @@
     <title>TripTop | Login/Signup</title>
 
 
-    <!-- Bootstrap CSS -->
+	<script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
+
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDCFN_ovUTjF0k89Lcmzw1z43s1wyNtTFg",
+			authDomain: "triptop-senior-project-2017.firebaseapp.com",
+			databaseURL: "https://triptop-senior-project-2017.firebaseio.com",
+			projectId: "triptop-senior-project-2017",
+			storageBucket: "triptop-senior-project-2017.appspot.com",
+			messagingSenderId: "585874782780"
+          };
+          firebase.initializeApp(config);
+        </script>
+
+	<!-- Bootstrap CSS -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -16,16 +33,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
 
 
+	<script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
+	<script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../static/triptop/css/login.css">
+
+
+
 	<!-- Main CSS and JS Files -->
     <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
 
-	<!-- Login/Register CSS and JS -->
-    <link rel="stylesheet" type="text/css" href="../../static/triptop/css/login.css">
-    <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
-	<script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
-	<script src="../../static/triptop/js/aws-cognito-sdk.min.js"></script>
-    <script src="../../static/triptop/js/amazon-cognito-identity.min.js"></script>
+
+
+
+
+
 
 
 </head>
@@ -94,7 +118,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="login">Login</a></li>
+                <li><a href="#">Login</a></li>
 
                 <li><a href="#">Sign Up</a></li>
 
@@ -159,7 +183,7 @@
 							<div class="col-lg-12">
 								<form id="login-form" method="post" role="form" style="display: block;">
 									<div class="form-group">
-										<input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder=" Username" value="">
+										<input type="text" name="email" id="email1" tabindex="1" class="form-control" placeholder=" Email" value="">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder=" Password">
@@ -203,6 +227,7 @@
 									</div>
 									<div class="form-group">
 										<input type="password" name="repeatpassword" id="repeatpassword" tabindex="1" class="form-control" placeholder=" Repeat Password" value="">
+										<span id="confirmpasserror">Passwords do not match.</span>
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -222,111 +247,120 @@
 
 <script>
 
-	$('#login-submit').click(function() {
-	   var y = document.getElementById("login-form");
+	$(function() {
 
-	   var authenticationData = {
-        Username : x.element[0].value, // your username here
-        Password : x.element[1].value // your password here
-    };
+	    $('#confirmpasserror').hide();
 
-    var authenticationDetails =
-new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
+	    $('#login-form-link').click(function (e) {
+            $("#login-form").delay(100).fadeIn(100);
+            $("#register-form").fadeOut(100);
+            $('#register-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+        $('#register-form-link').click(function (e) {
+            $("#register-form").delay(100).fadeIn(100);
+            $("#login-form").fadeOut(100);
+            $('#login-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
 
-    var cognitoUser =
-new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
-    cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-            console.log('access token + ' + result.getAccessToken().getJwtToken());
-        },
+	    var x = document.getElementById("#register-form");
 
-        onFailure: function(err) {
-            alert(err);
-        },
-        mfaRequired: function(codeDeliveryDetails) {
-            var verificationCode = prompt('Please input verification code' ,'');
-            cognitoUser.sendMFACode(verificationCode, this);
-        }
-    });
-	});
+        var authenticationData = {
+            username: x.element[0].value.toString(), // username here
+			firstName: x.element[1].value.toString(), // user first name here
+			lastName: x.element[2].value.toString(), // user last name here
+            email: x.element[3].value.toString(), // your email here
+            password: x.element[4].value.toString(), // your password here
+			repeatPassword: x.element[5].value.toString() // your password repeat here
+        };
+
+
+	var y = document.getElementById("#login-form");
+
+	var loginData = {
+		email: y.element[0].value.toString(), //email input here
+		password: y.element[1].value.toString() //password input here
+	};
+
 
 	$('#register-submit').click(function() {
 
-	AWSCognito.config.region = 'us-east-2';
+        if((authenticationData.password == authenticationData.repeatPassword) && (authenticationData.password.getLength() > 8))
+		{
+		firebase.auth().createUserWithEmailAndPassword(authenticationData.email, authenticationData.password).catch(function(error) {
+  		// Handle Errors here.
+  		var errorCode = error.code;
+  		var errorMessage = error.message;
 
-	var poolData = {
-        UserPoolId : 'us-east-2_BBMoH7MxY', // Your user pool id here
-        ClientId : '4a9d0u8plkdkitqn9nivig4gce' // Your client id here
-    };
-	var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
-
-    var attributeList = [];
-
-    var x = document.getElementById("register-form");
-
-    var username = {
-        Name: 'username',
-		Value: x.elements[0].value
-	};
-
-    var dataEmail = {
-        Name : 'email',
-        Value : x.elements[3].value
-    };
-
-    var firstName = {
-        Name : 'first_name',
-        Value : x.elements[1].value
-    };
-
-    var lastName = {
-        Name : 'last_name',
-        Value : x.elements[2].value
-    };
-
-    var password = {
-        Name : 'password',
-		Value : x.elements[4].value
-	}
-
-    var attributeEmail = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataEmail);
-	var attributefirstName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(firstName);
-	var attributelastName = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(lastName);
+  		if (errorCode === 'auth/weak-password') {
+			alert('The password is too weak.');
+		} else {
+			alert(errorMessage);
+		}
+		if (errorCode === 'auth/email-already-in-use') {
+			alert('The email is already in use.');
+		} else {
+			alert(errorMessage);
+		}
+		if (errorCode === 'auth/invalid-email') {
+			alert('The email is not valid.');
+		} else {
+			alert(errorMessage);
+		}
 
 
-    attributeList.push(attributeEmail);
-    attributeList.push(attributefirstName);
-    attributeList.push(attributelastName);
+		});
+
+		} else {
+
+            $('#confirmpasserror').show();
+            alert('The passwords do not match.');
+
+		}
 
 
-    userPool.signUp('username', 'password', attributeList, null, function(err, result){
-        if (err) {
-            alert(err);
-            return;
-        }
-        cognitoUser = result.user;
-        console.log('user name is ' + cognitoUser.getUsername());
-    });
+
+
     });
 
-    $(function() {
+	$('#login-submit').click(function() {
 
-    $('#login-form-link').click(function(e) {
-		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
-		$('#register-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-	$('#register-form-link').click(function(e) {
-		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
-		$('#login-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
+
+	    firebase.auth().signInWithEmailAndPassword(loginData.email, loginData.password).catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  if (errorCode === 'auth/wrong-password') {
+		  	alert('Wrong password.');
+		  } else {
+    		alert(errorMessage);
+		  }
+		  if (errorCode === 'auth/user-not-found') {
+		  	alert('Sorry. User not found.');
+		  } else {
+    		alert(errorMessage);
+		  }
+		  if (errorCode === 'auth/invalid-email') {
+		  	alert('That email is not valid.');
+		  } else {
+    		alert(errorMessage);
+		  }
+
+		});
+
+
+
 	});
 
-});
+
+
+    });
+
+
+
 </script>
 </body>
 </html>

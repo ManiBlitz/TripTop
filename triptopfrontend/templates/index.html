@@ -8,6 +8,9 @@
 
 
       <script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
+
         <script>
           // Initialize Firebase
           var config = {
@@ -724,7 +727,7 @@
 
               var $container = $('#flightsTable'),
               $scrollTo = $('#flight15');
-              $('findFlights').click([],$container.scrollTop($scrollTo.offset().top - $container.offset().top + $container.scrollTop());
+              $('findFlights').click([],$container.scrollTop($scrollTo.offset().top - $container.offset().top + $container.scrollTop()));
 
 
               $('#getAirports').click(
@@ -734,7 +737,7 @@
 
                   var myJson = JSON.stringify({"origin": orgString, "destination": desString});
 
-                  var url = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports"
+                  var url = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports";
 
                   $.ajax( {
                       type : 'POST',
