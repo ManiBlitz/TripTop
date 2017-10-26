@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,4 +8,650 @@
 <body>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TripTop | My Itinerary</title>
+
+
+
+    <!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Footer Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+
+
+    <!-- Main CSS and JS Files -->
+    <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+    <link href="../../static/triptop/css/main.css" rel="stylesheet">
+    <link href="../../static/triptop/css/base.css" rel="stylesheet">
+    <link href="../../static/triptop/css/style.css" rel="stylesheet">
+    <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
+
+
+      <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/ipgetandset.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+
+
+
+
+
+
+
+
+      <script type="text/javascript">
+            $(document).ajaxSend(function(event, request, settings) {
+                $('#loading-indicator').show();
+            });
+
+            $(document).ajaxComplete(function(event, request, settings) {
+                $('#loading-indicator').hide();
+            });
+
+            $('.body').css({'padding-right':'0px'});
+      </script>
+
+  </head>
+
+
+
+  <header>
+      <nav class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+            </button>
+
+            <a href="#"><img class="navbar-brand" id="currentPhoto" src="../../static/triptop/img/TripTopLogo.png" width="170.25em" height="36.75em"></a>
+
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li><a href="#">Home</a></li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">About<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">About TripTop</a></li>
+
+                        <li><a href="#">Our Team</a></li>
+
+                        <li><a href="#">Contact Us</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Forum <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">New Post</a></li>
+
+                        <li><a href="#">My Posts</a></li>
+
+                        <li><a href="#">Subscribed Threads</a></li>
+
+                        <li><a href="#">Invite A Friend</a></li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="active"><a href="">My Itinerary</a></li>
+
+                <li><a href="#">Sign Up</a></li>
+
+                <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Profile<b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#">My Saved Itineraries</a></li>
+
+                            <li><a href="#">"The Perfect Itinerary" Quiz</a></li>
+
+                            <li><a href="#">Random Itinerary Generator</a></li>
+
+                            <li><a href="#">Account Settings</a></li>
+
+                            <li><a href="#">Sign Out</a></li>
+
+                        </ul>
+
+                </li>
+
+            </ul>
+
+
+
+
+        </div>
+
+          <script>
+
+                $('.navbar').css({'margin-bottom':'0px','background' : '#333','border-color':'#000'})
+
+          </script>
+
+    </nav>
+
+
+
+  </header>
+
+ <head>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    margin-left: 20%;
+
+}
+
+.sidenav h1 {
+    margin-left: 30%;
+}
+
+.sidenav h2 {
+    margin-left: 40%;
+}
+
+
+.main {
+    margin-left: 0;
+    height: auto;
+    width: 60%;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.main h1 {
+    margin-left: 30%;
+    font-size: 50px;
+    color: black;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+div.displayinfo {
+    width: 400px;
+    margin-left: 0;
+    border: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+div.schedule {
+    width: 400px;
+    margin-left: 30%;
+    border: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#myDIV {
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+table, th, tr, td {
+    border: 1px solid black;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 150px;
+    overflow: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="sidenav">
+  <h1>Top 5 Database</h1>
+  <h2 style="font-size:90%;">with Google Places</h2>
+
+  <div class="dropdown">
+  <button onclick="typeSearch()" class="dropbtn">Type</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#All">All</a>
+    <a href="#Day_Trip">Day Trip</a>
+    <a href="#Lodging">Lodging</a>
+    <a href="#Food">Food</a>
+    <a href="#Tours">Tours</a>
+    <a href="#Museums">Museums</a>
+    <a href="#Drinks">Drinks</a>
+    <a href="#Clubs">Clubs</a>
+    <a href="#Entertainment">Entertainment</a>
+    <a href="#Parks">Parks</a>
+    <a href="#Shopping">Shopping</a>
+  </div>
+</div>
+</div>
+
+<div class="main">
+    <h1>My Itinerary</h1>
+    <hr style="border: 2px solid black">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+
+
+<div class="w3-container">
+  <h2>Flight Information</h2>
+
+
+    <div style="border: 2px solid black" class="displayinfo">
+        <p>Destination</p>
+        <p>Start Date</p>
+        <p>End Date</p>
+        <p>Arrival Time</p>
+        <p>Departure Time</p>
+    </div>
+<!--
+    <div style="border: 1px solid black" class="schedule">
+        <p>hi</p>
+    </div>
+    -->
+
+
+
+<div id="myDIV">
+<p>Day 1</p>
+<p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
+<p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+<body>
+<div id="itinBuilder">
+<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+<tr>
+    <!--
+<th>Location</th>
+<th>Address</th>
+<th>Link</th>
+<th>Cost</th>-->
+</tr>
+
+<tr>
+<td><input type="text" id="new_location"></td>
+<td><input type="text" id="new_address"></td>
+<td><input type="text" id="new_link"></td>
+<td><input type="text" id="new_cost"></td>
+<td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+</tr>
+
+</table>
+</div>
+
+</body>
+</div>
+
+
+<script>
+/* schedule maker */
+function edit_row(no)
+{
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+
+ var location=document.getElementById("location_row"+no);
+ var address=document.getElementById("address_row"+no);
+ var link=document.getElementById("link_row"+no);
+ var cost=document.getElementById("cost_row"+no);
+
+ var location_data=location.innerHTML;
+ var address_data=address.innerHTML;
+ var link_data=link.innerHTML;
+ var cost_data=cost.innerHTML;
+
+ location.innerHTML="<input type='text' id='location_text"+no+"' value='"+location_data+"'>";
+ address.innerHTML="<input type='text' id='address_text"+no+"' value='"+address_data+"'>";
+ link.innerHTML="<input type='text' id='link_text"+no+"' value='"+link_data+"'>";
+ cost.innerHTML="<input type='text' id='cost_text"+no+"' value='"+cost_data+"'>";
+}
+
+function save_row(no)
+{
+ var location_val=document.getElementById("location_text"+no).value;
+ var address_val=document.getElementById("address_text"+no).value;
+ var link_val=document.getElementById("link_text"+no).value;
+ var cost_val=document.getElementById("cost_text"+no).value;
+
+ document.getElementById("location_row"+no).innerHTML=location_val;
+ document.getElementById("address_row"+no).innerHTML=address_val;
+ document.getElementById("link_row"+no).innerHTML=link_val;
+ document.getElementById("cost_row"+no).innerHTML=cost_val;
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+}
+
+function delete_row(no)
+{
+ document.getElementById("row"+no+"").outerHTML="";
+}
+
+function add_row()
+{
+ var new_location=document.getElementById("new_location").value;
+ var new_address=document.getElementById("new_address").value;
+ var new_link=document.getElementById("new_link").value;
+ var new_cost=document.getElementById("new_cost").value;
+
+ var table=document.getElementById("data_table");
+ var table_len=(table.rows.length)-1;
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+
+ document.getElementById("new_location").value="";
+ document.getElementById("new_address").value="";
+ document.getElementById("new_link").value="";
+ document.getElementById("new_cost").value="";
+
+
+}
+</script>
+
+<script>
+/* Drop down menu in top 5 database side nav */
+function typeSearch() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+</div>
+
+</body>
+<!--
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Flight Information</h2>
+
+    <div style="border: 2px solid black" class="w3-panel">
+        <p>Destination</p>
+        <p>hello</p>
+    </div>
+
+
+  <div class="w3-panel w3-border-left">
+    <p>I have only a left border.</p>
+  </div>
+
+  <div class="w3-panel w3-border-right">
+    <p>I have only a right border.</p>
+  </div>
+
+  <div class="w3-panel w3-border-top w3-border-bottom">
+    <p>I have top and bottom borders.</p>
+  </div>
+
+</div>
+
+</body>
+
+<body>
+
+
+</body>
+-->
+      <!--Footer-->
+<footer class="page-footer center-on-small-only stylish-color-dark">
+
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-4">
+                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
+                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="call-to-action">
+        <ul>
+            <li>
+                <h5 class="mb-1">Sign Up For Free!</h5>
+            </li>
+            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
+        </ul>
+    </div>
+    <!--/.Call to action-->
+
+    <hr>
+
+    <!--Social buttons-->
+    <div class="social-section text-center">
+        <ul>
+
+            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
+        </ul>
+    </div>
+    <!--/.Social buttons-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+
+    <script>
+        $('footer.page-footer').css({'margin-top':'0px'});
+
+    </script>
+</footer>
+<!--/.Footer-->
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+>>>>>>> 409bc225e753aa1cad8b9aceebe536316dc01f80
 </html>
