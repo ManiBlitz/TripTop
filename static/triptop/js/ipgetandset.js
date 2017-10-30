@@ -3,7 +3,13 @@
 
     $.get('https://ipinfo.io', function(response)
     {
-        console.log(response.loc);
-        var latlongString = response.loc;
+        console.log(response.city);
+        console.log(response.country);
+        console.log(response.region);
+
+        var city = response.city;
+        var country = response.country;
+        var region = response.region;
+
         
     }, "jsonp")

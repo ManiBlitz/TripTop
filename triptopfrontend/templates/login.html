@@ -6,22 +6,6 @@
     <title>TripTop | Login/Signup</title>
 
 
-	<script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
-
-        <script>
-          // Initialize Firebase
-          var config = {
-            apiKey: "AIzaSyDCFN_ovUTjF0k89Lcmzw1z43s1wyNtTFg",
-			authDomain: "triptop-senior-project-2017.firebaseapp.com",
-			databaseURL: "https://triptop-senior-project-2017.firebaseio.com",
-			projectId: "triptop-senior-project-2017",
-			storageBucket: "triptop-senior-project-2017.appspot.com",
-			messagingSenderId: "585874782780"
-          };
-          firebase.initializeApp(config);
-        </script>
 
 	<!-- Bootstrap CSS -->
     <!-- Latest compiled and minified CSS -->
@@ -79,7 +63,7 @@
 
             <ul class="nav navbar-nav">
 
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
 
                 <li class="dropdown">
 
@@ -119,11 +103,9 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="#">Login</a></li>
+                <li class="active"><a href="#">Login</a></li>
 
-                <li><a href="#">Sign Up</a></li>
-
-                <li class="dropdown">
+				<li class="dropdown">
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Profile<b class="caret"></b></a>
 
