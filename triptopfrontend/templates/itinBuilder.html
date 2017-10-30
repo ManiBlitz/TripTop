@@ -241,7 +241,7 @@ div.schedule {
 }
 
 #myDIV {
-    border: 1px solid black;
+
     margin-bottom: 10px;
 }
 
@@ -303,55 +303,50 @@ table, th, tr, td {
 
 </style>
 </head>
+ <body>
+ <div class="sidenav">
+     <h1>Top 5 Database</h1>
+     <h2 style="font-size:90%;">with Google Places</h2>
+     <div class="dropdown">
+         <button onclick="typeSearch()" class="dropbtn">Type</button>
+         <div id="myDropdown" class="dropdown-content">
+             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+             <a href="#All">All</a>
+             <a href="#Day_Trip">Day Trip</a>
+             <a href="#Lodging">Lodging</a>
+             <a href="#Food">Food</a>
+             <a href="#Tours">Tours</a>
+             <a href="#Museums">Museums</a>
+             <a href="#Drinks">Drinks</a>
+             <a href="#Clubs">Clubs</a>
+             <a href="#Entertainment">Entertainment</a>
+             <a href="#Parks">Parks</a>
+             <a href="#Shopping">Shopping</a>
+         </div>
+     </div>
+ </div>
 
+ <div class="main">
+     <h1>My Itinerary</h1>
+     <hr style="border: 2px solid black">
 
-<body>
-
-
-<div class="sidenav">
-  <h1>Top 5 Database</h1>
-  <h2 style="font-size:90%;">with Google Places</h2>
-
-  <div class="dropdown">
-  <button onclick="typeSearch()" class="dropbtn">Type</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#All">All</a>
-    <a href="#Day_Trip">Day Trip</a>
-    <a href="#Lodging">Lodging</a>
-    <a href="#Food">Food</a>
-    <a href="#Tours">Tours</a>
-    <a href="#Museums">Museums</a>
-    <a href="#Drinks">Drinks</a>
-    <a href="#Clubs">Clubs</a>
-    <a href="#Entertainment">Entertainment</a>
-    <a href="#Parks">Parks</a>
-    <a href="#Shopping">Shopping</a>
-  </div>
-</div>
-</div>
-
-<div class="main">
-    <h1>My Itinerary</h1>
-    <hr style="border: 2px solid black">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <body>
 
 
 
-<div class="w3-container">
-  <h2>Flight Information</h2>
+     <div class="w3-container">
+         <h2>Flight Information</h2>
 
 
-    <div style="border: 2px solid black" class="displayinfo">
-        <p>Destination</p>
-        <p>Start Date</p>
-        <p>End Date</p>
-        <p>Arrival Time</p>
-        <p>Departure Time</p>
-    </div>
+         <div id="flightInfo" style="border: 2px solid black" class="displayinfo">
+             <p>Destination</p>
+             <p>Start Date</p>
+             <p>End Date</p>
+             <p>Arrival Time</p>
+             <p>Departure Time</p>
+         </div>
 <!--
     <div style="border: 1px solid black" class="schedule">
         <p>hi</p>
@@ -359,171 +354,41 @@ table, th, tr, td {
     -->
 
 
+<button id="button" onlick="add_day()">Add Day</button>
+         <div id="myDIV" style="border: 1px solid black; margin-bottom: 10px;">
+             <p>Day 1</p>
+            <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
 
-<div id="myDIV">
-<p>Day 1</p>
-<p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
-<p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
-<body>
-<div id="itinBuilder">
-<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
-<tr>
-    <!--
-<th>Location</th>
-<th>Address</th>
-<th>Link</th>
-<th>Cost</th>-->
-</tr>
+             <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
+             <p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+             <body>
+             <div id="itinBuilder">
+                 <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+                     <tr>
+                        <th>Location</th>
+                        <th>Address</th>
+                        <th>Link</th>
+                        <th>Cost</th>
+                     </tr>
 
-<tr>
-<td><input type="text" id="new_location"></td>
-<td><input type="text" id="new_address"></td>
-<td><input type="text" id="new_link"></td>
-<td><input type="text" id="new_cost"></td>
-<td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
-</tr>
+                     <tr>
+                         <td><input type="text" id="new_location"></td>
+                         <td><input type="text" id="new_address"></td>
+                         <td><input type="text" id="new_link"></td>
+                         <td><input type="text" id="new_cost"></td>
+                         <td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+                     </tr>
 
-</table>
-</div>
+                 </table>
+             </div>
 
-</body>
-</div>
+             </body>
+         </div>
+     </div>
+     </body>
+ </div>
+ </body>
 
-
-<script>
-/* schedule maker */
-function edit_row(no)
-{
- document.getElementById("edit_button"+no).style.display="none";
- document.getElementById("save_button"+no).style.display="block";
-
- var location=document.getElementById("location_row"+no);
- var address=document.getElementById("address_row"+no);
- var link=document.getElementById("link_row"+no);
- var cost=document.getElementById("cost_row"+no);
-
- var location_data=location.innerHTML;
- var address_data=address.innerHTML;
- var link_data=link.innerHTML;
- var cost_data=cost.innerHTML;
-
- location.innerHTML="<input type='text' id='location_text"+no+"' value='"+location_data+"'>";
- address.innerHTML="<input type='text' id='address_text"+no+"' value='"+address_data+"'>";
- link.innerHTML="<input type='text' id='link_text"+no+"' value='"+link_data+"'>";
- cost.innerHTML="<input type='text' id='cost_text"+no+"' value='"+cost_data+"'>";
-}
-
-function save_row(no)
-{
- var location_val=document.getElementById("location_text"+no).value;
- var address_val=document.getElementById("address_text"+no).value;
- var link_val=document.getElementById("link_text"+no).value;
- var cost_val=document.getElementById("cost_text"+no).value;
-
- document.getElementById("location_row"+no).innerHTML=location_val;
- document.getElementById("address_row"+no).innerHTML=address_val;
- document.getElementById("link_row"+no).innerHTML=link_val;
- document.getElementById("cost_row"+no).innerHTML=cost_val;
-
- document.getElementById("edit_button"+no).style.display="block";
- document.getElementById("save_button"+no).style.display="none";
-}
-
-function delete_row(no)
-{
- document.getElementById("row"+no+"").outerHTML="";
-}
-
-function add_row()
-{
- var new_location=document.getElementById("new_location").value;
- var new_address=document.getElementById("new_address").value;
- var new_link=document.getElementById("new_link").value;
- var new_cost=document.getElementById("new_cost").value;
-
- var table=document.getElementById("data_table");
- var table_len=(table.rows.length)-1;
- var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
-
- document.getElementById("new_location").value="";
- document.getElementById("new_address").value="";
- document.getElementById("new_link").value="";
- document.getElementById("new_cost").value="";
-
-
-}
-</script>
-
-<script>
-/* Drop down menu in top 5 database side nav */
-function typeSearch() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
-</script>
-
-
-</div>
-
-
-
-
-
-</body>
-
-
-</div>
-
-</body>
-<!--
- <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-
-<div class="w3-container">
-  <h2>Flight Information</h2>
-
-    <div style="border: 2px solid black" class="w3-panel">
-        <p>Destination</p>
-        <p>hello</p>
-    </div>
-
-
-  <div class="w3-panel w3-border-left">
-    <p>I have only a left border.</p>
-  </div>
-
-  <div class="w3-panel w3-border-right">
-    <p>I have only a right border.</p>
-  </div>
-
-  <div class="w3-panel w3-border-top w3-border-bottom">
-    <p>I have top and bottom borders.</p>
-  </div>
-
-</div>
-
-</body>
-
-<body>
-
-
-</body>
--->
       <!--Footer-->
 <footer class="page-footer center-on-small-only stylish-color-dark">
 
@@ -631,6 +496,140 @@ function filterFunction() {
 
 
 
+<script>
+/* schedule maker */
+function edit_row(no)
+{
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+
+ var location=document.getElementById("location_row"+no);
+ var address=document.getElementById("address_row"+no);
+ var link=document.getElementById("link_row"+no);
+ var cost=document.getElementById("cost_row"+no);
+
+ var location_data=location.innerHTML;
+ var address_data=address.innerHTML;
+ var link_data=link.innerHTML;
+ var cost_data=cost.innerHTML;
+
+ location.innerHTML="<input type='text' id='location_text"+no+"' value='"+location_data+"'>";
+ address.innerHTML="<input type='text' id='address_text"+no+"' value='"+address_data+"'>";
+ link.innerHTML="<input type='text' id='link_text"+no+"' value='"+link_data+"'>";
+ cost.innerHTML="<input type='text' id='cost_text"+no+"' value='"+cost_data+"'>";
+}
+
+function save_row(no)
+{
+ var location_val=document.getElementById("location_text"+no).value;
+ var address_val=document.getElementById("address_text"+no).value;
+ var link_val=document.getElementById("link_text"+no).value;
+ var cost_val=document.getElementById("cost_text"+no).value;
+
+ document.getElementById("location_row"+no).innerHTML=location_val;
+ document.getElementById("address_row"+no).innerHTML=address_val;
+ document.getElementById("link_row"+no).innerHTML=link_val;
+ document.getElementById("cost_row"+no).innerHTML=cost_val;
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+}
+
+function delete_row(no)
+{
+ document.getElementById("row"+no+"").outerHTML="";
+}
+
+function add_row()
+{
+ var new_location=document.getElementById("new_location").value;
+ var new_address=document.getElementById("new_address").value;
+ var new_link=document.getElementById("new_link").value;
+ var new_cost=document.getElementById("new_cost").value;
+
+ var table=document.getElementById("data_table");
+ var table_len=(table.rows.length)-1;
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+
+ document.getElementById("new_location").value="";
+ document.getElementById("new_address").value="";
+ document.getElementById("new_link").value="";
+ document.getElementById("new_cost").value="";
+
+
+}
+</script>
+
+<script>
+/* Drop down menu in top 5 database side nav */
+function typeSearch() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<script>
+     /* adding day to schedule */
+document.getElementById('button').onclick = add_day;
+
+
+var i = 0;
+var original = document.getElementById('myDIV');
+
+function add_day() {
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "new_day" + ++i; // there can only be one element with an ID
+    original.parentNode.appendChild(clone);
+}
+
+
+
+</script>
+
+<script>
+    $(.flight-information).click(function() {
+        var getSingleFlight=$(this).attr('flight-id');
+
+        $.ajax({
+            type: "POST",
+            url: "", /*need this*/
+            data: { /*fix this to actual id names*/
+                flight:flightDestination,
+                flight:flightStartDate,
+                flight:flightEndDate,
+                flight:flightArrivalTime,
+                flight:flightDepTime
+            },
+            cache: false,
+            dataType: "json"
+            success: function (JSONObject) {
+                $.each(JSONObject, function(k,item){ /*fix to id names*/
+                    $('flightInfo').html(item.flightDestination);
+                    $('flightInfo').html(item.flightStartDate);
+                    $('flightInfo').html(item.flightEndDate);
+                    $('flightInfo').html(item.flightArrivalTime);
+                    $('flightInfo').html(item.flightDepTime);
+
+                });
+            }
+        });
+    });
+
+</script>
 
 
 
