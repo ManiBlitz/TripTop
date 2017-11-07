@@ -14,6 +14,7 @@
     <orderEntry type="library" name="popper" level="application" />
     <orderEntry type="library" name="mdb" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="platform" level="application" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

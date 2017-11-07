@@ -11,5 +11,7 @@
         var country = response.country;
         var region = response.region;
 
+        $('#inputOrigin1').val(city + ", " + region + ", " + country);
+
         
     }, "jsonp")

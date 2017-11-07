@@ -31,24 +31,8 @@
            });
 
            var $container = $('#flightsTable'),
-           $scrollTo = $('#flight15');
+           $scrollTo = $('#flight1');
            $('findFlights').on('click', [],$container.scrollTop($scrollTo.offset().top - $container.offset().top + $container.scrollTop()));
-
-
-              $orgString = $('#inputOrigin1');
-              var region;
-              var country;
-              var city;
-
-              $.get("https://ipinfo.io", function(response) {
-                  region = response.region;
-                  country = response.country;
-                  city = response.city;
-
-                  $orgString.setValue(city + ", " + region + ", " + country);
-
-
-                }, "jsonp");
 
              $('modal-content.h4').css({
                   'font-size':'1.6em','color':'#000','font-weight':'bold'
@@ -89,12 +73,6 @@
     // process the form
     function getAirports(event) {
 
-        // get the form data
-        // there are many ways to get this data using jQuery (you can use the class or id also)
-        // var params = {
-        //     origin : '',
-        //     destination : ''
-        // };
 
         var origin = $('#inputOrigin1').val().toString();
         var destination = $('#inputDestination1').val().toString();
@@ -107,49 +85,49 @@
 
         var myString = JSON.stringify(yourObject);
 
-        // params.origin = ('#inputOrigin1').val();
-        // params.destination = ('#inputDestination1').val();
-
         var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports";
 
-
-        // $.postJSON = function(url, params, callback) {
-        //     return jQuery.ajax({
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     'type': 'POST',
-        //     'url': url,
-        //     'data': yourObject,
-        //     'dataType': 'json',
-        //     'success': callback
-        //     });
-        // };
-
         $.ajax({
-            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports",
+            url: myEndpoint,
             type: 'POST',
             crossDomain: true,
             data: myString,
-            dataType: 'json',
-            contentType: "application/json",
             success: function (data) {
-                console.info(data);
+                var results = data.body;
+                $('#inputOrigin2').empty();
+                $('#inputDestination2').empty();
 
-                $.each(data.body,function(key,value) {
-                    $.each(body.OriginAirports,function(i,value) {
-                        $('#inputOrigin2').append('<option value=\"' + value + '\">' + i + '</option>');
-                    });
+                results = JSON.parse(results);
+
+                $(results).each(function(key, value) {
+
+                        var OriginObj = value.OriginAirports;
+                        var DestObj = value.DestinationAirports;
+
+                        $.each(OriginObj, function(k,v) {
+                            console.log(v.Name);
+                            console.log(v.IATAcode);
+                            var name = v.Name;
+                            var iata = v.IATAcode;
+                            $('#inputOrigin2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
+
+                        });
+
+                        $.each(DestObj, function(i,o) {
+                            console.log(o.Name);
+                            console.log(o.IATAcode);
+                            var name = o.Name;
+                            var iata = o.IATAcode;
+                            $('#inputDestination2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
+                        });
+
+
+
                 });
-
-                $.each(data,function(key,value) {
-                    $('#inputDestination2').append('<option value=\"' + value + '\">' + key + '</option>');
-                });
-
             }
         });
     }
+
 
 
 
@@ -239,50 +217,62 @@
       //
       // });
 
-    //    $('#flightDetailsForm').submit(function(event) {
-    //
-    //        var $origin =  $('#inputOrigin2').find(":selected").text(),
-    //            $destination = $('#inputDestination2').find(":selected").text(),
-    //            $date = $('#depdate').val(),
-    //            $childCount = $('#sel2').find(":selected").text(),
-    //            $adultCount = $('#sel1').find(":selected").text();
-    //
-    //            // get the form data
-    //         // there are many ways to get this data using jQuery (you can use the class or id also)
-    //         var formData = {
-    //             "origin" : $origin,
-    //             "destination" : $destination,
-    //             "date" : $date,
-    //             "childCount" : $childCount,
-    //             "adultCount" : $adultCount
-    //         };
-    //
-    //         // process the form
-    //         $.ajax({
-    //             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-    //             url         : 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports', // the url where we want to POST
-    //             data        : JSON.parse(formData), // our data object
-    //             dataType    : 'json', // what type of data do we expect back from the server
-    //                         encode          : true
-    //         })
-    //         // using the done promise callback
-    //         .done(function(data) {
-    //
-    //             $.each(data.body.possibleTrips, function(key,value) {
-    //                 var i = 1;
-    //                 var newFlight = '<tr id=\"flight'+ i +'\" class="modal"><td><a href=\"https://www.mytriptop.com/itinBuilder.html\" id=\"flight'+i+'price\" value=\"'+value.saleTotal+'\"></a></td><td><label id=\"flight1airline\" value=\"\"></label></td><td><label id=\"flight'+i+'dates\" value=\"'+value.date+'\"></label></td><td><label id=\"flight'+i+'duration\" value=\"'+value.duration+'\"></label></td><td><label id=\"flight'+i+'stops\" value=\"'+(value.legCount-1)+'\"></label></td></tr>';
-    //                 i++;
-    //             });
-    //
-    //             // log data to the console so we can see
-    //             console.log(data);
-    //
-    //             // here we will handle errors and validation messages
-    //         });
-    //
-    //     // stop the form from submitting the normal way and refreshing the page
-    //     event.preventDefault();
-    // });
+function getFlights(event) {
+
+
+
+
+           var $origin =  $('#inputOrigin2').find(":selected").val(),
+               $destination = $('#inputDestination2').find(":selected").val(),
+               $date = $('#depdate').val(),
+               $childCount = $('#sel2').find(":selected").text(),
+               $adultCount = $('#sel1').find(":selected").text();
+
+           var formData = {
+                "origin" : $origin,
+                "destination" : $destination,
+                "date" : $date,
+                "childCount" : parseInt($childCount),
+                "adultCount" : parseInt($adultCount)
+            };
+
+            // process the form
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/flights', // the url where we want to POST
+                crossDomain : true,
+                dataType    : 'json',
+                data        : JSON.stringify(formData), // our data object
+                encode      : true,
+
+            // using the done promise callback
+            success: function(data) {
+                results = data.body;
+                results = JSON.parse(results);
+                results = JSON.parse(results)
+
+                console.log(results);
+
+                var i = 1;
+
+                $.each(results, function(key,value) {
+
+                    var newFlight = '<tr id=\"flight'+ i +'\" class="modal"><td><a href=\"https://www.mytriptop.com/itinBuilder.html\" id=\"flight'+i+'price\">' + value.saleTotal + '</a></td><td><label id=\"flight1airline\">' +value.airline+ '</label></label></td><td><label id=\"flight'+i+'dates\">'+value.date+'</label></td><td><label id=\"flight'+i+'duration\">'+value.duration+'</label></td><td><label id=\"flight'+i+'stops\">'+(value.legCount-1)+'</label></td></tr>';
+                    i++;
+                    $('#flights').append(newFlight);
+
+                });
+
+                // log data to the console so we can see
+
+
+                // here we will handle errors and validation messages
+            }
+            });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+}
 
       //
       // });
@@ -322,5 +312,9 @@
             // $('#triptime1').on('click', function() {
             //     document.getElementById('#scrollToFlights').scrollIntoView();
             // });
+
+function goToItinPage() {
+
+}
 
 
