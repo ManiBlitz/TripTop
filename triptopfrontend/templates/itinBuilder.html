@@ -24,10 +24,13 @@
     <!-- Main CSS and JS Files -->
     <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-    <link href="../../static/triptop/css/main.css" rel="stylesheet">
-    <link href="../../static/triptop/css/base.css" rel="stylesheet">
-    <link href="../../static/triptop/css/style.css" rel="stylesheet">
+
+     <link href="../../static/triptop/css/main.css" rel="stylesheet">
+    <!-- <link href="../../static/triptop/css/base.css" rel="stylesheet">-->
+     <link href="../../static/triptop/css/style.css" rel="stylesheet">
     <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
+     <link href="../../static/triptop/css/itinBuilder.css" rel="stylesheet">
+
 
 
       <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
@@ -168,13 +171,14 @@
 
   </header>
 
- <head>
-<style>
+
+<!--<style>
 body {
     font-family: "Lato", sans-serif;
 }
 
 .sidenav {
+    display: none;
     height: 100%;
     width: 40%;
     position: fixed;
@@ -258,13 +262,12 @@ table, th, tr, td {
     font-size: 16px;
     border: none;
     cursor: pointer;
-
-
 }
 
 .dropbtn:hover, .dropbtn:focus {
     background-color: #3e8e41;
 }
+
 #myInput {
     border-box: box-sizing;
     background-image: url('searchicon.png');
@@ -302,12 +305,14 @@ table, th, tr, td {
 
 .show {display:block;}
 
-</style>
-</head>
- <body>
- <div class="sidenav">
-     <h1>Top 5 Database</h1>
-     <h2 style="font-size:90%;">with Google Places</h2>
+</style>-->
+
+ <div class="container" id="itinContainer" >
+
+<div class="sidenav">
+     <h1 style="color:black;">Top 5 Database</h1>
+     <h2 style="font-size:90%; color:black;">with Google Places</h2>
+     <hr style="border:2px solid black;">
      <div class="dropdown">
          <button onclick="typeSearch()" class="dropbtn">Type</button>
          <div id="myDropdown" class="dropdown-content">
@@ -325,13 +330,21 @@ table, th, tr, td {
              <a href="#Shopping">Shopping</a>
          </div>
      </div>
+     <!--<div>
+         <table>
+             <tr>
+
+             </tr>
+         </table>
+     </div>-->
+
  </div>
 
- <input onclick="getTop5Locations(event); return false;" type="button" value="test"/>
+<!-- <input onclick="getFlightInfo(event); return false;" type="button" value="test2"/>-->
 
  <div class="main">
      <h1>My Itinerary</h1>
-     <hr style="border: 2px solid black">
+     <hr style="border: 2px solid black; margin-top: 28px;">
 
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -359,7 +372,7 @@ table, th, tr, td {
         <p>hi</p>
     </div>
     -->
-
+<input onclick="getTop5LocationsByCountry(event); return false;" type="button" value="test"/>
 
 <button id="button" onclick="add_day()">Add Day</button>
          <div id="myDIV" style="border: 1px solid black; margin-bottom: 10px;">
@@ -394,26 +407,28 @@ table, th, tr, td {
 
      </div>
 
+
+
+
  </div>
- </body>
 
       <!--Footer-->
-<footer class="page-footer center-on-small-only stylish-color-dark">
+<footer style="height:0px; width:0px;" class="page-footer center-on-small-only stylish-color-dark">
 
     <!--Footer Links-->
-    <div class="container">
+    <!--<div class="container">
         <div class="row">
 
-            <!--First column-->
+            &lt;!&ndash;First column&ndash;&gt;
             <div class="col-md-4">
                 <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
                 <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
             </div>
-            <!--/.First column-->
+            &lt;!&ndash;/.First column&ndash;&gt;
 
             <hr class="clearfix w-100 d-md-none">
 
-            <!--Second column-->
+            &lt;!&ndash;Second column&ndash;&gt;
             <div class="col-md-2 mx-auto">
                 <h5 class="title mb-4 mt-3 font-bold">Links</h5>
                 <ul>
@@ -423,11 +438,11 @@ table, th, tr, td {
                     <li><a href="#!">Link 4</a></li>
                 </ul>
             </div>
-            <!--/.Second column-->
+            &lt;!&ndash;/.Second column&ndash;&gt;
 
             <hr class="clearfix w-100 d-md-none">
 
-            <!--Third column-->
+            &lt;!&ndash;Third column&ndash;&gt;
             <div class="col-md-2 mx-auto">
                 <h5 class="title mb-4 mt-3 font-bold">Links</h5>
                 <ul>
@@ -437,11 +452,11 @@ table, th, tr, td {
                     <li><a href="#!">Link 4</a></li>
                 </ul>
             </div>
-            <!--/.Third column-->
+            &lt;!&ndash;/.Third column&ndash;&gt;
 
             <hr class="clearfix w-100 d-md-none">
 
-            <!--Fourth column-->
+            &lt;!&ndash;Fourth column&ndash;&gt;
             <div class="col-md-2 mx-auto">
                 <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
                 <ul>
@@ -451,14 +466,14 @@ table, th, tr, td {
                     <li><a href="#!">Link 4</a></li>
                 </ul>
             </div>
-            <!--/.Fourth column-->
+            &lt;!&ndash;/.Fourth column&ndash;&gt;
         </div>
     </div>
-    <!--/.Footer Links-->
+    &lt;!&ndash;/.Footer Links&ndash;&gt;
 
     <hr>
 
-    <!--Call to action-->
+    &lt;!&ndash;Call to action&ndash;&gt;
     <div class="call-to-action">
         <ul>
             <li>
@@ -467,11 +482,11 @@ table, th, tr, td {
             <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
         </ul>
     </div>
-    <!--/.Call to action-->
+    &lt;!&ndash;/.Call to action&ndash;&gt;
 
     <hr>
 
-    <!--Social buttons-->
+    &lt;!&ndash;Social buttons&ndash;&gt;
     <div class="social-section text-center">
         <ul>
 
@@ -483,15 +498,15 @@ table, th, tr, td {
 
         </ul>
     </div>
-    <!--/.Social buttons-->
+    &lt;!&ndash;/.Social buttons&ndash;&gt;
 
-    <!--Copyright-->
+    &lt;!&ndash;Copyright&ndash;&gt;
     <div class="footer-copyright">
         <div class="container-fluid">
             © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
 
         </div>
-    </div>
+    </div>-->
     <!--/.Copyright-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
 
@@ -567,7 +582,7 @@ function add_row()
 
 }
 </script>
-
+-->
 <script>
 /* Drop down menu in top 5 database side nav */
 function typeSearch() {
@@ -588,10 +603,11 @@ function filterFunction() {
         }
     }
 }
-</script>-->
+</script>
 
 <script>
      /* adding day to schedule */
+
 document.getElementById('button').onclick = add_day;
 
 
@@ -603,6 +619,8 @@ function add_day() {
     clone.id = "new_day" + ++i; // there can only be one element with an ID
     original.parentNode.appendChild(clone);
 }
+
+/*need clone from preset template*/
 
 
 

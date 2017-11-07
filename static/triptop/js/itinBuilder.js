@@ -1,27 +1,21 @@
+//to get top 5 locations
 
-function getTop5Locations(event) {
+function getTop5LocationsByCity(event) {
 
-        console.log("this is working.");
+        console.log("getTop5LocationsByCity is working.");
 
 
         var city = $('#currentCity').val();
         var type = $('#cityType').val();
 
-
-
         var yourObject = {
-            "city": "Marietta",
-            "type": "Restaurant"
+            "city": "Paris",
+            "type": "Museums"
         };
 
         var myString = JSON.stringify(yourObject);
 
-
-
         var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/city/type";
-
-
-
 
         $.ajax({
             url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/city/type",
@@ -32,13 +26,233 @@ function getTop5Locations(event) {
             dataType: 'json',
             contentType: "application/json",
             success: function (data) {
-                console.info(data);
-
-
-
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
             }
         });
     }
+
+//fix
+function saveItinerary(event) {
+
+        console.log("saveItinerary is working.");
+
+
+        var user_id = $('#user_id').val();
+        var name = $('#user_name').val();
+        var description = $('#user_description').val();
+
+
+        var yourObject = { /*edit*/
+            "user_id": "jkim",
+            "name": "Jason Kim",
+            "description": "blah",
+        };
+
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/itineraries/save";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/itineraries/save",
+            type: 'POST',
+            crossDomain: true,
+//            Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+//works
+function locationsByAddress(event) {
+
+        console.log("locationsByAddress is working.");
+
+
+        var address = $('#currentAddress').val();
+
+        var yourObject = {
+            "address": "1100 South Marietta Pkwy, Marietta, GA 30060"
+
+
+        };
+
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places",
+            type: 'POST',
+            crossDomain: true,
+//            Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+
+function locationsByCity(event) {
+
+        console.log("locationsByCity is working.");
+
+
+        var city = $('#currentCity').val();
+
+
+        var yourObject = {
+            "city": "Johns Creek"
+
+        };
+
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/city";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/city",
+            type: 'POST',
+            crossDomain: true,
+//            Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+function locationsByCountry(event) {
+
+        console.log("locationsByCountry is working.");
+
+        var country = $('#currentCountry').val();
+
+        var yourObject = {
+            "country": "Italy"
+
+        };
+
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/country";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/country",
+            type: 'POST',
+            crossDomain: true,
+//            Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+
+function getTop5LocationsByCountry(event) {
+
+        console.log("getTop5LocationsByCountry is working.");
+
+
+        var country = $('#currentCountry').val();
+        var type = $('#countryType').val();
+
+        var yourObject = {
+            "country": "Italy",
+            "type": "Restaurant"
+        };
+
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/country/type";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/country/type",
+            type: 'POST',
+            crossDomain: true,
+//            Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+//fix
+function getTop5Locations(event) {
+
+        console.log("getTop5Locations is working.");
+
+/* //there are no params so is this part needed?
+        var country = $('#currentCountry').val();
+        var type = $('#countryType').val();
+
+        var yourObject = {
+            "country": "Italy",
+            "type": "Restaurant"
+        };
+*/
+        var myString = JSON.stringify(yourObject);
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location",
+            type: 'POST',
+            crossDomain: true,
+            //Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
+            data: myString,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+            }
+        });
+    }
+
+
+/*function addToSchedule(event) {
+    var
+
+}*/
+
+/*<--------------------------------------------------------------------------------------------------------------->*/
+/*populate top 5 database*/
+
 
 
     /* schedule maker */
@@ -132,3 +346,5 @@ function add_day() {
     clone.id = "new_day" + ++i; // there can only be one element with an ID
     original.parentNode.appendChild(clone);
 }*/
+
+
