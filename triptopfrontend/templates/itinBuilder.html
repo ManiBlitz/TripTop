@@ -24,10 +24,13 @@
     <!-- Main CSS and JS Files -->
     <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-    <link href="../../static/triptop/css/main.css" rel="stylesheet">
-    <link href="../../static/triptop/css/base.css" rel="stylesheet">
-    <link href="../../static/triptop/css/style.css" rel="stylesheet">
+
+     <link href="../../static/triptop/css/main.css" rel="stylesheet">
+    <!-- <link href="../../static/triptop/css/base.css" rel="stylesheet">-->
+     <link href="../../static/triptop/css/style.css" rel="stylesheet">
     <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
+     <link href="../../static/triptop/css/itinBuilder.css" rel="stylesheet">
+
 
 
       <script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
@@ -35,6 +38,7 @@
       <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+      <script type="text/javascript" src="../../static/triptop/js/itinBuilder.js"></script>
 
 
 
@@ -43,17 +47,17 @@
 
 
 
-      <script type="text/javascript">
-            $(document).ajaxSend(function(event, request, settings) {
-                $('#loading-indicator').show();
-            });
+      <!--<script type="text/javascript">-->
+            <!--$(document).ajaxSend(function(event, request, settings) {-->
+                <!--$('#loading-indicator').show();-->
+            <!--});-->
 
-            $(document).ajaxComplete(function(event, request, settings) {
-                $('#loading-indicator').hide();
-            });
+            <!--$(document).ajaxComplete(function(event, request, settings) {-->
+                <!--$('#loading-indicator').hide();-->
+            <!--});-->
 
-            $('.body').css({'padding-right':'0px'});
-      </script>
+            <!--$('.body').css({'padding-right':'0px'});-->
+      <!--</script>-->
 
   </head>
 
@@ -167,13 +171,14 @@
 
   </header>
 
- <head>
-<style>
+
+<!--<style>
 body {
     font-family: "Lato", sans-serif;
 }
 
 .sidenav {
+    display: none;
     height: 100%;
     width: 40%;
     position: fixed;
@@ -241,7 +246,7 @@ div.schedule {
 }
 
 #myDIV {
-    border: 1px solid black;
+
     margin-bottom: 10px;
 }
 
@@ -257,13 +262,12 @@ table, th, tr, td {
     font-size: 16px;
     border: none;
     cursor: pointer;
-
-
 }
 
 .dropbtn:hover, .dropbtn:focus {
     background-color: #3e8e41;
 }
+
 #myInput {
     border-box: box-sizing;
     background-image: url('searchicon.png');
@@ -301,96 +305,221 @@ table, th, tr, td {
 
 .show {display:block;}
 
-</style>
-</head>
+</style>-->
 
-
-<body>
-
+ <div class="container" id="itinContainer" >
 
 <div class="sidenav">
-  <h1>Top 5 Database</h1>
-  <h2 style="font-size:90%;">with Google Places</h2>
+     <h1 style="color:black;">Top 5 Database</h1>
+     <h2 style="font-size:90%; color:black;">with Google Places</h2>
+     <hr style="border:2px solid black;">
+     <div class="dropdown">
+         <button onclick="typeSearch()" class="dropbtn">Type</button>
+         <div id="myDropdown" class="dropdown-content">
+             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+             <a href="#All">All</a>
+             <a href="#Day_Trip">Day Trip</a>
+             <a href="#Lodging">Lodging</a>
+             <a href="#Food">Food</a>
+             <a href="#Tours">Tours</a>
+             <a href="#Museums">Museums</a>
+             <a href="#Drinks">Drinks</a>
+             <a href="#Clubs">Clubs</a>
+             <a href="#Entertainment">Entertainment</a>
+             <a href="#Parks">Parks</a>
+             <a href="#Shopping">Shopping</a>
+         </div>
+     </div>
+     <!--<div>
+         <table>
+             <tr>
 
-  <div class="dropdown">
-  <button onclick="typeSearch()" class="dropbtn">Type</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#All">All</a>
-    <a href="#Day_Trip">Day Trip</a>
-    <a href="#Lodging">Lodging</a>
-    <a href="#Food">Food</a>
-    <a href="#Tours">Tours</a>
-    <a href="#Museums">Museums</a>
-    <a href="#Drinks">Drinks</a>
-    <a href="#Clubs">Clubs</a>
-    <a href="#Entertainment">Entertainment</a>
-    <a href="#Parks">Parks</a>
-    <a href="#Shopping">Shopping</a>
-  </div>
-</div>
-</div>
+             </tr>
+         </table>
+     </div>-->
 
-<div class="main">
-    <h1>My Itinerary</h1>
-    <hr style="border: 2px solid black">
+ </div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
+<!-- <input onclick="getFlightInfo(event); return false;" type="button" value="test2"/>-->
+
+ <div class="main">
+     <h1>My Itinerary</h1>
+     <hr style="border: 2px solid black; margin-top: 28px;">
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 
-<div class="w3-container">
-  <h2>Flight Information</h2>
+     <div class="w3-container">
+         <h2>Flight Information</h2>
 
 
-    <div style="border: 2px solid black" class="displayinfo">
-        <p>Destination</p>
-        <p>Start Date</p>
-        <p>End Date</p>
-        <p>Arrival Time</p>
-        <p>Departure Time</p>
-    </div>
+         <div id="flightInfo" style="border: 2px solid black" class="displayinfo">
+             <p>Destination</p>
+             <p>Start Date</p>
+             <p>End Date</p>
+             <p>Arrival Time</p>
+             <p>Departure Time</p>
+         </div>
+     </div>
+
+
+
+
 <!--
     <div style="border: 1px solid black" class="schedule">
         <p>hi</p>
     </div>
     -->
+<input onclick="getTop5LocationsByCountry(event); return false;" type="button" value="test"/>
+
+<button id="button" onclick="add_day()">Add Day</button>
+         <div id="myDIV" style="border: 1px solid black; margin-bottom: 10px;">
+             <p>Day 1</p>
+            <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
+
+             <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
+             <p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+
+             <div id="itinBuilder">
+                 <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+                     <tr>
+                        <th>Location</th>
+                        <th>Address</th>
+                        <th>Link</th>
+                        <th>Cost</th>
+                     </tr>
+
+                     <tr>
+                         <td><input type="text" id="new_location"></td>
+                         <td><input type="text" id="new_address"></td>
+                         <td><input type="text" id="new_link"></td>
+                         <td><input type="text" id="new_cost"></td>
+                         <td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+                     </tr>
+
+                 </table>
+             </div>
+
+
+         </div>
+
+     </div>
 
 
 
-<div id="myDIV">
-<p>Day 1</p>
-<p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
-<p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
-<body>
-<div id="itinBuilder">
-<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
-<tr>
-    <!--
-<th>Location</th>
-<th>Address</th>
-<th>Link</th>
-<th>Cost</th>-->
-</tr>
 
-<tr>
-<td><input type="text" id="new_location"></td>
-<td><input type="text" id="new_address"></td>
-<td><input type="text" id="new_link"></td>
-<td><input type="text" id="new_cost"></td>
-<td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
-</tr>
+ </div>
 
-</table>
-</div>
+      <!--Footer-->
+<footer style="height:0px; width:0px;" class="page-footer center-on-small-only stylish-color-dark">
 
-</body>
-</div>
+    <!--Footer Links-->
+    <!--<div class="container">
+        <div class="row">
+
+            &lt;!&ndash;First column&ndash;&gt;
+            <div class="col-md-4">
+                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
+                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
+            </div>
+            &lt;!&ndash;/.First column&ndash;&gt;
+
+            <hr class="clearfix w-100 d-md-none">
+
+            &lt;!&ndash;Second column&ndash;&gt;
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            &lt;!&ndash;/.Second column&ndash;&gt;
+
+            <hr class="clearfix w-100 d-md-none">
+
+            &lt;!&ndash;Third column&ndash;&gt;
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            &lt;!&ndash;/.Third column&ndash;&gt;
+
+            <hr class="clearfix w-100 d-md-none">
+
+            &lt;!&ndash;Fourth column&ndash;&gt;
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            &lt;!&ndash;/.Fourth column&ndash;&gt;
+        </div>
+    </div>
+    &lt;!&ndash;/.Footer Links&ndash;&gt;
+
+    <hr>
+
+    &lt;!&ndash;Call to action&ndash;&gt;
+    <div class="call-to-action">
+        <ul>
+            <li>
+                <h5 class="mb-1">Sign Up For Free!</h5>
+            </li>
+            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
+        </ul>
+    </div>
+    &lt;!&ndash;/.Call to action&ndash;&gt;
+
+    <hr>
+
+    &lt;!&ndash;Social buttons&ndash;&gt;
+    <div class="social-section text-center">
+        <ul>
+
+            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
+        </ul>
+    </div>
+    &lt;!&ndash;/.Social buttons&ndash;&gt;
+
+    &lt;!&ndash;Copyright&ndash;&gt;
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
+
+        </div>
+    </div>-->
+    <!--/.Copyright-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+
+    <script>
+        $('footer.page-footer').css({'margin-top':'0px'});
+
+    </script>
+</footer>
+<!--/.Footer-->
 
 
-<script>
+
+<!--<script>
 /* schedule maker */
 function edit_row(no)
 {
@@ -453,7 +582,7 @@ function add_row()
 
 }
 </script>
-
+-->
 <script>
 /* Drop down menu in top 5 database side nav */
 function typeSearch() {
@@ -476,171 +605,28 @@ function filterFunction() {
 }
 </script>
 
+<script>
+     /* adding day to schedule */
 
-</div>
-
-
-
-
-
-</body>
+document.getElementById('button').onclick = add_day;
 
 
-</div>
+var i = 0;
+var original = document.getElementById('myDIV');
 
-</body>
-<!--
- <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
+function add_day() {
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "new_day" + ++i; // there can only be one element with an ID
+    original.parentNode.appendChild(clone);
+}
 
-<div class="w3-container">
-  <h2>Flight Information</h2>
-
-    <div style="border: 2px solid black" class="w3-panel">
-        <p>Destination</p>
-        <p>hello</p>
-    </div>
-
-
-  <div class="w3-panel w3-border-left">
-    <p>I have only a left border.</p>
-  </div>
-
-  <div class="w3-panel w3-border-right">
-    <p>I have only a right border.</p>
-  </div>
-
-  <div class="w3-panel w3-border-top w3-border-bottom">
-    <p>I have top and bottom borders.</p>
-  </div>
-
-</div>
-
-</body>
-
-<body>
-
-
-</body>
--->
-      <!--Footer-->
-<footer class="page-footer center-on-small-only stylish-color-dark">
-
-    <!--Footer Links-->
-    <div class="container">
-        <div class="row">
-
-            <!--First column-->
-            <div class="col-md-4">
-                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
-                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
-            </div>
-            <!--/.First column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Second column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <!--/.Second column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Third column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <!--/.Third column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Fourth column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <!--/.Fourth column-->
-        </div>
-    </div>
-    <!--/.Footer Links-->
-
-    <hr>
-
-    <!--Call to action-->
-    <div class="call-to-action">
-        <ul>
-            <li>
-                <h5 class="mb-1">Sign Up For Free!</h5>
-            </li>
-            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
-        </ul>
-    </div>
-    <!--/.Call to action-->
-
-    <hr>
-
-    <!--Social buttons-->
-    <div class="social-section text-center">
-        <ul>
-
-            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
-
-        </ul>
-    </div>
-    <!--/.Social buttons-->
-
-    <!--Copyright-->
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
-
-        </div>
-    </div>
-    <!--/.Copyright-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
-
-    <script>
-        $('footer.page-footer').css({'margin-top':'0px'});
-
-    </script>
-</footer>
-<!--/.Footer-->
+/*need clone from preset template*/
 
 
 
+</script>
 
 
 
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
->>>>>>> 409bc225e753aa1cad8b9aceebe536316dc01f80
+>>>>>>> 25a69f7f5456ee465220c4fcc37397e3612e40c4
 </html>
