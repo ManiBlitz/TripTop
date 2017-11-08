@@ -60,6 +60,7 @@ body {
     /*height: 154px;*/
     height: 99px;
     /*background-color: white;*/
+    background-image: url("../img/sunrise3.png");
 }
 
 .sidenav_body {
@@ -157,6 +158,8 @@ div.schedule {
 
     /*margin-bottom: 10px;*/
     margin-bottom:5px;
+    background-color: white;
+
 }
 
 
@@ -169,6 +172,7 @@ table, th, tr, td {
 
 #itinBuilder {
     margin-bottom: 0%;
+    background-color: white;
     /*padding-bottom: 10px;*/
 }
 
