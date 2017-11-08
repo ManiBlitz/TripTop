@@ -348,3 +348,7 @@ function add_day() {
 }*/
 
 
+function openRightMenu() {
+    /*document.getElementById("rightMenu").style.display = "block";*/
+    document.getElementById("rightMenu").classList.toggle("show");
+}
