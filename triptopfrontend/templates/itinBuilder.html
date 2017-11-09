@@ -30,6 +30,8 @@
      <link href="../../static/triptop/css/style.css" rel="stylesheet">
     <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
      <link href="../../static/triptop/css/itinBuilder.css" rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" rel="stylesheet">
+
 
 
 
@@ -38,6 +40,7 @@
       <script type="text/javascript" src="../../static/triptop/js/modernizr.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/itinBuilder.js"></script>
 
 
@@ -380,8 +383,8 @@ table, th, tr, td {
              <p id="templateP"></p>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
 
-             <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
-             <p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+             <h2 class="text-center">Please add Top 5 Database events to your schedule.</h2>
+             <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
              <div id="itinBuildertemplate">
                  <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2>
@@ -397,24 +400,33 @@ table, th, tr, td {
                          <td><input type="text" id="new_address_template"></td>
                          <td><input type="text" id="new_link_template"></td>
                          <td><input type="text" id="new_cost_template"></td>
-                         <td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+                         <td><input type="button" class="add" onclick="add_row();" value="Add New Activity"></td>
                      </tr>
 
                  </table>
+
              </div>
 
 
          </div>
 
-         <div id="myDIV" style="border: 1px solid black; margin-bottom: 10px;">
-             <p id="myP"></p>
+         <div id="Day 1" style="border: 1px solid black; margin-bottom: 10px;">
+
+
+             <label style="padding: 3px 0px 3px 0px;" id="myP_1">Day 1</label>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
 
-             <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
-             <p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+             <div style="border-top: .5px solid black" class="input-group bootstrap-timepicker">
+                 <label>Arrive at First Location:</label>
+                 <input id="startTime1" type="text" class="text-center form-control timepicker input-small">
+                 <span class="input-group-addon"><icon class="glyphicon glyphicon-time"></icon></span>
+             </div>
+
+             <h2 class="text-center">Please add Top 5 Database events to your schedule.</h2>
+             <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
              <div id="itinBuilder">
-                 <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+                 <table class="Day1Table" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
                      <tr>
                         <th>Location</th>
                         <th>Address</th>
@@ -427,10 +439,19 @@ table, th, tr, td {
                          <td><input type="text" id="new_address"></td>
                          <td><input type="text" id="new_link"></td>
                          <td><input type="text" id="new_cost"></td>
-                         <td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+                         <td><input type="button" class="add" onclick="add_row();" value="Add New Activity"></td>
                      </tr>
 
                  </table>
+
+
+
+             </div>
+
+             <div class="input-group bootstrap-timepicker">
+                 <label>End of Day:</label>
+                 <input id="endTime1" type="text" class="text-center form-control timepicker input-small">
+                 <span class="input-group-addon"><icon class="glyphicon glyphicon-time"></icon></span>
              </div>
 
 
@@ -639,32 +660,36 @@ function filterFunction() {
 <script>
      /* adding day to schedule */
 
+
+$(document).on('focus',".timepicker", function(){
+    $(this).timepicker({
+                format:true,
+                showinputs:false,
+                minuteStep: 10
+            });
+});
+
 document.getElementById('button').onclick = add_day;
 
 
-var i = 0;
+var i = 1;
+var j = i;
 var original = document.getElementById('templateDIV');
-var first = document.getElementById('myDIV');
 $('#templateDIV').hide();
 
 function add_day() {
 
-
-    var templateclone = original.cloneNode(true); // "deep" clone
-//    var clone = first.cloneNode(true); // "deep" clone
-
     var newID = "Day " + ++i;
+    var newPID = "myP_" + ++j;
+
     var clone = original.cloneNode(true);
     $(clone).show();
+    $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
+    $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
     $(clone).attr("id", newID);
-    var newPID = ""
-    $('#templateP').attr("id", newID);
-    $("templateP").val(newID);
-//    templateclone.id = "new_day" + ++i; // there can only be one element with an ID
-//    var exampleThing = document.getElementById('myP');
-//    exampleThing.innerHTML = 'Day' + ' ' + i;
-    original.parentNode.appendChild(clone);
+    $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
 
+    original.parentNode.appendChild(clone);
 
 }
 
