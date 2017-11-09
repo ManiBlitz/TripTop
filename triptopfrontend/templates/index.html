@@ -278,8 +278,8 @@
                     <tbody>
                         <tr>
                             <td>
-                                <label class="radio-inline"><input id="Roundtrip" type="radio" name="optradio" value="Roundtrip">Roundtrip</label>
-                                <label class="radio-inline"><input id="OneWay" type="radio" name="optradio" value="One Way" checked>One Way</label>
+                                <label class="radio-inline"><input id="Roundtrip" onSelect="roundtripEvent(event);" type="radio" name="optradio" value="Roundtrip">Roundtrip</label>
+                                <label class="radio-inline"><input id="OneWay" onSelect="onewayEvent(event);" type="radio" name="optradio" value="One Way" checked>One Way</label>
                             </td>
 
                             <td>
@@ -325,8 +325,8 @@
                                 </div>
                             </td>
                             <td>
-                                <!--<button type="submit" id="findFlights" class="btn btn-primary btn-block" data-target="#flightsModal" data-toggle="modal">Get Flights</button>-->
-                                <input class="btn btn-primary btn-info" id="findFlights" type="submit" data-target="#flightsmodal" data-toggle="modal" value="Get Flights"/>
+                                <button type="submit" id="findFlights" class="btn btn-primary btn-block" data-target="#flightsModal" data-toggle="modal">Get Flights</button>
+                                <!--<input class="btn btn-primary btn-info" id="findFlights" type="submit" data-target="#flightsmodal" data-toggle="modal" value="Get Flights"/>-->
                             </td>
                         </tr>
                     </tbody>
