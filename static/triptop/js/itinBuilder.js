@@ -103,6 +103,12 @@ function locationsByAddress(event) {
                 //results
                 results=JSON.parse(results);
                 console.log(results);
+
+
+
+
+
+
             }
         });
     }
@@ -209,6 +215,9 @@ function getTop5LocationsByCountry(event) {
         });
     }
 
+
+
+
 //fix
 function getTop5Locations(event) {
 
@@ -223,7 +232,7 @@ function getTop5Locations(event) {
             "type": "Restaurant"
         };
 */
-        var myString = JSON.stringify(yourObject);
+        /*var myString = JSON.stringify(yourObject);*/
 
         var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location";
 
@@ -232,7 +241,7 @@ function getTop5Locations(event) {
             type: 'POST',
             crossDomain: true,
             //Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
-            data: myString,
+            /*data: myString,*/
             dataType: 'json',
             contentType: "application/json",
             success: function (data) {
@@ -240,13 +249,55 @@ function getTop5Locations(event) {
                 //results
                 results=JSON.parse(results);
                 console.log(results);
+
+                /*$.each(function(k,v)
+
+                )
+                $(results).each(function(key, value) {
+                    var locationObj = value.0;
+                    console.log(locationObj);
+                });*/
+
+                var i = 1;
+                $.each(results, function(key, value){
+                    /*console.log(value.0);*/
+/*
+                    var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
+*/
+                    var locationObj = '<tr><td class="text-center"><input id="add_event_loc" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
+                    i++;
+                    $('#locations').append(locationObj);
+                    /*add 'add' button to add the event to the schedule*/
+                    /*need to be able to filter choices*/
+                });
+
+/*<input type='button' id='' value='Add' class='' onclick=''>*/
+/*<input onClick="getTop5Locations(event); return false;" type="button" value="test"/>*/
+
             }
         });
     }
 
 
-/*function addToSchedule(event) {
-    var
+
+/*function addToSchedule() {
+    var addingToSchedule=document.getElementById();
+
+    var location=document.getElementById("location_row"+no);
+    var address=document.getElementById("address_row"+no);
+    var link=document.getElementById("link_row"+no);
+    var cost=document.getElementById("cost_row"+no);
+
+    var location_data=location.val();
+    var address_data=address.val();
+    var link_data=link.val();
+    var cost_data=cost.val();
+
+    location.innerHTML="<input type='text' id='location_text"+no+"' value='"+location_data+"'>";
+    address.innerHTML="<input type='text' id='address_text"+no+"' value='"+address_data+"'>";
+    link.innerHTML="<input type='text' id='link_text"+no+"' value='"+link_data+"'>";
+    cost.innerHTML="<input type='text' id='cost_text"+no+"' value='"+cost_data+"'>";
+
 
 }*/
 
@@ -306,7 +357,7 @@ function add_row()
 
  var table=document.getElementById("data_table");
  var table_len=(table.rows.length)-1;
- var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+ var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'><input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'><input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_location").value="";
  document.getElementById("new_address").value="";
@@ -348,3 +399,7 @@ function add_day() {
 }*/
 
 
+function openRightMenu() {
+    /*document.getElementById("rightMenu").style.display = "block";*/
+    document.getElementById("rightMenu").classList.toggle("show");
+}
