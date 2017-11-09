@@ -375,8 +375,39 @@ table, th, tr, td {
 <input onclick="getTop5LocationsByCountry(event); return false;" type="button" value="test"/>
 
 <button id="button" onclick="add_day()">Add Day</button>
+
+     <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px;">
+             <p id="templateP"></p>
+            <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
+
+             <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
+             <p style="font-size:90%;">NOTE: A 30 minute gap will be added in between each event as travel time</p>
+
+             <div id="itinBuildertemplate">
+                 <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2>
+                     <tr>
+                        <th>Location</th>
+                        <th>Address</th>
+                        <th>Link</th>
+                        <th>Cost</th>
+                     </tr>
+
+                     <tr>
+                         <td><input type="text" id="new_location_template"></td>
+                         <td><input type="text" id="new_address_template"></td>
+                         <td><input type="text" id="new_link_template"></td>
+                         <td><input type="text" id="new_cost_template"></td>
+                         <td><input type="button" class="add" onclick="add_row();" value="Add Top 5 Thing"></td>
+                     </tr>
+
+                 </table>
+             </div>
+
+
+         </div>
+
          <div id="myDIV" style="border: 1px solid black; margin-bottom: 10px;">
-             <p>Day 1</p>
+             <p id="myP"></p>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
 
              <p style="font-size:90%;">Please add Top 5 Database events to your schedule.</p>
@@ -612,12 +643,29 @@ document.getElementById('button').onclick = add_day;
 
 
 var i = 0;
-var original = document.getElementById('myDIV');
+var original = document.getElementById('templateDIV');
+var first = document.getElementById('myDIV');
+$('#templateDIV').hide();
 
 function add_day() {
-    var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "new_day" + ++i; // there can only be one element with an ID
+
+
+    var templateclone = original.cloneNode(true); // "deep" clone
+//    var clone = first.cloneNode(true); // "deep" clone
+
+    var newID = "Day " + ++i;
+    var clone = original.cloneNode(true);
+    $(clone).show();
+    $(clone).attr("id", newID);
+    var newPID = ""
+    $('#templateP').attr("id", newID);
+    $("templateP").val(newID);
+//    templateclone.id = "new_day" + ++i; // there can only be one element with an ID
+//    var exampleThing = document.getElementById('myP');
+//    exampleThing.innerHTML = 'Day' + ' ' + i;
     original.parentNode.appendChild(clone);
+
+
 }
 
 /*need clone from preset template*/
@@ -628,5 +676,5 @@ function add_day() {
 
 
 
->>>>>>> 25a69f7f5456ee465220c4fcc37397e3612e40c4
+
 </html>

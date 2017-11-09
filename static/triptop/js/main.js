@@ -99,11 +99,13 @@
 
                 results = JSON.parse(results);
 
+                console.log(results);
+
                 $(results).each(function(key, value) {
 
                         var OriginObj = value.OriginAirports;
                         var DestObj = value.DestinationAirports;
-
+                        console.log(OriginObj);
                         $.each(OriginObj, function(k,v) {
                             console.log(v.Name);
                             console.log(v.IATAcode);
@@ -257,7 +259,7 @@ function getFlights(event) {
 
                 $.each(results, function(key,value) {
 
-                    var newFlight = '<tr id=\"flight'+ i +'\" class="modal"><td><a href=\"https://www.mytriptop.com/itinBuilder.html\" id=\"flight'+i+'price\">' + value.saleTotal + '</a></td><td><label id=\"flight1airline\">' +value.airline+ '</label></label></td><td><label id=\"flight'+i+'dates\">'+value.date+'</label></td><td><label id=\"flight'+i+'duration\">'+value.duration+'</label></td><td><label id=\"flight'+i+'stops\">'+(value.legCount-1)+'</label></td></tr>';
+                    var newFlight = '<tr id=\"flight'+ i +'\" class=\"modal\"><td><a href=\"https://www.mytriptop.com/itinBuilder.html\" id=\"flight'+i+'price\">' + value.saleTotal + '</a></td><td><label id=\"flight1airline\">' +value.airline+ '</label></label></td><td><label id=\"flight'+i+'dates\">'+value.date+'</label></td><td><label id=\"flight'+i+'duration\">'+value.duration+'</label></td><td><label id=\"flight'+i+'stops\">'+(value.legCount-1)+'</label></td></tr>';
                     i++;
                     $('#flights').append(newFlight);
 
