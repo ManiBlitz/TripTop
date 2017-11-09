@@ -28,7 +28,7 @@
      <link href="../../static/triptop/css/main.css" rel="stylesheet">
     <!-- <link href="../../static/triptop/css/base.css" rel="stylesheet">-->
      <link href="../../static/triptop/css/style.css" rel="stylesheet">
-    <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
+     <link href="../../static/triptop/css/bootstrap-select.min.css" rel="stylesheet">
      <link href="../../static/triptop/css/itinBuilder.css" rel="stylesheet">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" rel="stylesheet">
 
@@ -42,6 +42,8 @@
       <script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
       <script type="text/javascript" src="../../static/triptop/js/itinBuilder.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
+      <script type = "text/javascript" src = "http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+
 
 
 
@@ -247,6 +249,7 @@
                                  <!--<th class="text-center">Phone Number</th>-->
                                  <th class="text-center">Website</th>
                                  <th class="text-center">Cost</th>
+                                 <th class="text-center">Review</th>
                              </tr>
                          </table>
                      </div>
@@ -280,11 +283,11 @@
                              <p>Departure Time</p>
                          </div>
                      </div>
-                     <input onClick="getTop5Locations(event); return false;" type="button" value="test"/>
+                     <input onClick="getTop5Locations(event); return false;" type="button" value="Get Top 5 Locations"/>
 
                      <button id="button" onclick="add_day()">Add Day</button>
 
-                     <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px;">
+                     <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
              <p id="templateP"></p>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
 
@@ -292,7 +295,7 @@
              <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
              <div id="itinBuildertemplate">
-                 <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2>
+                 <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
                      <tr>
                         <th>Location</th>
                         <th>Address</th>
@@ -315,7 +318,7 @@
 
          </div>
 
-         <div id="Day 1" style="border: 1px solid black; margin-bottom: 10px;">
+         <div id="Day 1" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
 
 
              <label style="padding: 3px 0px 3px 0px;" id="myP_1">Day 1</label>
@@ -572,7 +575,4 @@ function add_day() {
 
 
 
-
-
->>>>>>> 2d6ba3c935f47dc4a80481187ae943d3fcfec045
 </html>

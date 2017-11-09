@@ -258,18 +258,20 @@ function getTop5Locations(event) {
                     console.log(locationObj);
                 });*/
 
-                var i = 1;
+                var i = 0;
                 $.each(results, function(key, value){
                     /*console.log(value.0);*/
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
-                    var locationObj = '<tr><td class="text-center"><input id="add_event_loc" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
+                    var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+                    console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
+
 
 /*<input type='button' id='' value='Add' class='' onclick=''>*/
 /*<input onClick="getTop5Locations(event); return false;" type="button" value="test"/>*/
@@ -279,7 +281,22 @@ function getTop5Locations(event) {
     }
 
 
+function add_event_loc(x){
 
+        console.log("This is working :)");
+        var location = document.getElementById(x).cells[1].innerHTML;
+        var address = document.getElementById(x).cells[2].innerHTML;
+        var link = document.getElementById(x).cells[3].innerHTML;
+        var cost = document.getElementById(x).cells[4].innerHTML;
+        /*var x = $("#new_location").val(locations[1]);*/
+        /*console.log(name);*/
+        $("#new_location").val(location);
+        $("#new_address").val(address);
+        $("#new_link").val(link);
+        $("#new_cost").val(cost);
+        /*need to change these id's so it will be able to go to template too*/
+
+}
 /*function addToSchedule() {
     var addingToSchedule=document.getElementById();
 
@@ -300,6 +317,8 @@ function getTop5Locations(event) {
 
 
 }*/
+
+
 
 /*<--------------------------------------------------------------------------------------------------------------->*/
 /*populate top 5 database*/
@@ -403,3 +422,25 @@ function openRightMenu() {
     /*document.getElementById("rightMenu").style.display = "block";*/
     document.getElementById("rightMenu").classList.toggle("show");
 }
+
+/*need to remove the <p></p> from the div since this adds it anyways*/
+function flightInformation() {
+    /*for round trip*/
+    if($.cookie("destination") != null && $.cookie("date") != null && $.cookie("end_date") != null && $.cookie("arrival_time") != null && $.cookie("departure_time") != null) {
+        var data= "<p><b>Destination: </b>" + $.cookie("destination") + "<br/><b>Start Date: </b>" + $.cookie("date") + "<br/><b>End Date: </b>" + $.cookie("end_date") + "<br/><b>Arrival Time: </b>" + $.cookie("arrival_time") + "<br/><b>Departure Time: </b>" + $.cookie("departure_time") + "<br/></p>";
+        $("#flightInfo").html(data);
+        $.removeCookie("destination");
+        $.removeCookie("date");
+        $.removeCookie("end_date");
+        $.removeCookie("arrival_time");
+        $.removeCookie("departure_time");
+        }
+    else { /*for single flight*/
+        var data= "<p><b>Destination: </b>" + $.cookie("destination") + "<br/><b>Start Date: </b>" + $.cookie("date") + "<br/><b>Arrival Time: </b>" + $.cookie("arrival_time") + "<br/></p>";
+        $("#flightInfo").html(data);
+        $.removeCookie("destination");
+        $.removeCookie("date");
+        $.removeCookie("arrival_time");
+    }
+}
+
