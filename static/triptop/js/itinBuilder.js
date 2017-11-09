@@ -36,10 +36,7 @@ function getTop5LocationsByCity(event) {
 
 //fix
 function saveItinerary(event) {
-
         console.log("saveItinerary is working.");
-
-
         var user_id = $('#user_id').val();
         var name = $('#user_name').val();
         var description = $('#user_description').val();
@@ -297,26 +294,7 @@ function add_event_loc(x){
         /*need to change these id's so it will be able to go to template too*/
 
 }
-/*function addToSchedule() {
-    var addingToSchedule=document.getElementById();
 
-    var location=document.getElementById("location_row"+no);
-    var address=document.getElementById("address_row"+no);
-    var link=document.getElementById("link_row"+no);
-    var cost=document.getElementById("cost_row"+no);
-
-    var location_data=location.val();
-    var address_data=address.val();
-    var link_data=link.val();
-    var cost_data=cost.val();
-
-    location.innerHTML="<input type='text' id='location_text"+no+"' value='"+location_data+"'>";
-    address.innerHTML="<input type='text' id='address_text"+no+"' value='"+address_data+"'>";
-    link.innerHTML="<input type='text' id='link_text"+no+"' value='"+link_data+"'>";
-    cost.innerHTML="<input type='text' id='cost_text"+no+"' value='"+cost_data+"'>";
-
-
-}*/
 
 
 

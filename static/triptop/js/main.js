@@ -346,7 +346,7 @@ function getFlights(event, flightsBool) {
         }
     }
 }
-}
+
 
       //
       // });
