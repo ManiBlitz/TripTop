@@ -1,5 +1,7 @@
 function signIn(googleUser)
 {
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token);
     var profile = googleUser.getBasicProfile();
     $('.g-signin2').css("display", "none");
     $('.data').css("display", "block");
@@ -7,6 +9,38 @@ function signIn(googleUser)
     $('#email').text(profile.getEmail());
     var email = profile.getEmail();
     var picurl = profile.getImageUrl();
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.onload = function() {
+    //   console.log('Signed in as: ' + xhr.responseText);
+    // };
+    // xhr.send('idtoken=' + id_token);
+    // xhr.success(data);
+    // results=data.body;
+    //
+    //
+    // console.log(results);
+
+    var userToken = {'id_token':id_token};
+
+    $.ajax({
+        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/auth', // the url where we want to POST
+        crossDomain: true,
+        dataType: 'json',
+        data: JSON.stringify(userToken), // our data object
+        encode: true,
+
+        // using the done promise callback
+        success: function (data) {
+            var results = JSON.parse(data.body);
+
+            console.log(results);
+        }
+    });
+
 
 //     var origin = $('#inputOrigin1').val().toString();
 //         var destination = $('#inputDestination1').val().toString();
