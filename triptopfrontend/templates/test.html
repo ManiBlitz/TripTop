@@ -205,18 +205,18 @@
                      </div>-->
 
                      <div id="myDropdown" class="dropdown1-content">
-                         <input class="choice" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                         <input class="choice" type="radio" onClick="filterSelection('all')" name="category" checked>All<br>
-                         <input class="choice" type="radio" onClick="filterSelection('day trip')" name="category">Day Trip<br>
-                         <input class="choice" type="radio" onClick="filterSelection('lodging')" name="category">Lodging<br>
-                         <input class="choice" type="radio" onClick="filterSelection('food')" name="category">Food<br>
-                         <input class="choice" type="radio" onClick="filterSelection('tours')" name="category">Tours<br>
-                         <input class="choice" type="radio" onClick="filterSelection('museums')" name="category">Museums<br>
-                         <input class="choice" type="radio" onClick="filterSelection('drinks')" name="category">Drinks<br>
-                         <input class="choice" type="radio" onClick="filterSelection('clubs')" name="category">Clubs<br>
-                         <input class="choice" type="radio" onClick="filterSelection('entertainment')" name="category">Entertainment<br>
-                         <input class="choice" type="radio" onClick="filterSelection('parks')" name="category">Parks<br>
-                         <input class="choice" type="radio" onClick="filterSelection('shopping')" name="category">Shopping<br>
+                         <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                         <input id="0" class="choice" id="all" type="radio" onClick="filterSelection('all')" name="category" checked>All<br>
+                         <input id="1" class="choice" type="radio" onClick="filterSelection('day trip')" name="category">Day Trip<br>
+                         <input id="2" class="choice" type="radio" onClick="filterSelection('lodging')" name="category">Lodging<br>
+                         <input id="3" class="choice" type="radio" onClick="filterSelection('food')" name="category">Food<br>
+                         <input id="4" class="choice" type="radio" onClick="filterSelection('tours')" name="category">Tours<br>
+                         <input id="5" class="choice" type="radio" onClick="filterSelection('museum')" name="category">Museum<br>
+                         <input id="6" class="choice" type="radio" onClick="filterSelection('drinks')" name="category">Drinks<br>
+                         <input id="7" class="choice" type="radio" onClick="filterSelection('clubs')" name="category">Clubs<br>
+                         <input id="8" class="choice" type="radio" onClick="filterSelection('entertainment')" name="category">Entertainment<br>
+                         <input id="9" class="choice" type="radio" onClick="filterSelection('parks')" name="category">Parks<br>
+                         <input id="10" class="choice" type="radio" onClick="filterSelection('shopping')" name="category">Shopping<br>
                      </div>
                  </div>
              </div>
@@ -224,38 +224,6 @@
              <div class="sidenav_body">
                  <div class="inner">
                      <div class="scroller">
-         <!--lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-         lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum-->
                          <table id="locations" style="width:100%;">
                              <tr>
                                  <th class="text-center">Add</th>
@@ -547,60 +515,12 @@ function add_day() {
 
 </script>
 
-<script>
-<!--filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("content");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++)
-  {
-
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
-
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
-}-->
-
-filterSelection("all")
-function filterSelection(c)
-{
-    var input, filter, table, tr, td, i;
-    input=document.getElementsByClassName("choice");
-    filter=input.value.toUpperCase();
-    table=document.getElementById("locations");
-    tr=table.getElementsByClassName("content");
-    for(i=0; i<tr.length; i++)
-    {
-
-    }
-
-}
 
 
 
 
-</script>
+
+
 
 
 

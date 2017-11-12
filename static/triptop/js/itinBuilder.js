@@ -304,7 +304,61 @@ function getTop5LocationsByCountry(event) {
 
 
 //fix
-/*function getTop5Locations(event) {
+function getTop5Locations(event) {
+
+        console.log("getTop5Locations is working.");
+
+
+        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location";
+
+        $.ajax({
+            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location",
+            type: 'POST',
+            crossDomain: true,
+
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                var results = data.body;
+                //results
+                results=JSON.parse(results);
+                console.log(results);
+
+
+
+                var i = 0;
+                $.each(results, function(key, value){
+                    /*console.log(value.0);*/
+
+/*
+                    var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+*/
+
+                    var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center" style="display:none">' + value[0] + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td>><td class="text-center" style="display:none">' + value[6] + '</td>><td class="text-center" style="display:none">' + value[7] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td>><td class="text-center" style="display:none">' + value[10] + '</td>><td class="text-center" style="display:none">' + value[11] + '</td>><td class="text-center" style="display:none">' + value[12] + '</td>><td class="text-center" style="display:none">' + value[13] + '</td>><td class="text-center" style="display:none">' + value[14] + '</td>><td class="text-center" style="display:none">' + value[15] + '</td>><td class="text-center" style="display:none">' + value[16] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+
+                    console.log(locationObj);
+                    i++;
+                    $('#locations').append(locationObj);
+                    var adddd=locations.rows[i].cells[10].innerHTML;
+
+
+                    console.log("Type is " +adddd);
+
+                    /*add 'add' button to add the event to the schedule*/
+                    /*need to be able to filter choices*/
+                });
+                /*var asdf=locations.rows.length;
+                    console.log("length is "+asdf);*/
+
+
+/*<input type='button' id='' value='Add' class='' onclick=''>*/
+/*<input onClick="getTop5Locations(event); return false;" type="button" value="test"/>*/
+
+            }
+        });
+    }
+
+    /*function getTop5Locations(event) {
 
         console.log("getTop5Locations is working.");
 
@@ -349,8 +403,9 @@ function getTop5LocationsByCountry(event) {
 *//*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 *//*
-                    var locationObj = '<tr class="content" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center" style="display: none">' + value[12] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+                    var locationObj = '<tr class="content '+value[12]+'" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
                     console.log(locationObj);
+
                     i++;
                     $('#locations').append(locationObj);
                     *//*add 'add' button to add the event to the schedule*//*
@@ -360,64 +415,6 @@ function getTop5LocationsByCountry(event) {
             }
         });
     }*/
-
-    function getTop5Locations(event) {
-
-        console.log("getTop5Locations is working.");
-
-/* //there are no params so is this part needed?
-        var country = $('#currentCountry').val();
-        var type = $('#countryType').val();
-
-        var yourObject = {
-            "country": "Italy",
-            "type": "Restaurant"
-        };
-*/
-        /*var myString = JSON.stringify(yourObject);*/
-
-        var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location";
-
-        $.ajax({
-            url: "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/places/location",
-            type: 'POST',
-            crossDomain: true,
-            //Access-Control-Allow-Origin http://localhost:63342/beanstalk-tript/triptopfrontend/templates/itinBuilder.html?,
-            /*data: myString,*/
-            dataType: 'json',
-            contentType: "application/json",
-            success: function (data) {
-                var results = data.body;
-                //results
-                results=JSON.parse(results);
-                console.log(results);
-
-                /*$.each(function(k,v)
-
-                )
-                $(results).each(function(key, value) {
-                    var locationObj = value.0;
-                    console.log(locationObj);
-                });*/
-
-                var i = 0;
-                $.each(results, function(key, value){
-                    /*console.log(value.0);*/
-/*
-                    var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
-*/
-                    var locationObj = '<tr class="content '+value[12]+'" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
-
-                    i++;
-                    $('#locations').append(locationObj);
-                    /*add 'add' button to add the event to the schedule*/
-                    /*need to be able to filter choices*/
-                });
-
-            }
-        });
-    }
 
 
 function add_event_loc(x){
@@ -514,21 +511,24 @@ function typeSearch() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-/*function filterFunction() {
+function filterFunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
+    a = div.getElementsByClassName("choice");
     for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        if (a[i].outerHTML.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
-
         } else {
-            a[i].style.display = "none";
+            a[i].style.display="none";
+
         }
     }
-}*/
+
+}
+
+
 
 
 
@@ -553,6 +553,32 @@ function openRightMenu() {
     /*document.getElementById("rightMenu").style.display = "block";*/
     document.getElementById("rightMenu").classList.toggle("show");
 }
+
+
+function filterSelection(c)
+    {
+        var i;
+        for(i=1; i<locations.rows.length; i++)
+        {
+            if(c=="all")
+            {
+                for(var m=1; m<locations.rows.length; m++)
+                {
+                    locations.rows[i].style.display="";
+                }
+            }
+            else if(locations.rows[i].cells[10].innerHTML!=c )
+            {
+                locations.rows[i].style.display="none";
+            }
+            else
+            {
+                locations.rows[i].style.display="";
+            }
+        }
+    }
+
+
 
 /*need to remove the <p></p> from the div since this adds it anyways*/
 function flightInformation() {

@@ -189,7 +189,7 @@
                  <hr style="border:2px solid black; margin: 0px; margin-top:20px;">
                  <div class="dropdown1">
                      <button onclick="typeSearch()" class="dropbtn">Type</button>
-                     <div id="myDropdown" class="dropdown1-content">
+                     <!--<div id="myDropdown" class="dropdown1-content">
                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                          <a href="#All">All</a>
                          <a href="#Day_Trip">Day Trip</a>
@@ -202,6 +202,21 @@
                          <a href="#Entertainment">Entertainment</a>
                          <a href="#Parks">Parks</a>
                          <a href="#Shopping">Shopping</a>
+                     </div>-->
+
+                     <div id="myDropdown" class="dropdown1-content">
+                         <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                         <input class="choice" type="radio" onClick="filterSelection('all')" name="category" checked>All<br>
+                         <input class="choice" type="radio" onClick="filterSelection('day trip')" name="category">Day Trip<br>
+                         <input class="choice" type="radio" onClick="filterSelection('lodging')" name="category">Lodging<br>
+                         <input class="choice" type="radio" onClick="filterSelection('food')" name="category">Food<br>
+                         <input class="choice" type="radio" onClick="filterSelection('tours')" name="category">Tours<br>
+                         <input class="choice" type="radio" onClick="filterSelection('museum')" name="category">Museums<br>
+                         <input class="choice" type="radio" onClick="filterSelection('drinks')" name="category">Drinks<br>
+                         <input class="choice" type="radio" onClick="filterSelection('clubs')" name="category">Clubs<br>
+                         <input class="choice" type="radio" onClick="filterSelection('entertainment')" name="category">Entertainment<br>
+                         <input class="choice" type="radio" onClick="filterSelection('parks')" name="category">Parks<br>
+                         <input class="choice" type="radio" onClick="filterSelection('shopping')" name="category">Shopping<br>
                      </div>
                  </div>
              </div>
@@ -209,38 +224,6 @@
              <div class="sidenav_body">
                  <div class="inner">
                      <div class="scroller">
-         <!--lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-         lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum-->
                          <table id="locations" style="width:100%;">
                              <tr>
                                  <th class="text-center">Add</th>
@@ -531,6 +514,13 @@ function add_day() {
 
 
 </script>
+
+
+
+
+
+
+
 
 
 

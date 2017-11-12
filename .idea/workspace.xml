@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5501456-ccda-4596-84b3-3f7815e63cb2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/TripTopBeanstalk.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/beanstalk-tript.iml" afterPath="$PROJECT_DIR$/.idea/beanstalk-tript.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/triptop/js/itinBuilder.js" afterPath="$PROJECT_DIR$/static/triptop/js/itinBuilder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html" afterPath="$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/triptopfrontend/templates/test.html" afterPath="$PROJECT_DIR$/triptopfrontend/templates/test.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +18,8 @@
       <file leaf-file-name="itinBuilder.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4212">
-              <caret line="291" column="32" lean-forward="true" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
+            <state relative-caret-position="679">
+              <caret line="527" column="7" lean-forward="false" selection-start-line="527" selection-start-column="7" selection-end-line="527" selection-end-column="7" />
               <folding>
                 <element signature="n#header#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
@@ -47,8 +45,8 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="592" column="7" lean-forward="true" selection-start-line="592" selection-start-column="7" selection-end-line="592" selection-end-column="7" />
+            <state relative-caret-position="408">
+              <caret line="207" column="26" lean-forward="false" selection-start-line="207" selection-start-column="26" selection-end-line="207" selection-end-column="26" />
               <folding>
                 <element signature="n#header#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
@@ -71,17 +69,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itinBuilder.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="itinBuilder.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/triptop/js/itinBuilder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2895">
-              <caret line="532" column="0" lean-forward="false" selection-start-line="532" selection-start-column="0" selection-end-line="532" selection-end-column="0" />
+            <state relative-caret-position="199">
+              <caret line="518" column="30" lean-forward="false" selection-start-line="518" selection-start-column="30" selection-end-line="518" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itinBuilder.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="itinBuilder.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/triptop/css/itinBuilder.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="454">
@@ -115,6 +113,7 @@
       <find>content</find>
       <find>id=&quot;t&quot;</find>
       <find>openright</find>
+      <find>filterfunction</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,15 +124,15 @@
       <list>
         <option value="$PROJECT_DIR$/triptopfrontend/templates/index.html" />
         <option value="$PROJECT_DIR$/static/triptop/js/main.js" />
-        <option value="$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html" />
         <option value="$PROJECT_DIR$/.idea/beanstalk-tript.iml" />
         <option value="$PROJECT_DIR$/static/triptop/css/itinBuilder.css" />
-        <option value="$PROJECT_DIR$/static/triptop/js/itinBuilder.js" />
+        <option value="$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html" />
         <option value="$PROJECT_DIR$/triptopfrontend/templates/test.html" />
+        <option value="$PROJECT_DIR$/static/triptop/js/itinBuilder.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="992" />
     <option name="width" value="914" />
     <option name="height" value="990" />
@@ -160,6 +159,17 @@
             <path>
               <item name="beanstalk-tript" type="b2602c69:ProjectViewProjectNode" />
               <item name="beanstalk-tript" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="beanstalk-tript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="beanstalk-tript" type="462c0819:PsiDirectoryNode" />
+              <item name="triptopfrontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="beanstalk-tript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="beanstalk-tript" type="462c0819:PsiDirectoryNode" />
+              <item name="triptopfrontend" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -197,10 +207,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="992" y="0" width="914" height="990" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24812031" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24812031" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -390,10 +400,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/test.html">
+    <entry file="file://$PROJECT_DIR$/static/triptop/css/itinBuilder.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="592" column="7" lean-forward="true" selection-start-line="592" selection-start-column="7" selection-end-line="592" selection-end-column="7" />
+        <state relative-caret-position="454">
+          <caret line="80" column="1" lean-forward="true" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="527" column="7" lean-forward="false" selection-start-line="527" selection-start-column="7" selection-end-line="527" selection-end-column="7" />
           <folding>
             <element signature="n#header#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
@@ -415,10 +433,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/itinBuilder.html">
+    <entry file="file://$PROJECT_DIR$/triptopfrontend/templates/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4212">
-          <caret line="291" column="32" lean-forward="true" selection-start-line="291" selection-start-column="32" selection-end-line="291" selection-end-column="32" />
+        <state relative-caret-position="408">
+          <caret line="207" column="26" lean-forward="false" selection-start-line="207" selection-start-column="26" selection-end-line="207" selection-end-column="26" />
           <folding>
             <element signature="n#header#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
@@ -442,16 +460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/triptop/js/itinBuilder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2895">
-          <caret line="532" column="0" lean-forward="false" selection-start-line="532" selection-start-column="0" selection-end-line="532" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/triptop/css/itinBuilder.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="80" column="1" lean-forward="true" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
+        <state relative-caret-position="199">
+          <caret line="518" column="30" lean-forward="false" selection-start-line="518" selection-start-column="30" selection-end-line="518" selection-end-column="30" />
           <folding />
         </state>
       </provider>
