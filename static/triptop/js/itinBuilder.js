@@ -493,6 +493,7 @@ console.log("add to row ");
  var new_cost=document.getElementById("new_cost").value;
 
  var table=document.getElementById("data_table");
+
 /*
  var table=document.getElementByClass("DayTable"+i);
 */
@@ -506,34 +507,31 @@ console.log("add to row ");
 
 }
 
+
 /* Drop down menu in top 5 database side nav */
 function typeSearch() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
 function filterFunction() {
-    var input, filter, ul, li, a, i;
+    var input, filter, div, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById("myDropdown");
-    a = div.getElementsByClassName("choice");
+    a = div.getElementsByTagName("a");
+    b = div.getElementsByClassName("choice");
     for (i = 0; i < a.length; i++) {
         if (a[i].outerHTML.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
+            b[i].style.display="";
         } else {
             a[i].style.display="none";
+            b[i].style.display="none";
 
         }
     }
 
 }
-
-
-
-
-
-
-
 
      /* adding day to schedule */
 /*document.getElementById('button').onclick = add_day;
