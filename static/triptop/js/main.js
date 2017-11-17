@@ -10,7 +10,7 @@
 
 
 
-          $('#flightsModal').modal('show');
+          // $('#flightsModal').modal('show');
 
           $('.carousel-caption').css({'color':'#fff','background':'rgba(10,10,10,.5)', 'padding':'4em 2em 1em 2em'});
 
@@ -108,16 +108,16 @@
 
                 results = JSON.parse(results);
 
-                console.log(results);
+                //console.log(results);
 
                 $(results).each(function(key, value) {
 
                         var OriginObj = value.OriginAirports;
                         var DestObj = value.DestinationAirports;
-                        console.log(OriginObj);
+                        //console.log(OriginObj);
                         $.each(OriginObj, function(k,v) {
-                            console.log(v.Name);
-                            console.log(v.IATAcode);
+                            //console.log(v.Name);
+                            //console.log(v.IATAcode);
                             var name = v.Name;
                             var iata = v.IATAcode;
                             $('#inputOrigin2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
@@ -125,8 +125,8 @@
                         });
 
                         $.each(DestObj, function(i,o) {
-                            console.log(o.Name);
-                            console.log(o.IATAcode);
+                            //console.log(o.Name);
+                            //console.log(o.IATAcode);
                             var name = o.Name;
                             var iata = o.IATAcode;
                             $('#inputDestination2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
@@ -190,7 +190,7 @@
     //             });
     //
     //             // log data to the console so we can see
-    //             console.log(data);
+    //             //console.log(data);
     //
     //             // here we will handle errors and validation messages
     //         });
@@ -282,7 +282,7 @@ function setTime(timeInput) {
     TimeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
     TimeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
 
-    console.log(TimeValue);
+    //console.log(TimeValue);
     return TimeValue;
 }
 
@@ -290,7 +290,7 @@ function setTime(timeInput) {
 
 function getFlights(event) {
 
-    console.log(flightsBool);
+    //console.log(flightsBool);
     $('#flights').empty();
 
     if (flightsBool == false) {
@@ -340,7 +340,7 @@ function getFlights(event) {
                     results = JSON.parse(results);
                     results = JSON.parse(results);
 
-                    console.log(results);
+                    //console.log(results);
 
                     var i = 1;
 
@@ -349,17 +349,20 @@ function getFlights(event) {
                     $.each(results, function (key, value) {
                         $.each(value, function(k,v) {
 
-                        console.log(v.StartEnd);
-                        console.log(v.date);
-                        console.log(v.departureTime);
-                        console.log(v.duration);
-                        console.log(v.saleTotal);
+                        //console.log(v.FlightInfo);
+                        //console.log(v.StartEnd);
+                        //console.log(v.date);
+                        //console.log(v.departureTime);
+                        //console.log(v.duration);
+                        //console.log(v.saleTotal);
 
                         var startend =  v.StartEnd;
                         var date =  v.date;
                         var departuretime =  v.departureTime;
                         var duration =  v.duration;
                         var saletotal =  v.saleTotal;
+
+
 
 
 
@@ -428,7 +431,7 @@ function getFlights(event) {
                         departuretime = departuretime.replace('+11:00', ' GMT(+11:00)');
                         departuretime = departuretime.replace('+12:00', ' GMT(+12:00)');
 
-                        console.log(deptimestring);
+                        //console.log(deptimestring);
 
                         var GMTstamp = departuretime.replace(deptimestring, '');
 
@@ -438,16 +441,16 @@ function getFlights(event) {
                         var arrtimeoutput = setTime(arrivaltime);
 
 
-                        console.log(arrtimeoutput);
+                        //console.log(arrtimeoutput);
 
-                        console.log(deptimeoutput);
+                        //console.log(deptimeoutput);
 
-                        console.log(GMTstamp);
+                        //console.log(GMTstamp);
 
                         arrivaltime = arrtimeoutput += GMTstamp;
                         departuretime = deptimeoutput += GMTstamp;
 
-                        console.log(arrivaltime + " " + departuretime);
+                        //console.log(arrivaltime + " " + departuretime);
 
                         var saletotalnum = getNumbers(saletotal);
                         saletotalnum = parseFloat(saletotalnum);
@@ -504,7 +507,7 @@ function getFlights(event) {
             // process the form
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/flights/roundtrip', // the url where we want to POST
+                url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/flights/roundtrip', // the url where we want to POST
                 crossDomain: true,
                 dataType: 'json',
                 data: JSON.stringify(formData), // our data object
@@ -516,7 +519,8 @@ function getFlights(event) {
                     results = JSON.parse(results);
                     results = JSON.parse(results);
 
-                    console.log(results);
+                    //console.log(data);
+                    //console.log(results);
 
                     var i = 1;
 
@@ -525,31 +529,58 @@ function getFlights(event) {
                     $.each(results, function (key, value) {
                         $.each(value, function (k, v) {
 
-                            console.log(v.StartEnd);
-                            console.log(v.date);
-                            console.log(v.departureTime);
-                            console.log(v.duration);
-                            console.log(v.saleTotal);
+                            //console.log(v.StartEnd);
+                            //console.log(v.date);
+                            //console.log(v.departureTime);
+                            //console.log(v.duration);
+                            //console.log(v.saleTotal);
 
+                            var airline = v.FlightInfo;
                             var startend = v.StartEnd;
                             var date = v.date;
                             var departuretime = v.departureTime;
                             var duration = v.duration;
                             var saletotal = v.saleTotal;
+                            var returnFlight = v.returnTrip;
+
+                            var airline2 = returnFlight.FlightInfo;
+                            var startend2 = returnFlight.StartEnd;
+                            var date2 = $('#retdate').val().toString();
+                            var departuretime2 = returnFlight.departureTime;
+                            var duration2 = returnFlight.duration;
+
+                            //console.log(date2);
+                            //console.log(airline2);
+                            //console.log(startend2);
+                            //console.log(departuretime2);
+                            //console.log(duration2);
+
 
 
                             var durationhours = duration / 60;
                             var durationmin = duration % 60;
+                            var duration2hours = duration2 / 60;
+                            var duration2min = duration2 % 60;
 
                             durationhours = parseInt(durationhours);
+                            duration2hours = parseInt(duration2hours);
+
 
                             var durationFloat = durationhours + " Hours, " + durationmin + " Minutes";
+                            var duration2Float = duration2hours + " Hours, " + duration2min + " Minutes";
 
-                            departuretime.toString();
+
+                            departuretime = departuretime.toString();
+                            departuretime2 = departuretime2.toString();
+
 
                             var dateplusT = date + "T";
+                            var dateplusT2 = date2 + "T";
+
                             departuretime = departuretime.replace(dateplusT, '');
                             var deptimestring = departuretime;
+                            departuretime2 = departuretime2.replace(dateplusT2, '');
+                            var deptimestring2 = departuretime2;
 
                             deptimestring = deptimestring.replace('-01:00', '');
                             deptimestring = deptimestring.replace('-02:00', '');
@@ -603,26 +634,97 @@ function getFlights(event) {
                             departuretime = departuretime.replace('+11:00', ' GMT(+11:00)');
                             departuretime = departuretime.replace('+12:00', ' GMT(+12:00)');
 
-                            console.log(deptimestring);
+                            deptimestring2 = deptimestring2.replace('-01:00', '');
+                            deptimestring2 = deptimestring2.replace('-02:00', '');
+                            deptimestring2 = deptimestring2.replace('-03:00', '');
+                            deptimestring2 = deptimestring2.replace('-04:00', '');
+                            deptimestring2 = deptimestring2.replace('-05:00', '');
+                            deptimestring2 = deptimestring2.replace('-06:00', '');
+                            deptimestring2 = deptimestring2.replace('-07:00', '');
+                            deptimestring2 = deptimestring2.replace('-08:00', '');
+                            deptimestring2 = deptimestring2.replace('-09:00', '');
+                            deptimestring2 = deptimestring2.replace('-10:00', '');
+                            deptimestring2 = deptimestring2.replace('-11:00', '');
+                            deptimestring2 = deptimestring2.replace('-12:00', '');
+                            deptimestring2 = deptimestring2.replace('+00:00', '');
+                            deptimestring2 = deptimestring2.replace('+01:00', '');
+                            deptimestring2 = deptimestring2.replace('+02:00', '');
+                            deptimestring2 = deptimestring2.replace('+03:00', '');
+                            deptimestring2 = deptimestring2.replace('+04:00', '');
+                            deptimestring2 = deptimestring2.replace('+05:00', '');
+                            deptimestring2 = deptimestring2.replace('+06:00', '');
+                            deptimestring2 = deptimestring2.replace('+07:00', '');
+                            deptimestring2 = deptimestring2.replace('+08:00', '');
+                            deptimestring2 = deptimestring2.replace('+09:00', '');
+                            deptimestring2 = deptimestring2.replace('+10:00', '');
+                            deptimestring2 = deptimestring2.replace('+11:00', '');
+                            deptimestring2 = deptimestring2.replace('+12:00', '');
+
+                            departuretime2 = departuretime2.replace('-01:00', ' GMT(-01:00)');
+                            departuretime2 = departuretime2.replace('-02:00', ' GMT(-02:00)');
+                            departuretime2 = departuretime2.replace('-03:00', ' GMT(-03:00)');
+                            departuretime2 = departuretime2.replace('-04:00', ' GMT(-04:00)');
+                            departuretime2 = departuretime2.replace('-05:00', ' GMT(-05:00)');
+                            departuretime2 = departuretime2.replace('-06:00', ' GMT(-06:00)');
+                            departuretime2 = departuretime2.replace('-07:00', ' GMT(-07:00)');
+                            departuretime2 = departuretime2.replace('-08:00', ' GMT(-08:00)');
+                            departuretime2 = departuretime2.replace('-09:00', ' GMT(-09:00)');
+                            departuretime2 = departuretime2.replace('-10:00', ' GMT(-10:00)');
+                            departuretime2 = departuretime2.replace('-11:00', ' GMT(-11:00)');
+                            departuretime2 = departuretime2.replace('-12:00', ' GMT(-12:00)');
+                            departuretime2 = departuretime2.replace('+00:00', ' GMT(+00:00)');
+                            departuretime2 = departuretime2.replace('+01:00', ' GMT(+01:00)');
+                            departuretime2 = departuretime2.replace('+02:00', ' GMT(+02:00)');
+                            departuretime2 = departuretime2.replace('+03:00', ' GMT(+03:00)');
+                            departuretime2 = departuretime2.replace('+04:00', ' GMT(+04:00)');
+                            departuretime2 = departuretime2.replace('+05:00', ' GMT(+05:00)');
+                            departuretime2 = departuretime2.replace('+06:00', ' GMT(+06:00)');
+                            departuretime2 = departuretime2.replace('+07:00', ' GMT(+07:00)');
+                            departuretime2 = departuretime2.replace('+08:00', ' GMT(+08:00)');
+                            departuretime2 = departuretime2.replace('+09:00', ' GMT(+09:00)');
+                            departuretime2 = departuretime2.replace('+10:00', ' GMT(+10:00)');
+                            departuretime2 = departuretime2.replace('+11:00', ' GMT(+11:00)');
+                            departuretime2 = departuretime2.replace('+12:00', ' GMT(+12:00)');
+
+                            //console.log(deptimestring);
+                            //console.log(deptimestring2);
+                            //console.log(departuretime2);
+                            //console.log(deptimestring2);
 
                             var GMTstamp = departuretime.replace(deptimestring, '');
+                            var GMTstamp2 = departuretime2.replace(deptimestring2, '');
+
+                            //console.log(deptimestring2 + "" + "" + duration2);
 
                             var arrivaltime = addMinutes(deptimestring, duration);
+                            var arrivaltime2 = addMinutes(deptimestring2, duration2);
+
+                            //console.log(arrivaltime2);
+
 
                             var deptimeoutput = setTime(deptimestring);
                             var arrtimeoutput = setTime(arrivaltime);
+                            var deptimeoutput2 = setTime(deptimestring2);
+                            var arrtimeoutput2 = setTime(arrivaltime2);
 
 
-                            console.log(arrtimeoutput);
+                            //console.log("1."+arrtimeoutput);
+                            //console.log("1."+deptimeoutput);
+                            //console.log("1."+GMTstamp);
 
-                            console.log(deptimeoutput);
+                            //console.log("2."+arrtimeoutput2);
+                            //console.log("2."+deptimeoutput2);
+                            //console.log("2."+GMTstamp2);
 
-                            console.log(GMTstamp);
 
                             arrivaltime = arrtimeoutput += GMTstamp;
                             departuretime = deptimeoutput += GMTstamp;
+                            arrivaltime2 = arrtimeoutput2 += GMTstamp2;
+                            departuretime2 = deptimeoutput2 += GMTstamp2;
 
-                            console.log(arrivaltime + " " + departuretime);
+                            //console.log(arrivaltime + " " + departuretime);
+                            //console.log(arrivaltime2 + " " + departuretime2);
+
 
                             var saletotalnum = getNumbers(saletotal);
                             saletotalnum = parseFloat(saletotalnum);
@@ -630,10 +732,10 @@ function getFlights(event) {
                             saletotalnum.toString();
                             saletotal = "$" + saletotalnum;
 
-                            var newFlight = '<tr id=\"flight' + i + '\"><td id=\"addflight' + i + '\"><a href=\"itinBuilder.html\" onClick="goToItinPage(startend, date, departuretime, arrivaltime, duration, saletotal);"><button class=\"btn btn-info btn-sm\" type=\"button\">Add To Itinerary</button></a></td><td id=\"flight' + i + 'price\">' + saletotal + '</td><td><label id=\"flight' + i + 'startend\">' + startend + '</label></label></td><td><label id=\"flight' + i + 'departureTime\">' + departuretime + '</label></td><td><label id=\"flight' + i + 'arrivalTime\">' + arrivaltime + '</label></label></td><td><label id=\"flight' + i + 'dates\">' + date + '</label></td><td><label id=\"flight' + i + 'duration\">' + durationFloat + '</label></td></tr>';
+                            var newFlightAway = '<tr id=\"flight' + i + '\"><td id=\"addflight' + i + '\"><a id=\"flightchoice'+i+'\" onClick="var flightchoice = this.id; goToItinPage(flightchoice);"><button class=\"btn btn-info btn-sm\" type=\"button\">Add To Itinerary</button></a></td><td id=\"flight' + i + 'price\">' + saletotal + '</td><td><label id=\"flight' + i + 'airline\">' + airline + '</label></td><td><label id=\"flight' + i + 'startend\">' + startend + '</label></label></td><td><label id=\"flight' + i + 'departureTime\">' + departuretime + '</label></td><td><label id=\"flight' + i + 'arrivalTime\">' + arrivaltime + '</label></label></td><td><label id=\"flight' + i + 'dates\">' + date + '</label></td><td><label id=\"flight' + i + 'duration\">' + durationFloat + '</label></td></tr>';
+                            var newFlightBack = '<tr id=\"flight' + i + 'returnflight\"><td id=\"addflight' + i + '\"><label class=\"text-center\">Return Flight:</label></td><td id=\"flight' + i + 'pricereturn\">Total</td><td><label id=\"flight' + i + 'airline2\">' + airline2 + '</label></td><td><label id=\"flight' + i + 'startendreturn\">' + startend2 + '</label></label></td><td><label id=\"flight' + i + 'departureTimereturn\">' + departuretime2 + '</label></td><td><label id=\"flight' + i + 'arrivalTimereturn\">' + arrivaltime2 + '</label></label></td><td><label id=\"flight' + i + 'datesreturn\">' + date2 + '</label></td><td><label id=\"flight' + i + 'duration\">' + duration2Float + '</label></td></tr>';
 
-                            $('#flights').append(newFlight);
-
+                            $('#flights').append(newFlightAway, newFlightBack);
 
                             i++;
                         });
@@ -693,38 +795,50 @@ function getFlights(event) {
 
 
 
-function goToItinPage(startend, date, departuretime, arrivaltime, duration, saletotal) {
+function goToItinPage(flightchoice) {
 
-            
+        var flightchoicestring = "flightchoice";
+        var i = flightchoice.replace(flightchoicestring,'');
 
-                var formData = {
-                    "startend": startend,
-                    "date": date,
-                    "departuretime": departuretime,
-                    "arrivaltime": arrivaltime,
-                    "duration": duration,
-                    "saletotal": saletotal
-                };
+        // console.log(i);
+
+        var departuretime1 = $("#flight"+i+"departureTime").text(),
+            arrivaltime1 = $("#flight"+i+"arrivalTime").text(),
+            departuretime2 = $("#flight"+i+"departureTimereturn").text(),
+            arrivaltime2 = $("#flight"+i+"arrivalTimereturn").text(),
+            departuredate = $("#flight"+i+"dates").text(),
+            returndate = $("#flight"+i+"datesreturn").text(),
+            origin1 = $('#inputOrigin2').find(":selected").val(),
+            destination1 = $('#inputDestination2').find(":selected").val(),
+            origin2 = destination1,
+            destination2 = origin1,
+            isRoundTrip = flightsBool;
+
+        console.log(departuretime1, arrivaltime1, departuretime2, arrivaltime2, departuredate, returndate, origin1, destination1, origin2, destination2, isRoundTrip);
+
+        $.cookie("departuretime1", departuretime1);
+        $.cookie("arrivaltime1", arrivaltime1);
+        $.cookie("departuretime2", departuretime2);
+        $.cookie("arrivaltime2", arrivaltime2);
+        $.cookie("departuredate", departuredate);
+        $.cookie("returndate", returndate);
+        $.cookie("origin1", origin1);
+        $.cookie("origin2", origin2);
+        $.cookie("destination2", destination2);
+        $.cookie("isRoundTrip", isRoundTrip);
+
+
+        window.location.href = "itinBuilder.html";
 
 
 
-            // process the form
-            $.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '', // the url where we want to POST
-                crossDomain: true,
-                dataType: 'json',
-                data: JSON.stringify(formData), // our data object
-                encode: true,
-
-                // using the done promise callback
-                success: function (data) {
-                    console.log("Flights successfully posted to current itinerary.")
 
 
 
-                }
-            });
+
+
+
+
 
 }
 

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="234664784899-9me23pptcg31k36t15k4bbtjkqi60cbg.apps.googleusercontent.com">
+	<title>TripTop | Login/Signup</title>
+
+
+
+	<!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Footer Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+
+	<link rel="stylesheet" type="text/css" href="../../static/triptop/css/login.css">
+
+	<script type="text/javascript" src="../../static/triptop/js/jquery.js"></script>
+	<script type="text/javascript" src="../../static/triptop/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script src="../../static/triptop/js/jquerysession.js"></script>
+    <script src="../../static/triptop/js/login.js"></script>
+
+
+
+
+
+	<!-- Main CSS and JS Files -->
+    <link href="../../static/triptop/css/preloader.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+
+
+
+</head>
+
+    <header id="header">
+      <nav class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+            </button>
+
+            <a href="index.html"><img class="navbar-brand" id="currentPhoto" src="../../static/triptop/img/TripTopLogo.png" width="170.25em" height="36.75em"></a>
+
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">About<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">About TripTop</a></li>
+
+                        <li><a href="#">Our Team</a></li>
+
+                        <li><a href="#">Contact Us</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="dropdown">
+
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Forum <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">New Post</a></li>
+
+                        <li><a href="#">My Posts</a></li>
+
+                        <li><a href="#">Subscribed Threads</a></li>
+
+                        <li><a href="#">Invite A Friend</a></li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" id="navbarRight">
+
+                <li class="active" id="loginButton"><a href="login.html">Login | Sign Up</a></li>
+
+                <li class="dropdown" id="userInfoNav"><a style="padding-top:11px" id="userDisplayDropdown" data-toggle="dropdown" class="dropdown-toggle" href="#"><label style="margin-right:6px;" id="emailDisplay"></label><img id="profilePic" class="img-circle" width="30px" height="30px"/><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#">My Saved Itineraries</a></li><li><a href="#">"The Perfect Itinerary" Quiz</a></li><li><a href="#">Random Itinerary Generator</a></li><li><a href="#">Account Settings</a></li><li><a onclick="signOut()" href="#">Sign Out</a></li></ul></li>
+
+            </ul>
+
+
+
+
+        </div>
+
+
+    </nav>
+
+
+
+  </header>
+
+
+    <body style="background-color: #aaa">
+	<div class="container">
+		<div id="#itineraries" class="jumbotron">
+
+        </div>
+    </div>
+    </body>
+
+    <footer class="page-footer center-on-small-only stylish-color-dark">
+
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-4">
+                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
+                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="call-to-action">
+        <ul>
+            <li>
+                <h5 class="mb-1">Learn More About TripTop!</h5>
+            </li>
+            <li><a href="" class="btn btn-primary btn-rounded">Our Story</a></li>
+        </ul>
+    </div>
+    <!--/.Call to action-->
+
+    <hr>
+
+    <!--Social buttons-->
+    <div class="social-section text-center">
+        <ul>
+
+            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
+        </ul>
+    </div>
+    <!--/.Social buttons-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+
+
+</html>
+

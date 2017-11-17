@@ -1,5 +1,8 @@
 body {
     padding-top: 0px;
+	background-color: #aaa;
+	/*background: url("/static/triptop/img/Mod3.png") no-repeat center fixed;*/
+	/*background-size: cover;*/
 }
 
 .g-signin2 {
