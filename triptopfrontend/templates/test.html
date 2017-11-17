@@ -266,15 +266,14 @@
                      </div>
                      <input onClick="getTop5Locations(event); return false;" type="button" value="Get Top 5 Locations"/>
 
-                     <button id="button" onclick="add_day()">Add Day</button>
+                     <button id="button" onClick="add_day()">Add Day</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
                          <h2 class="text-center">Please add Top 5 Database events to your schedule.</h2>
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
-
-                         <div id="itinBuildertemplate">
+                         <!--<div id="itinBuildertemplate">
                              <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
                                  <tr>
                                      <th>Location</th>
@@ -287,11 +286,13 @@
                                      <td><input type="text" id="new_address_template"></td>
                                      <td><input type="text" id="new_link_template"></td>
                                      <td><input type="text" id="new_cost_template"></td>
-                                     <td><input type="button" class="add" onClick="add_row();" value="Add New Activity"></td>
+                                     <td><input type="button" class="add" onClick="var m=1; ++m; add_row(m);" value="Add New Activity"></td>
 
                                  </tr>
                              </table>
-                         </div>
+                         </div>-->
+
+
                      </div>
 
                      <div id="Day 1" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
@@ -310,8 +311,10 @@
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
                          <div id="itinBuilder">
+<!--
                              <table class="Day1Table" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
-                             <!--<table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>-->
+-->
+                             <table class="DayTable1" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
                                  <tr>
                                      <th>Location</th>
                                      <th>Address</th>
@@ -465,6 +468,8 @@ document.getElementById('button').onclick = add_day;
 
 var i = 1;
 var j = i;
+var k = 1;
+var l = 1;
 var original = document.getElementById('templateDIV');
 $('#templateDIV').hide();
 
@@ -472,11 +477,33 @@ function add_day() {
 
     var newID = "Day " + ++i;
     var newPID = "myP_" + ++j;
+    <!--var newdtID = "data_table"+ ++k;-->
+    var itinBuilderID = "itinBuilder"+ ++l;
+
 
     var clone = original.cloneNode(true);
     $(clone).show();
     $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
     $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
+    console.log("This is itinbuilderID "+itinBuilderID);
+    $(clone).prepend("<div id=\'"+itinBuilderID+"\'>
+                             <table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
+                                 <tr>
+                                     <th>Location</th>
+                                     <th>Address</th>
+                                     <th>Link</th>
+                                     <th>Cost</th>
+                                 </tr>");
+    $(clone).append("<tr>
+                                     <td><input type="text" id=\"new_location_"+l+"\"></td>
+                                     <td><input type="text" id=\"new_address_"+l+"\"></td>
+                                     <td><input type="text" id=\"new_link_"+l+"\"></td>
+                                     <td><input type="text" id=\"new_cost_"+l+"\"></td>
+                                     <td><input type="button" class="add" onClick="add_row(l);" value="Add New Activity"></td>
+                                 </tr>
+                             </table>
+                         </div>");
+
     $(clone).attr("id", newID);
     $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
 

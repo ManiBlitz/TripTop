@@ -484,13 +484,15 @@ function delete_row(no)
  document.getElementById("row"+no+"").outerHTML="";
 }
 
-function add_row()
+function add_row(m)
 {
-console.log("add to row ");
+console.log("m value: "+m);
+
  var new_location=document.getElementById("new_location").value;
  var new_address=document.getElementById("new_address").value;
  var new_link=document.getElementById("new_link").value;
  var new_cost=document.getElementById("new_cost").value;
+
 
  var table=document.getElementById("data_table");
 
