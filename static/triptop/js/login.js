@@ -1,6 +1,7 @@
 
+
 $(document).ready(function() {
-    if($.session.get("isLoggedIn") == 1) {
+    if($.session.get("isLoggedIn") == true) {
         var userID = $.session.get("userID");
         var firstname = $.session.get("firstname");
         var lastname = $.session.get("lastname");
@@ -25,8 +26,7 @@ $(document).ready(function() {
 
 });
 
-function signIn(googleUser)
-{
+function signIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log(id_token);
     $.session.set("userID", id_token);
@@ -45,7 +45,7 @@ function signIn(googleUser)
     $.session.set("lastname", lastname);
     $.session.set("fullname", fullname);
     $.session.set("email", email);
-    $.session.set("isLoggedIn", 1);
+    $.session.set("isLoggedIn", true);
     $.session.set("picurl", picurl);
 
 
@@ -53,26 +53,15 @@ function signIn(googleUser)
     $('.data').css("display", "block");
     $('#pic').attr('src', picurl);
     $('#email').text(email);
-    $('.navbar-inverse').css({'max-height':'52px'});
+    $('.navbar-inverse').css({'max-height': '52px'});
 
     $('#userInfoNav').show();
     $('#loginButton').hide();
     $('#profilePic').attr('src', picurl);
     $('#emailDisplay').text(email);
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // xhr.onload = function() {
-    //   console.log('Signed in as: ' + xhr.responseText);
-    // };
-    // xhr.send('idtoken=' + id_token);
-    // xhr.success(data);
-    // results=data.body;
-    //
-    //
-    // console.log(results);
 
-    var userToken = {'id_token':id_token};
+
+    var userToken = {'id_token': id_token};
 
     $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -91,44 +80,8 @@ function signIn(googleUser)
             console.log(results);
         }
     });
-
-
-//     var origin = $('#inputOrigin1').val().toString();
-//         var destination = $('#inputDestination1').val().toString();
-//
-//
-//         var yourObject = {
-//             "origin": origin,
-//             "destination": destination
-//         };
-//
-//         var myString = JSON.stringify(yourObject);
-//
-//         var myEndpoint = "https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/test/airports";
-//
-//         $.ajax({
-//             url: myEndpoint,
-//             type: 'POST',
-//             crossDomain: true,
-//             data: myString,
-//             dataType: 'json',
-//             contentType: "application/json",
-//             success: function (data) {
-//                 console.info(data);
-//
-//                 $.each(data[OriginAirports],function(key,value) {
-//                     $.each(data,function(i,value) {
-//                         $('#inputOrigin2').append('<option value=\"' + value + '\">' + i + '</option>');
-//                     });
-//                 });
-//
-//                 $.each(data,function(key,value) {
-//                     $('#inputDestination2').append('<option value=\"' + value + '\">' + key + '</option>');
-//                 });
-//
-//             }
-//         });
 }
+
 
 function signOut()
 {
@@ -142,7 +95,7 @@ function signOut()
         $('#loginButton').show();
         $('#userInfoNav').hide();
         $.session.clear();
-        $.session.set("isLoggedIn", 0);
+        $.session.set("isLoggedIn", false);
 
 
     });
