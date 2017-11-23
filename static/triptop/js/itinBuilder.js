@@ -1,6 +1,6 @@
 //to get top 5 locations
-
-function getTop5LocationsByCity(event) {
+$(document).ready(function() {
+/*function getTop5LocationsByCity(event) {*/
 
         console.log("getTop5LocationsByCity is working.");
 
@@ -10,7 +10,7 @@ function getTop5LocationsByCity(event) {
 
         var yourObject = {
             "city": "Paris",
-            "type": "Museums"
+            "type": "Park"
         };
 
         var myString = JSON.stringify(yourObject);
@@ -38,7 +38,7 @@ function getTop5LocationsByCity(event) {
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+                    //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
@@ -47,7 +47,7 @@ function getTop5LocationsByCity(event) {
 
             }
         });
-    }
+    });
 
 //fix
 function saveItinerary(event) {
@@ -100,7 +100,8 @@ function saveItinerary(event) {
     }
 
 //works
-function locationsNearMe(event) {
+$(document).ready(function() {
+/*function locationsNearMe(event) {*/
 
         console.log("locationsNearMe is working.");
 
@@ -129,16 +130,18 @@ function locationsNearMe(event) {
                 var results = data.body;
                 //results
                 results=JSON.parse(results);
-                console.log(results);
+                console.log("By Address "+results);
 
                 var i = 0;
                 $.each(results, function(key, value){
+
+                console.log(value[2]);
                     /*console.log(value.0);*/
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+                    //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
@@ -150,10 +153,10 @@ function locationsNearMe(event) {
 
             }
         });
-    }
+    });
 
-
-function locationsByCity(event) {
+$(document).ready(function() {
+/*function locationsByCity(event) {*/
 
         console.log("locationsByCity is working.");
 
@@ -191,7 +194,7 @@ function locationsByCity(event) {
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+                    //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
@@ -200,9 +203,11 @@ function locationsByCity(event) {
 
             }
         });
-    }
+    });
 
-function locationsByCountry(event) {
+
+$(document).ready(function() {
+/*function locationsByCountry(event) {*/
 
         console.log("locationsByCountry is working.");
 
@@ -238,7 +243,7 @@ function locationsByCountry(event) {
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+                    //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
@@ -247,10 +252,10 @@ function locationsByCountry(event) {
 
             }
         });
-    }
+    });
 
-
-function getTop5LocationsByCountry(event) {
+$(document).ready(function() {
+/*function getTop5LocationsByCountry(event) {*/
 
         console.log("getTop5LocationsByCountry is working.");
 
@@ -288,7 +293,7 @@ function getTop5LocationsByCountry(event) {
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+                    //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
@@ -298,7 +303,7 @@ function getTop5LocationsByCountry(event) {
 
             }
         });
-    }
+    });
 
 
 
@@ -336,13 +341,13 @@ function getTop5Locations(event) {
 
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center" style="display:none">' + value[0] + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td>><td class="text-center" style="display:none">' + value[6] + '</td>><td class="text-center" style="display:none">' + value[7] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td>><td class="text-center" style="display:none">' + value[10] + '</td>><td class="text-center" style="display:none">' + value[11] + '</td>><td class="text-center" style="display:none">' + value[12] + '</td>><td class="text-center" style="display:none">' + value[13] + '</td>><td class="text-center" style="display:none">' + value[14] + '</td>><td class="text-center" style="display:none">' + value[15] + '</td>><td class="text-center" style="display:none">' + value[16] + '</td><td class="text-center">' + value[17] + '</td></tr>';
 
-                    console.log(locationObj);
+                   // console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
-                    var adddd=locations.rows[i].cells[10].innerHTML;
+                    //var adddd=locations.rows[i].cells[10].innerHTML;
 
 
-                    console.log("Type is " +adddd);
+                    //console.log("Type is " +adddd);
 
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
