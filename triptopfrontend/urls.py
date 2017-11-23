@@ -8,9 +8,7 @@ urlpatterns = [
     url(r'^$', views.HomePageView.as_view()),
     url(r'^itinerary/$', views.ItineraryBuilderPageView.as_view()),
     url(r'^login/$', views.LoginPageView.as_view()),
-    url(r'^logout/$', views.LogoutPageView.as_view()),
-    url(r'^loggedin/$', views.LoggedInPageView.as_view()),
-    url(r'^invalid/$', views.InvalidPageView.as_view())
+    url(r'^profile/$', views.ProfilePageView.as_view())
 ]
 
 

@@ -17,7 +17,9 @@ class LoginPageView(TemplateView):
     def get(self, request, **kwargs):
         return render(request, 'login.html', context=None)
 
-
+class ProfilePageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, 'myProfile.html', context=None)
 
 
 
