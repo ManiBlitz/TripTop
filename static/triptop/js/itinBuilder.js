@@ -9,8 +9,8 @@ $(document).ready(function() {
         var type = $('#cityType').val();
 
         var yourObject = {
-            "city": "Paris",
-            "type": "Park"
+            "city": city,
+            "type": type
         };
 
         var myString = JSON.stringify(yourObject);
@@ -109,7 +109,7 @@ $(document).ready(function() {
         var address = $('#currentAddress').val();
 
         var yourObject = {
-            "address": "1100 South Marietta Pkwy, Marietta, GA 30060"
+            "address": "560 Stedford Ln, Johns Creek, GA 30097"
 
 
         };
@@ -140,7 +140,10 @@ $(document).ready(function() {
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
+                    var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value + '</td></tr>';
+/*
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+*/
                     //console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
@@ -243,7 +246,7 @@ $(document).ready(function() {
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    //console.log(locationObj);
+                    console.log(locationObj);
                     i++;
                     $('#locations').append(locationObj);
                     /*add 'add' button to add the event to the schedule*/
