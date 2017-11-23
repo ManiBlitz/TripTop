@@ -1,7 +1,8 @@
-
-
 $(document).ready(function() {
-    if($.session.get("isLoggedIn") == true) {
+
+
+
+    if($.session.get("userID") != null) {
         var userID = $.session.get("userID");
         var firstname = $.session.get("firstname");
         var lastname = $.session.get("lastname");
@@ -16,15 +17,19 @@ $(document).ready(function() {
         $('#profilePic').attr('src', picurl);
         $('#emailDisplay').text(email);
         $('.navbar-inverse').css({'max-height':'52px'});
+        console.log("If");
 
 
     } else {
         $('#userInfoNav').hide();
         $('#loginButton').show();
+        console.log("Else");
+        console.log($.session.get("userID"));
     }
 
 
 });
+
 
 function signIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
@@ -106,5 +111,6 @@ function onLoad() {
     gapi.auth2.init();
   });
 }
+
 
 

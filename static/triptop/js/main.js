@@ -77,6 +77,15 @@
       flightsBool = false;
   }
 
+  function scrollToFlights() {
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToFlights").offset().top
+     }, 2000);
+
+
+  };
+
 
 
     // process the form
@@ -789,9 +798,7 @@ function getFlights(event) {
 
 
 
-            // $('#triptime1').on('click', function() {
-            //     document.getElementById('#scrollToFlights').scrollIntoView();
-            // });
+
 
 
 
