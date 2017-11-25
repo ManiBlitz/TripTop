@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-signin-client_id" content="234664784899-9me23pptcg31k36t15k4bbtjkqi60cbg.apps.googleusercontent.com">
-	<title>TripTop | Login/Signup</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/triptop/img/LogoThumbnail.png" />
+	<title>TripTop | Login</title>
 
 
 
@@ -26,6 +27,7 @@
 	<script type="text/javascript" src="../../static/triptop/js/bootstrap-select.min.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script src="../../static/triptop/js/jquerysession.js"></script>
+    <script type="text/javascript" src="../../static/triptop/js/header.js"></script>
     <script src="../../static/triptop/js/login.js"></script>
 
 
@@ -69,7 +71,7 @@
 
             <ul class="nav navbar-nav">
 
-                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
 
                 <li class="dropdown">
 
@@ -77,9 +79,9 @@
 
                     <ul class="dropdown-menu">
 
-                        <li><a href="#">About TripTop</a></li>
+                        <li onclick="scrollToAboutUs()"><a href="#">About TripTop</a></li>
 
-                        <li><a href="#">Our Team</a></li>
+                        <li onclick="scrollToTeam()"><a href="#">Our Team</a></li>
 
                         <li><a href="#">Contact Us</a></li>
 
@@ -87,7 +89,7 @@
 
                 </li>
 
-                <li class="dropdown">
+                <li id="forumDropdown" class="dropdown">
 
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Forum <b class="caret"></b></a>
 
@@ -111,7 +113,7 @@
 
                 <li class="active" id="loginButton"><a href="login.html">Login | Sign Up</a></li>
 
-                <li class="dropdown" id="userInfoNav"><a style="padding-top:11px" id="userDisplayDropdown" data-toggle="dropdown" class="dropdown-toggle" href="#"><label style="margin-right:6px;" id="emailDisplay"></label><img id="profilePic" class="img-circle" width="30px" height="30px"/><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#">My Saved Itineraries</a></li><li><a href="#">"The Perfect Itinerary" Quiz</a></li><li><a href="#">Random Itinerary Generator</a></li><li><a href="#">Account Settings</a></li><li><a onclick="signOut()" href="#">Sign Out</a></li></ul></li>
+                <li class="dropdown" id="userInfoNav"><a style="padding-top:11px; padding-bottom:0px; font-weight: 700; " id="userDisplayDropdown" data-toggle="dropdown" class="dropdown-toggle" href="#"><label style="margin-right:6px;" id="emailDisplay"></label><img style="vertical-align: middle;" src="" id="profilePic" class="img-circle" width="30px" height="30px"/><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="myProfile.html">My Profile</a></li><li><li></li><li><a onclick="signOut()" href="#">Sign Out</a></li></ul></li>
 
             </ul>
 
@@ -137,18 +139,18 @@
             <div class="text-center">
                 <div class="g-signin2" data-onsuccess="signIn"></div>
             </div>
-			<div class="data">
+			<!--<div class="data">
 				<p class="text-center">Your Profile:</p>
 				<img src="" id="pic" class="img-circle center-block" width="100" height="100"/>
 				<p class="text-center">Email Address</p>
 				<p id="email" class="alert alert-info text-center"></p>
                 <div class="text-center">
                     <button onclick="signOut()" class="btn btn-block btn-danger">Sign Out</button>
-                </div>
+                </div>-->
 
-			</div>
-		</div>
-	</div>
+        </div>
+    </div>
+
 </body>
 
 

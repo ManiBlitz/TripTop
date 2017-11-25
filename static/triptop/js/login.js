@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    $('.data').hide();
 
 
     if($.session.get("userID") != null) {
@@ -14,6 +15,7 @@ $(document).ready(function() {
 
         $('#loginButton').hide();
         $('#userInfoNav').show();
+        $('#forumDropdown').show();
         $('#profilePic').attr('src', picurl);
         $('#emailDisplay').text(email);
         $('.navbar-inverse').css({'max-height':'52px'});
@@ -22,6 +24,7 @@ $(document).ready(function() {
 
     } else {
         $('#userInfoNav').hide();
+        $('#forumDropdown').hide();
         $('#loginButton').show();
         console.log("Else");
         console.log($.session.get("userID"));
@@ -61,6 +64,7 @@ function signIn(googleUser) {
     $('.navbar-inverse').css({'max-height': '52px'});
 
     $('#userInfoNav').show();
+    $('#forumDropdown').show();
     $('#loginButton').hide();
     $('#profilePic').attr('src', picurl);
     $('#emailDisplay').text(email);
@@ -85,6 +89,9 @@ function signIn(googleUser) {
             console.log(results);
         }
     });
+
+
+    window.location.href = 'myProfile.html';
 }
 
 
@@ -99,8 +106,11 @@ function signOut()
         $('.data').css("display", "none");
         $('#loginButton').show();
         $('#userInfoNav').hide();
+        $('#forumDropdown').hide();
         $.session.clear();
         $.session.set("isLoggedIn", false);
+
+        window.location.href = 'login.html';
 
 
     });
@@ -113,4 +123,24 @@ function onLoad() {
 }
 
 
+function scrollToAboutUs() {
 
+    window.location.href = "index.html";
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToAboutUs").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToTeam() {
+
+    window.location.href = "index.html";
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToTeam").offset().top
+     }, 2000);
+
+
+  };

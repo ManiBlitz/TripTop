@@ -9,6 +9,10 @@
       $(document).ready(function() {
 
 
+          $('.carousel').carousel({
+            interval: 6000,
+          });
+
 
           // $('#flightsModal').modal('show');
 
@@ -56,9 +60,6 @@
 
 
 
-      $('.carousel').carousel({
-        interval: 6000
-      });
 
 
 
@@ -77,10 +78,31 @@
       flightsBool = false;
   }
 
-  function scrollToFlights() {
+function scrollToFlights() {
+
 
      $('html, body').animate({
         scrollTop: $("#scrollToFlights").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToAboutUs() {
+
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToAboutUs").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToTeam() {
+
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToTeam").offset().top
      }, 2000);
 
 
