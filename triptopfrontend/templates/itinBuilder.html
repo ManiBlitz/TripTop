@@ -44,6 +44,9 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
       <script type="text/javascript" src = "http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+     <!--<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>-->
+
 
 
 
@@ -252,6 +255,7 @@
                      <input onClick="getTop5Locations(event); return false;" type="button" value="Get Top 5 Locations"/>
 
                      <button id="button" onClick="add_day()">Add Day</button>
+                     <button id="saveItin">Save Itinerary</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -323,6 +327,7 @@
              </div>
          </div>
      </div>
+     <div id="editor"></div>
  </div>
  <!--    </div>
  </div>
@@ -457,7 +462,23 @@ function filterFunction() {
 }
 </script>-->
 
+<script>
+    var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
 
+$('#saveItin').click(function () {
+    doc.fromHTML($('.main').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('myItinerary-file.pdf');
+});
+
+</script>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>

@@ -201,6 +201,8 @@ console.log("Original "+original);
 
 }
 
+
+
 //fix
 function saveItinerary(event) {
         console.log("saveItinerary is working.");
@@ -780,3 +782,21 @@ $(window).bind('beforeunload', function(){
     });
 
 
+/*
+$(function () {
+
+    var specialElementHandlers = {
+        '#editor': function (element,renderer) {
+            return true;
+        }
+    };
+ $('#saveItin').click(function () {
+        var doc = new jsPDF();
+        doc.fromHTML(
+            $('.main').html(), 15, 15,
+            { 'width': 170, 'elementHandlers': specialElementHandlers },
+            function(){ doc.save('myItinerary-file.pdf'); }
+        );
+
+    });
+});*/
