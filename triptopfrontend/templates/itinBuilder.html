@@ -240,18 +240,18 @@
                      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
                      <div class="w3-container">
-                         <h2>Flight Information</h2>
+                         <h2 id="flightinfolabel">Flight Information</h2>
                          <div id="flightInfo" style="border: 2px solid black; background-color: white;" class="displayinfo">
-                             <p>Destination</p>
+                             <!--<p>Destination</p>
                              <p>Start Date</p>
                              <p>End Date</p>
                              <p>Arrival Time</p>
-                             <p>Departure Time</p>
+                             <p>Departure Time</p>-->
                          </div>
                      </div>
                      <input onClick="getTop5Locations(event); return false;" type="button" value="Get Top 5 Locations"/>
 
-                     <button id="button" onclick="add_day()">Add Day</button>
+                     <button id="button" onClick="add_day()">Add Day</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -261,7 +261,7 @@
 
                          <div id="itinBuildertemplate">
                              <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
-                                 <tr>
+                                 <!--<tr>
                                      <th>Location</th>
                                      <th>Address</th>
                                      <th>Link</th>
@@ -274,7 +274,7 @@
                                      <td><input type="text" id="new_cost_template"></td>
                                      <td><input type="button" class="add" onClick="add_row();" value="Add New Activity"></td>
 
-                                 </tr>
+                                 </tr>-->
                              </table>
                          </div>
                      </div>
@@ -457,50 +457,10 @@ function filterFunction() {
 }
 </script>-->
 
-<script>
-     /* adding day to schedule */
-
-
-$(document).on('focus',".timepicker", function(){
-    $(this).timepicker({
-                format:true,
-                showinputs:false,
-                minuteStep: 10
-            });
-});
-
-document.getElementById('button').onclick = add_day;
-
-
-var i = 1;
-var j = i;
-var original = document.getElementById('templateDIV');
-$('#templateDIV').hide();
-
-function add_day() {
-
-    var newID = "Day " + ++i;
-    var newPID = "myP_" + ++j;
-
-    var clone = original.cloneNode(true);
-    $(clone).show();
-    $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
-    $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
-    $(clone).attr("id", newID);
-    $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
-
-    original.parentNode.appendChild(clone);
-    console.log("ID is "+newID);
-
-}
-
-/*need clone from preset template*/
 
 
 
-</script>
-
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 
 
 
