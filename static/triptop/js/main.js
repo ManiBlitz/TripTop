@@ -9,6 +9,10 @@
       $(document).ready(function() {
 
 
+          $('.carousel').carousel({
+            interval: 6000,
+          });
+
 
           // $('#flightsModal').modal('show');
 
@@ -56,9 +60,6 @@
 
 
 
-      $('.carousel').carousel({
-        interval: 6000
-      });
 
 
 
@@ -76,6 +77,36 @@
       $('#retdate').hide();
       flightsBool = false;
   }
+
+function scrollToFlights() {
+
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToFlights").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToAboutUs() {
+
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToAboutUs").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToTeam() {
+
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToTeam").offset().top
+     }, 2000);
+
+
+  };
 
 
 
@@ -794,9 +825,7 @@ function getFlights(event) {
 
 
 
-            // $('#triptime1').on('click', function() {
-            //     document.getElementById('#scrollToFlights').scrollIntoView();
-            // });
+
 
 
 

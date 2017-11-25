@@ -1,7 +1,9 @@
-
-
 $(document).ready(function() {
-    if($.session.get("isLoggedIn") == true) {
+
+    $('.data').hide();
+
+
+    if($.session.get("userID") != null) {
         var userID = $.session.get("userID");
         var firstname = $.session.get("firstname");
         var lastname = $.session.get("lastname");
@@ -13,18 +15,24 @@ $(document).ready(function() {
 
         $('#loginButton').hide();
         $('#userInfoNav').show();
+        $('#forumDropdown').show();
         $('#profilePic').attr('src', picurl);
         $('#emailDisplay').text(email);
         $('.navbar-inverse').css({'max-height':'52px'});
+        console.log("If");
 
 
     } else {
         $('#userInfoNav').hide();
+        $('#forumDropdown').hide();
         $('#loginButton').show();
+        console.log("Else");
+        console.log($.session.get("userID"));
     }
 
 
 });
+
 
 function signIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
@@ -56,6 +64,7 @@ function signIn(googleUser) {
     $('.navbar-inverse').css({'max-height': '52px'});
 
     $('#userInfoNav').show();
+    $('#forumDropdown').show();
     $('#loginButton').hide();
     $('#profilePic').attr('src', picurl);
     $('#emailDisplay').text(email);
@@ -80,6 +89,9 @@ function signIn(googleUser) {
             console.log(results);
         }
     });
+
+
+    window.location.href = 'myProfile.html';
 }
 
 
@@ -94,8 +106,11 @@ function signOut()
         $('.data').css("display", "none");
         $('#loginButton').show();
         $('#userInfoNav').hide();
+        $('#forumDropdown').hide();
         $.session.clear();
         $.session.set("isLoggedIn", false);
+
+        window.location.href = 'login.html';
 
 
     });
@@ -108,3 +123,24 @@ function onLoad() {
 }
 
 
+function scrollToAboutUs() {
+
+    window.location.href = "index.html";
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToAboutUs").offset().top
+     }, 2000);
+
+
+  };
+
+  function scrollToTeam() {
+
+    window.location.href = "index.html";
+
+     $('html, body').animate({
+        scrollTop: $("#scrollToTeam").offset().top
+     }, 2000);
+
+
+  };

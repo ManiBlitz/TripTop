@@ -11,6 +11,10 @@ input[type='radio'] {
     transform: scale(1.25);
 }
 
+.about p {
+    line-height: 0px;
+}
+
 .radio-inline{
     size:1.5em;
 }
