@@ -4,7 +4,19 @@
 }
 
 body {
-    padding-right: 0 !important
+    padding-right: 0 !important;
+}
+
+input[type='radio'] {
+    transform: scale(1.25);
+}
+
+.about p {
+    line-height: 0px;
+}
+
+.radio-inline{
+    size:1.5em;
 }
 
 .login-button {
@@ -28,3 +40,28 @@ html,body{
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
+
+.centerme {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.modal-dialog {
+    font: inherit;
+    color:white;
+    background-color: #1115;
+    width: 90%;
+}
+
+.modal-title {
+    font-size: 1.5em;
+
+}
+
+
