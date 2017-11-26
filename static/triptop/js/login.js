@@ -91,7 +91,7 @@ function signIn(googleUser) {
     });
 
 
-    window.location.href = 'myProfile.html';
+    window.location.href = 'profile';
 }
 
 
@@ -110,7 +110,7 @@ function signOut()
         $.session.clear();
         $.session.set("isLoggedIn", false);
 
-        window.location.href = 'login.html';
+        window.location.href = 'login';
 
 
     });
