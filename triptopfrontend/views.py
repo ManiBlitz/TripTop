@@ -1,4 +1,4 @@
-# triptop/views.py
+ # triptop/views.py
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -20,5 +20,6 @@ class LoginPageView(TemplateView):
 class ProfilePageView(TemplateView):
     def get(self, request, **kwargs):
         return render(request, 'myProfile.html', context=None)
+
 
 
