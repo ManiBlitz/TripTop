@@ -819,28 +819,7 @@ function getFlights(event) {
 
 
 
-        var btnelement = document.getElementById("btn_check");
-        var divcontainer = document.getElementById("divcontainer");
-        if (btnelement) {
-            btnelement.addEventListener('click', function () {
-                var post_id = 3;
-                var formData = "{\"post_id\":post_id}";
-                $.ajax({
-                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                    url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/forum', // the url where we want to POST
-                    crossDomain: true,
-                    dataType: 'json',
-                    data: formData, // our data object
-                    encode: true,
 
-                    // using the done promise callback
-                    success: function (data) {
-                        console.log("Flights successfully posted to current itinerary.")
-                    }
-
-
-                });
-            });
 
             /*
              function renderHtml(data){
@@ -899,6 +878,6 @@ function getFlights(event) {
 
 
             }
-        }
+
 
 
