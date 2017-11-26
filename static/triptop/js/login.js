@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         $('#loginButton').hide();
         $('#userInfoNav').show();
-        $('#forumDropdown').show();
+        $('#forumNav').show();
         $('#profilePic').attr('src', picurl);
         $('#emailDisplay').text(email);
         $('.navbar-inverse').css({'max-height':'52px'});
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     } else {
         $('#userInfoNav').hide();
-        $('#forumDropdown').hide();
+        $('#forumNav').hide();
         $('#loginButton').show();
         console.log("Else");
         console.log($.session.get("userID"));
@@ -64,7 +64,7 @@ function signIn(googleUser) {
     $('.navbar-inverse').css({'max-height': '52px'});
 
     $('#userInfoNav').show();
-    $('#forumDropdown').show();
+    $('#forumNav').show();
     $('#loginButton').hide();
     $('#profilePic').attr('src', picurl);
     $('#emailDisplay').text(email);

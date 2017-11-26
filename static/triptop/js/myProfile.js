@@ -1,5 +1,4 @@
 
-
 $(document).ready(function() {
 
     var userID = $.session.get("userID");
@@ -77,6 +76,7 @@ $(document).ready(function() {
             });
         }
     });
+
 
 });
 

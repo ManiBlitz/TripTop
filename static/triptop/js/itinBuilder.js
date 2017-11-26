@@ -1,5 +1,105 @@
+
+var original=null;
+var i = 1;
+var j = i;
+var k = 1;
+var l = 1;
+
+
 //to get top 5 locations
 $(document).ready(function() {
+
+original = document.getElementById('templateDIV');
+
+$(document).on('focus',".timepicker", function(){
+    $(this).timepicker({
+                format:true,
+                showinputs:false,
+                minuteStep: 10
+            });
+});
+
+
+/* $('#saveItin').click(function() {
+ console.log("save itin works");
+  var options = {
+  };
+  var pdf = new jsPDF();
+  pdf.fromHTML($('#mainX').HTML, 15, 15, options, function() {
+    pdf.save('myItinerary-file.pdf');
+  });
+});*/
+
+/*var doc = new jsPDF();
+var specialElementHandlers = {
+
+};
+
+$('#saveItin').click(function () {
+    doc.fromHTML($('.main').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('myItinerary-file.pdf');
+});*/
+
+var original = document.getElementById('templateDIV');
+$('#templateDIV').hide();
+
+
+
+
+console.log("Original "+original);
+
+
+    $('#depdate').datepicker({
+              format: 'yyyy-mm-dd'
+           });
+           $('#retdate').datepicker({
+               format: 'yyyy-mm-dd'
+           });
+
+
+    var booleanX=$.cookie("isRoundTrip");
+    var booleanY=$.cookie("isFlight");
+    /*booleanY=false;*/
+    console.log("roundtrip: "+booleanX);
+    console.log("isflight: "+booleanY);
+    if(booleanY=="true")
+    {
+        if(booleanX=="true"){
+            var flight1= "<p><b>Destination Airport: </b>" + $.cookie("destination1") + "<br/><b>Date of Flight: </b>" + $.cookie("departuredate") + "<br/><b>Departure Time: </b>" + $.cookie("departuretime1") + "<br/><b>Arrival Time: </b>" + $.cookie("arrivaltime1") + "<br/></p>";
+            var flight2= "<p><b>Return Airport: </b>" + $.cookie("destination2") + "<br/><b>Date of Flight: </b>" + $.cookie("returndate") + "<br/><b>Departure Time: </b>" + $.cookie("departuretime2") + "<br/><b>Arrival Time: </b>" + $.cookie("arrivaltime2") + "<br/></p>";
+            $("#flightInfo").append(flight1);
+            $("#flightInfo").append(flight2);
+            console.log("this is flight1"+flight1);
+            console.log("this is flight 2" +flight2);
+
+        }
+        else { /*for single flight*/
+            var flight1= "<p><b>Destination Airport: </b>" + $.cookie("destination1") + "<br/><b>Date of Flight: </b>" + $.cookie("departuredate") + "<br/><b>Arrival Time: </b>" + $.cookie("arrivaltime1") + "<br/></p>";
+            $("#flightInfo").append(flight1);
+
+        }
+    }
+    console.log("isflight: "+booleanY);
+    if(booleanY==false || booleanY==null) {
+        $("#flightinfolabel").text("Trip Information");
+        /*console.log("hello");*/
+        var noFlight0="<label>Destination</label><input type=\"text\" name=\"destination\" id=\"destination\" placeholder=\"Where is your destination?\"/>";
+        var noFlight1="<label>Start Date</label><input type=\"date\" name=\"retdate\" id=\"retdate\" placeholder=\"When Will You Return?\"/>";
+        var noFlight2="<label>End Date</label><input type=\"date\" name=\"depdate\" id=\"depdate\" placeholder=\"When Will You Depart?\"/>";
+        $("#flightInfo").append(noFlight0);
+        $("#flightInfo").append(noFlight1);
+        $("#flightInfo").append(noFlight2);
+
+        console.log("isflight: "+booleanY);
+    }
+
+
+
+
+
 /*function getTop5LocationsByCity(event) {*/
 
         console.log("getTop5LocationsByCity is working.");
@@ -48,6 +148,29 @@ $(document).ready(function() {
             }
         });
     });
+
+
+    function add_day() {
+
+    var newID = "Day " + ++i;
+    var newPID = "myP_" + ++j;
+
+    var clone = original.cloneNode(true);
+    $(clone).show();
+    $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
+    $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
+    $(clone).attr("id", newID);
+    $(clone).append("<div id=\"itinBuilder"+i+"\"><table class=\"Day"+i+"Table\" text-align=\'center\' cellspacing=2 cellpadding=5 id=\"data_table_template\" border=2 style=\"background-color: white;\"><tr><th>Location</th><th>Address</th><th>Link</th><th>Cost</th></tr></table>");
+    $("#itinBuilder"+i).append("<tr><td><input type=\"text\" id=\"new_location_1\"></td><td><input type=\"text\" id=\"new_address_1\"></td><td><input type=\"text\" id=\"new_link_1\"></td><td><input type=\"text\" id=\"new_cost_1\"></td><td><input type=\"button\" class=\"add\" id=\"addAct1\" onClick=\"add_row();\" value=\"Add New Activity\"></td></tr></div>");
+
+    $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
+
+    original.parentNode.appendChild(clone);
+    console.log("ID is "+newID);
+
+}
+
+
 
 //fix
 function saveItinerary(event) {
@@ -135,7 +258,8 @@ $(document).ready(function() {
                 var i = 0;
                 $.each(results, function(key, value){
 
-                console.log(value[2]);
+
+               /* console.log(value[2]);*/
                     /*console.log(value.0);*/
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
@@ -502,7 +626,7 @@ console.log("m value: "+m);
  var new_cost=document.getElementById("new_cost").value;
 
 
- var table=document.getElementById("data_table");
+ var table=document.getElementById("data_table_template");
 
 /*
  var table=document.getElementByClass("DayTable"+i);
@@ -588,24 +712,70 @@ function filterSelection(c)
 
 
 
-/*need to remove the <p></p> from the div since this adds it anyways*/
-function flightInformation() {
-    /*for round trip*/
-    if($.cookie("destination") != null && $.cookie("date") != null && $.cookie("end_date") != null && $.cookie("arrival_time") != null && $.cookie("departure_time") != null) {
-        var data= "<p><b>Destination: </b>" + $.cookie("destination") + "<br/><b>Start Date: </b>" + $.cookie("date") + "<br/><b>End Date: </b>" + $.cookie("end_date") + "<br/><b>Arrival Time: </b>" + $.cookie("arrival_time") + "<br/><b>Departure Time: </b>" + $.cookie("departure_time") + "<br/></p>";
-        $("#flightInfo").html(data);
-        $.removeCookie("destination");
-        $.removeCookie("date");
-        $.removeCookie("end_date");
-        $.removeCookie("arrival_time");
-        $.removeCookie("departure_time");
-        }
-    else { /*for single flight*/
-        var data= "<p><b>Destination: </b>" + $.cookie("destination") + "<br/><b>Start Date: </b>" + $.cookie("date") + "<br/><b>Arrival Time: </b>" + $.cookie("arrival_time") + "<br/></p>";
-        $("#flightInfo").html(data);
-        $.removeCookie("destination");
-        $.removeCookie("date");
-        $.removeCookie("arrival_time");
+    function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
     }
+    booleanY=false;
 }
+
+
+
+/*function deleteCookies(){
+        $.removeCookie("departuretime1", departuretime1);
+        $.removeCookie("arrivaltime1", arrivaltime1);
+        $.removeCookie("departuretime2", departuretime2);
+        $.removeCookie("arrivaltime2", arrivaltime2);
+        $.removeCookie("departuredate", departuredate);
+        $.removeCookie("returndate", returndate);
+        $.removeCookie("origin1", origin1);
+        $.removeCookie("origin2", origin2);
+        $.removeCookie("destination1", destination1);
+        $.removeCookie("destination2", destination2);
+        $.removeCookie("isRoundTrip", isRoundTrip);
+        $.removeCookie("isFlight", isFlight);
+        $.removeCookie("adultCount", adultCount);
+        $.removeCookie("childCount", childCount);
+}*/
+
+
+
+
+
+
+$(window).bind('beforeunload', function(){
+    deleteAllCookies();
+    return "Are you sure you want to leave without saving? All itinerary information will be deleted.";
+    console.log("This method works")
+
+
+    });
+
+
+/*
+$(function () {
+
+    var specialElementHandlers = {
+        '#editor': function (element,renderer) {
+            return true;
+        }
+    };
+ $('#saveItin').click(function () {
+        var doc = new jsPDF();
+        doc.fromHTML(
+            $('.main').html(), 15, 15,
+            { 'width': 170, 'elementHandlers': specialElementHandlers },
+            function(){ doc.save('myItinerary-file.pdf'); }
+        );
+
+    });
+});*/
+
+
 
