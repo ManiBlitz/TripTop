@@ -42,6 +42,12 @@ $('#saveItin').click(function () {
     doc.save('myItinerary-file.pdf');
 });*/
 
+
+
+//----------------
+
+
+//----------------
 var original = document.getElementById('templateDIV');
 $('#templateDIV').hide();
 

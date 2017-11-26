@@ -257,6 +257,7 @@
 
                      <button id="button" onClick="add_day()">Add Day</button>
                      <button id="saveItin">Save Itinerary</button>
+                     <button class="btn" id="export">Save</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -328,7 +329,7 @@
              </div>
          </div>
      </div>
-     <div id="editor"></div>
+     <!--<div id="editor"></div>-->
  </div>
  <!--    </div>
  </div>
@@ -351,7 +352,7 @@
 
 
 
-<script>
+<!--<script>
 var lol=document.getElementById('mainX');
 var doc = new jsPDF();
 var specialElementHandlers = {
@@ -368,6 +369,39 @@ $('#saveItin').click(function () {
     doc.save('myItin.pdf');
 });
 
+</script>-->
+<script>
+document.getElementById('export').addEventListener('click', exportPDF);
+
+var specialElementHandlers = {
+  '.no-export': function(element, renderer) {
+    return true;
+  }
+};
+
+function exportPDF() {
+
+  var doc = new jsPDF('p', 'pt', 'a4');
+
+  var source = document.getElementById('mainX').innerHTML;
+
+  var margins = {
+    top: 10,
+    bottom: 10,
+    left: 10,
+    width: 595
+  };
+  console.log("This save works1");
+  doc.fromHTML(
+    source,
+    margins.left,
+    margins.top, {'width': margins.width,'elementHandlers': specialElementHandlers},
+
+    function(dispose) {
+      doc.save('Test.pdf');
+    }, margins);
+    console.log("This save works2");
+}
 </script>
 
 <!--<script>
