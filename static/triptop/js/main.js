@@ -3,11 +3,11 @@
  */
 
     var flightsBool = true;
+    var isFlight=false;
 
 
 
       $(document).ready(function() {
-
 
 
           $('.carousel').carousel({
@@ -782,11 +782,7 @@ function getFlights(event) {
 
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
-
-
-
-}
-
+        }
 
 
 
@@ -846,9 +842,13 @@ function goToItinPage(flightchoice) {
             destination1 = $('#inputDestination2').find(":selected").val(),
             origin2 = destination1,
             destination2 = origin1,
-            isRoundTrip = flightsBool;
+            childCount = $("#sel2").find(":selected").val(),
+            adultCount = $("#sel1").find(":selected").val(),
+            isRoundTrip = flightsBool,
+            isFlight=true;
 
-        console.log(departuretime1, arrivaltime1, departuretime2, arrivaltime2, departuredate, returndate, origin1, destination1, origin2, destination2, isRoundTrip);
+
+        console.log(departuretime1, arrivaltime1, departuretime2, arrivaltime2, departuredate, returndate, origin1, destination1, origin2, destination2, isRoundTrip, childCount, adultCount);
 
         $.cookie("departuretime1", departuretime1);
         $.cookie("arrivaltime1", arrivaltime1);
@@ -861,6 +861,9 @@ function goToItinPage(flightchoice) {
         $.cookie("destination1", destination1);
         $.cookie("destination2", destination2);
         $.cookie("isRoundTrip", isRoundTrip);
+        $.cookie("isFlight", isFlight);
+        $.cookie("adultCount", adultCount);
+        $.cookie("childCount", childCount);
 
 
         window.location.href = "itinBuilder.html";
