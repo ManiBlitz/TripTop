@@ -4,43 +4,6 @@ var j = i;
 var k = 1;
 var l = 1;
 
-/*    $(window).bind('beforeunload', function(){
-  deleteCookies();
-  console.log("this message works");
-  Alert('Are you sure you want to leave without saving? All itinerary information will be deleted.');
-});*/
-
-
-/*window.onbeforeunload = function(){
-  deleteCookies();
-  return 'Are you sure you want to leave without saving? All itinerary information will be deleted.';
-};*/
-
-
-/*$(document).ready(function(){
-    console.log("HELLO");
-    $('a').on('mousedown', stopNavigate);
-
-    $('a').on('mouseleave', function () {
-           $(window).on('beforeunload', function(){
-           deleteCookies();
-                  return 'Are you sure you want to leave without saving? All itinerary information will be deleted.';
-           });
-    });
-});
-
-function stopNavigate(){
-    $(window).off('beforeunload');
-}*/
-
-
-/*jQuery(window).bind('beforeunload', function(e) {
-    var message = "Why are you leaving?";
-    *//*deleteCookies();*//*
-    e.returnValue = message;
-    return message;
-});*/
-
 
 //to get top 5 locations
 $(document).ready(function() {
@@ -56,12 +19,30 @@ $(document).on('focus',".timepicker", function(){
 });
 
 
+/* $('#saveItin').click(function() {
+ console.log("save itin works");
+  var options = {
+  };
+  var pdf = new jsPDF();
+  pdf.fromHTML($('#mainX').HTML, 15, 15, options, function() {
+    pdf.save('myItinerary-file.pdf');
+  });
+});*/
 
+/*var doc = new jsPDF();
+var specialElementHandlers = {
 
-/*var i = 1;
-var j = i;
+};
 
-var original = document.getElementById('templateDIV');*/
+$('#saveItin').click(function () {
+    doc.fromHTML($('.main').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('myItinerary-file.pdf');
+});*/
+
+var original = document.getElementById('templateDIV');
 $('#templateDIV').hide();
 
 
@@ -69,20 +50,6 @@ $('#templateDIV').hide();
 
 console.log("Original "+original);
 
-
-
-
-
-
-/*console.log("HELLO");
-    $('a').on('mousedown', stopNavigate);
-
-    $('a').on('mouseleave', function () {
-           $(window).on('beforeunload', function(){
-           deleteCookies();
-                  return 'Are you sure you want to leave without saving? All itinerary information will be deleted.';
-           });
-    });*/
 
     $('#depdate').datepicker({
               format: 'yyyy-mm-dd'
@@ -773,6 +740,11 @@ function filterSelection(c)
         $.removeCookie("childCount", childCount);
 }*/
 
+
+
+
+
+
 $(window).bind('beforeunload', function(){
     deleteAllCookies();
     return "Are you sure you want to leave without saving? All itinerary information will be deleted.";
@@ -800,3 +772,6 @@ $(function () {
 
     });
 });*/
+
+
+

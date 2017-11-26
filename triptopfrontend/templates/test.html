@@ -44,6 +44,10 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
       <script type="text/javascript" src = "http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
 
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+     <!--<script type="text/javascript" src="./lib/jspdf/jspdf.debug.js"></script>
+     <script type="text/javascript" src="./lib/html2canvas/html2canvas.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>-->
 
 
 
@@ -189,21 +193,6 @@
                  <hr style="border:2px solid black; margin: 0px; margin-top:20px;">
                  <div class="dropdown1">
                      <button onclick="typeSearch()" class="dropbtn">Type</button>
-                     <!--<div id="myDropdown" class="dropdown1-content">
-                         <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                         <a href="#All">All</a>
-                         <a href="#Day_Trip">Day Trip</a>
-                         <a href="#Lodging">Lodging</a>
-                         <a href="#Food">Food</a>
-                         <a href="#Tours">Tours</a>
-                         <a href="#Museums">Museums</a>
-                         <a href="#Drinks">Drinks</a>
-                         <a href="#Clubs">Clubs</a>
-                         <a href="#Entertainment">Entertainment</a>
-                         <a href="#Parks">Parks</a>
-                         <a href="#Shopping">Shopping</a>
-                     </div>-->
-
                      <div id="myDropdown" class="dropdown1-content">
                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                          <a href="" style="margin-left:0;"><input class="choice" id="all" type="radio" onClick="filterSelection('all')" name="category" checked>All</a>
@@ -243,7 +232,7 @@
 
 <!-- <input onclick="getFlightInfo(event); return false;" type="button" value="test2"/>-->
 
-     <div class="main" style="background-image: url('../../static/triptop/img/sunset1.png')">
+     <div class="main" id="mainX" style="background-image: url('../../static/triptop/img/sunset1.png')">
          <div class="main_header">
              <h1>My Itinerary</h1><button class="w3-button w3-black w3-xlarge w3-right" id="open_sidenav" onclick="openRightMenu()">&#9776;</button>
              <hr style="border:2px solid black; margin: 0px; margin-top:28px;">
@@ -255,27 +244,29 @@
                      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
                      <div class="w3-container">
-                         <h2>Flight Information</h2>
+                         <h2 id="flightinfolabel">Flight Information</h2>
                          <div id="flightInfo" style="border: 2px solid black; background-color: white;" class="displayinfo">
-                             <p>Destination</p>
+                             <!--<p>Destination</p>
                              <p>Start Date</p>
                              <p>End Date</p>
                              <p>Arrival Time</p>
-                             <p>Departure Time</p>
+                             <p>Departure Time</p>-->
                          </div>
                      </div>
                      <input onClick="getTop5Locations(event); return false;" type="button" value="Get Top 5 Locations"/>
 
                      <button id="button" onClick="add_day()">Add Day</button>
+                     <button id="saveItin">Save Itinerary</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
             <!-- <p><input type="button" class="add_day" onclick="add_day();" value="Add Day"></p>-->
                          <h2 class="text-center">Please add Top 5 Database events to your schedule.</h2>
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
-                         <!--<div id="itinBuildertemplate">
+
+                         <div id="itinBuildertemplate">
                              <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
-                                 <tr>
+                                 <!--<tr>
                                      <th>Location</th>
                                      <th>Address</th>
                                      <th>Link</th>
@@ -286,13 +277,11 @@
                                      <td><input type="text" id="new_address_template"></td>
                                      <td><input type="text" id="new_link_template"></td>
                                      <td><input type="text" id="new_cost_template"></td>
-                                     <td><input type="button" class="add" onClick="var m=1; ++m; add_row(m);" value="Add New Activity"></td>
+                                     <td><input type="button" class="add" onClick="add_row();" value="Add New Activity"></td>
 
-                                 </tr>
+                                 </tr>-->
                              </table>
-                         </div>-->
-
-
+                         </div>
                      </div>
 
                      <div id="Day 1" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
@@ -311,10 +300,8 @@
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
                          <div id="itinBuilder">
-<!--
                              <table class="Day1Table" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
--->
-                             <table class="DayTable1" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+                             <!--<table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>-->
                                  <tr>
                                      <th>Location</th>
                                      <th>Address</th>
@@ -341,6 +328,7 @@
              </div>
          </div>
      </div>
+     <div id="editor"></div>
  </div>
  <!--    </div>
  </div>
@@ -348,99 +336,7 @@
       <!--Footer-->
 <footer style="height:0px; width:0px;" class="page-footer center-on-small-only stylish-color-dark">
 
-    <!--Footer Links-->
-    <!--<div class="container">
-        <div class="row">
 
-            &lt;!&ndash;First column&ndash;&gt;
-            <div class="col-md-4">
-                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
-                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
-            </div>
-            &lt;!&ndash;/.First column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Second column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Second column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Third column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Third column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Fourth column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Fourth column&ndash;&gt;
-        </div>
-    </div>
-    &lt;!&ndash;/.Footer Links&ndash;&gt;
-
-    <hr>
-
-    &lt;!&ndash;Call to action&ndash;&gt;
-    <div class="call-to-action">
-        <ul>
-            <li>
-                <h5 class="mb-1">Sign Up For Free!</h5>
-            </li>
-            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
-        </ul>
-    </div>
-    &lt;!&ndash;/.Call to action&ndash;&gt;
-
-    <hr>
-
-    &lt;!&ndash;Social buttons&ndash;&gt;
-    <div class="social-section text-center">
-        <ul>
-
-            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
-
-        </ul>
-    </div>
-    &lt;!&ndash;/.Social buttons&ndash;&gt;
-
-    &lt;!&ndash;Copyright&ndash;&gt;
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
-
-        </div>
-    </div>-->
-    <!--/.Copyright-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
 
     <script>
@@ -451,74 +347,43 @@
 <!--/.Footer-->
 
 
+
+
+
+
 <script>
-     /* adding day to schedule */
+var lol=document.getElementById('mainX');
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
 
-
-$(document).on('focus',".timepicker", function(){
-    $(this).timepicker({
-                format:true,
-                showinputs:false,
-                minuteStep: 10
-            });
+$('#saveItin').click(function () {
+    doc.fromHTML($('#mainX').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('myItin.pdf');
 });
-
-document.getElementById('button').onclick = add_day;
-
-
-var i = 1;
-var j = i;
-var k = 1;
-var l = 1;
-var original = document.getElementById('templateDIV');
-$('#templateDIV').hide();
-
-function add_day() {
-
-    var newID = "Day " + ++i;
-    var newPID = "myP_" + ++j;
-    <!--var newdtID = "data_table"+ ++k;-->
-    var itinBuilderID = "itinBuilder"+ ++l;
-
-
-    var clone = original.cloneNode(true);
-    $(clone).show();
-    $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
-    $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
-    console.log("This is itinbuilderID "+itinBuilderID);
-    $(clone).prepend("<div id=\'"+itinBuilderID+"\'>
-                             <table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
-                                 <tr>
-                                     <th>Location</th>
-                                     <th>Address</th>
-                                     <th>Link</th>
-                                     <th>Cost</th>
-                                 </tr>");
-    $(clone).append("<tr>
-                                     <td><input type="text" id=\"new_location_"+l+"\"></td>
-                                     <td><input type="text" id=\"new_address_"+l+"\"></td>
-                                     <td><input type="text" id=\"new_link_"+l+"\"></td>
-                                     <td><input type="text" id=\"new_cost_"+l+"\"></td>
-                                     <td><input type="button" class="add" onClick="add_row(l);" value="Add New Activity"></td>
-                                 </tr>
-                             </table>
-                         </div>");
-
-    $(clone).attr("id", newID);
-    $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
-
-    original.parentNode.appendChild(clone);
-    console.log("ID is "+newID);
-
-}
-
-/*need clone from preset template*/
-
-
 
 </script>
 
+<!--<script>
+     $('#saveItin').click(function() {
+ console.log("save itin works");
+  var options = {
+  };
+  var pdf = new jsPDF('p', 'pt', 'a4');
+  pdf.addHTML($('#mainX'), 15, 15, options, function() {
+    pdf.save('myItinerary-file.pdf');
+  });
+});
 
+</script>-->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 
 
 
