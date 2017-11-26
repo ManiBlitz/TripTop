@@ -257,6 +257,7 @@
 
                      <button id="button" onClick="add_day()">Add Day</button>
                      <button id="saveItin">Save Itinerary</button>
+                     <button class="btn" id="export">Save</button>
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -328,13 +329,17 @@
              </div>
          </div>
      </div>
-     <div id="editor"></div>
+     <!--<div id="editor"></div>-->
  </div>
  <!--    </div>
  </div>
 -->
       <!--Footer-->
 <footer style="height:0px; width:0px;" class="page-footer center-on-small-only stylish-color-dark">
+    <div>
+
+
+    </div>
 
     <!--Footer Links-->
     <!--<div class="container">
@@ -441,29 +446,9 @@
 
 
 
+
+
 <!--<script>
-/* Drop down menu in top 5 database side nav */
-function typeSearch() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
-</script>-->
-
-<script>
 
 var doc = new jsPDF();
 var specialElementHandlers = {
@@ -480,7 +465,7 @@ $('#saveItin').click(function () {
     doc.save('myItinerary-file.pdf');
 });
 
-</script>
+</script>-->
 
 <!--<script>
      $('#saveItin').click(function() {
@@ -494,6 +479,78 @@ $('#saveItin').click(function () {
 });
 
 </script>-->
+ <script>
+document.getElementById('export').addEventListener('click',
+  exportPDF);
+
+var specialElementHandlers = {
+  '.no-export': function(element, renderer) {
+    return true;
+  }
+};
+
+function exportPDF() {
+
+  var doc = new jsPDF('p', 'pt', 'a4');
+
+  var source = document.getElementsByClassName('main_body').innerHTML;
+
+  var margins = {
+    top: 10,
+    bottom: 10,
+    left: 10,
+    width: 595
+  };
+
+  doc.fromHTML(
+    source,
+    margins.left,
+    margins.top, {
+      'width': margins.width,
+      'elementHandlers': specialElementHandlers
+    },
+
+    function(dispose) {
+      doc.save('Test.pdf');
+    }, margins);
+}
+
+
+ </script>
+
+ <script>
+
+var i = 1;
+var j = i;
+var k = 1;
+var l = 1;
+
+original = document.getElementById('templateDIV');
+$('#templateDIV').hide();
+
+function add_day() {
+
+    var newID = "Day " + ++i;
+    var newPID = "myP_" + ++j;
+
+    var clone = original.cloneNode(true);
+    $(clone).show();
+    $(clone).prepend("<div style=\"border-top: .5px solid black\" class=\"input-group bootstrap-timepicker\"><label>Start of Day:</label><input id=\"startTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
+    $(clone).prepend("<label id=\'"+ newPID + "\'>"+ newID +"</label>");
+    $(clone).attr("id", newID);
+    $(clone).append("<div id=\"itinBuilder"+i+"\"><table class=\"Day"+i+"Table\" text-align=\'center\' cellspacing=2 cellpadding=5 id=\"data_table_template\" border=2 style=\"background-color: white;\"><tr><th>Location</th><th>Address</th><th>Link</th><th>Cost</th></tr></table>");
+    $("#itinBuilder"+i).append("<tr><td><input type=\"text\" id=\"new_location_1\"></td><td><input type=\"text\" id=\"new_address_1\"></td><td><input type=\"text\" id=\"new_link_1\"></td><td><input type=\"text\" id=\"new_cost_1\"></td><td><input type=\"button\" class=\"add\" id=\"addAct1\" onClick=\"add_row();\" value=\"Add New Activity\"></td></tr></div>");
+
+    $(clone).append("<div class=\"input-group bootstrap-timepicker\"><label>End of Day:</label><input id=\"endTime"+i+"\" type=\"text\" class=\"text-center form-control timepicker input-small\"><span class=\"input-group-addon\"><icon class=\"glyphicon glyphicon-time\"></icon></span></div>");
+
+    original.parentNode.appendChild(clone);
+    console.log("ID is "+newID);
+
+}
+
+
+
+ </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 

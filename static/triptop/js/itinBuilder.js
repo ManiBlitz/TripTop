@@ -1,14 +1,20 @@
-var original=null;
+/*var original=null;
 var i = 1;
 var j = i;
 var k = 1;
-var l = 1;
+var l = 1;*/
 
 
 //to get top 5 locations
 $(document).ready(function() {
 
-original = document.getElementById('templateDIV');
+
+
+
+
+
+
+/*original = document.getElementById('templateDIV');*/
 
 $(document).on('focus',".timepicker", function(){
     $(this).timepicker({
@@ -48,8 +54,8 @@ $('#saveItin').click(function () {
 
 
 //----------------
-var original = document.getElementById('templateDIV');
-$('#templateDIV').hide();
+/*var original = document.getElementById('templateDIV');
+$('#templateDIV').hide();*/
 
 
 
@@ -154,7 +160,7 @@ console.log("Original "+original);
         });
     });
 
-    function add_day() {
+    /*function add_day() {
 
     var newID = "Day " + ++i;
     var newPID = "myP_" + ++j;
@@ -172,7 +178,7 @@ console.log("Original "+original);
     original.parentNode.appendChild(clone);
     console.log("ID is "+newID);
 
-}
+}*/
 
 
 
