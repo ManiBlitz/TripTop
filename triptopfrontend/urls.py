@@ -6,9 +6,9 @@ from triptopfrontend import views
 urlpatterns = [
 
     url(r'^$', views.HomePageView.as_view()),
-    url(r'^itinerary/$', views.ItineraryBuilderPageView.as_view()),
-    url(r'^login/$', views.LoginPageView.as_view()),
-    url(r'^profile/$', views.ProfilePageView.as_view())
+    url('itinerary', views.ItineraryBuilderPageView.as_view()),
+    url('login', views.LoginPageView.as_view()),
+    url('profile', views.ProfilePageView.as_view())
 ]
 
 
