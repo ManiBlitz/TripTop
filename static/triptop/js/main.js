@@ -819,65 +819,86 @@ function getFlights(event) {
 
 
 
+        var btnelement = document.getElementById("btn_check");
+        var divcontainer = document.getElementById("divcontainer");
+        if (btnelement) {
+            btnelement.addEventListener('click', function () {
+                var post_id = 3;
+                var formData = "{\"post_id\":post_id}";
+                $.ajax({
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/forum', // the url where we want to POST
+                    crossDomain: true,
+                    dataType: 'json',
+                    data: formData, // our data object
+                    encode: true,
+
+                    // using the done promise callback
+                    success: function (data) {
+                        console.log("Flights successfully posted to current itinerary.")
+                    }
 
 
+                });
+            });
+
+            /*
+             function renderHtml(data){
+             var arraydata = "";
+             for (i = 0; i < data.length; i++)
+             {
+             arraydata += "<p>" + data[i] + "</p>" ;
+             }
+             newdiv.insertAdjacentHTML('beforeend', )
+
+             }*/
 
 
+            function goToItinPage(flightchoice) {
+
+                var flightchoicestring = "flightchoice";
+                var i = flightchoice.replace(flightchoicestring, '');
+
+                // console.log(i);
+
+                var departuretime1 = $("#flight" + i + "departureTime").text(),
+                    arrivaltime1 = $("#flight" + i + "arrivalTime").text(),
+                    departuretime2 = $("#flight" + i + "departureTimereturn").text(),
+                    arrivaltime2 = $("#flight" + i + "arrivalTimereturn").text(),
+                    departuredate = $("#flight" + i + "dates").text(),
+                    returndate = $("#flight" + i + "datesreturn").text(),
+                    origin1 = $('#inputOrigin2').find(":selected").val(),
+                    destination1 = $('#inputDestination2').find(":selected").val(),
+                    origin2 = destination1,
+                    destination2 = origin1,
+                    childCount = $("#sel2").find(":selected").val(),
+                    adultCount = $("#sel1").find(":selected").val(),
+                    isRoundTrip = flightsBool,
+                    isFlight = true;
 
 
-function goToItinPage(flightchoice) {
+                console.log(departuretime1, arrivaltime1, departuretime2, arrivaltime2, departuredate, returndate, origin1, destination1, origin2, destination2, isRoundTrip, childCount, adultCount);
 
-        var flightchoicestring = "flightchoice";
-        var i = flightchoice.replace(flightchoicestring,'');
-
-        // console.log(i);
-
-        var departuretime1 = $("#flight"+i+"departureTime").text(),
-            arrivaltime1 = $("#flight"+i+"arrivalTime").text(),
-            departuretime2 = $("#flight"+i+"departureTimereturn").text(),
-            arrivaltime2 = $("#flight"+i+"arrivalTimereturn").text(),
-            departuredate = $("#flight"+i+"dates").text(),
-            returndate = $("#flight"+i+"datesreturn").text(),
-            origin1 = $('#inputOrigin2').find(":selected").val(),
-            destination1 = $('#inputDestination2').find(":selected").val(),
-            origin2 = destination1,
-            destination2 = origin1,
-            childCount = $("#sel2").find(":selected").val(),
-            adultCount = $("#sel1").find(":selected").val(),
-            isRoundTrip = flightsBool,
-            isFlight=true;
+                $.cookie("departuretime1", departuretime1);
+                $.cookie("arrivaltime1", arrivaltime1);
+                $.cookie("departuretime2", departuretime2);
+                $.cookie("arrivaltime2", arrivaltime2);
+                $.cookie("departuredate", departuredate);
+                $.cookie("returndate", returndate);
+                $.cookie("origin1", origin1);
+                $.cookie("origin2", origin2);
+                $.cookie("destination1", destination1);
+                $.cookie("destination2", destination2);
+                $.cookie("isRoundTrip", isRoundTrip);
+                $.cookie("isFlight", isFlight);
+                $.cookie("adultCount", adultCount);
+                $.cookie("childCount", childCount);
 
 
-        console.log(departuretime1, arrivaltime1, departuretime2, arrivaltime2, departuredate, returndate, origin1, destination1, origin2, destination2, isRoundTrip, childCount, adultCount);
-
-        $.cookie("departuretime1", departuretime1);
-        $.cookie("arrivaltime1", arrivaltime1);
-        $.cookie("departuretime2", departuretime2);
-        $.cookie("arrivaltime2", arrivaltime2);
-        $.cookie("departuredate", departuredate);
-        $.cookie("returndate", returndate);
-        $.cookie("origin1", origin1);
-        $.cookie("origin2", origin2);
-        $.cookie("destination1", destination1);
-        $.cookie("destination2", destination2);
-        $.cookie("isRoundTrip", isRoundTrip);
-        $.cookie("isFlight", isFlight);
-        $.cookie("adultCount", adultCount);
-        $.cookie("childCount", childCount);
+                window.location.href = "itinBuilder.html";
 
 
-        window.location.href = "itinBuilder.html";
-
-
-
-
-
-
-
-
-
-
-
-}
+            }
+        }
 
 
