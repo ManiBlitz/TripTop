@@ -490,7 +490,7 @@ function getFlights(event) {
                         saletotalnum.toString();
                         saletotal = "$" + saletotalnum;
 
-                        var newFlight = '<tr id=\"flight' + i + '\"><td id=\"addflight'+i+'\"><a href=\"itinBuilder.html\" onClick="goToItinPage(startend, date, departuretime, arrivaltime, duration, saletotal);"><button class=\"btn btn-info btn-sm\" type=\"button\">Add To Itinerary</button></a></td><td id=\"flight' + i + 'price\">' + saletotal + '</td><td><label id=\"flight'+i+'startend\">' + startend + '</label></label></td><td><label id=\"flight'+i+'departureTime\">' + departuretime + '</label></td><td><label id=\"flight'+i+'arrivalTime\">' + arrivaltime + '</label></label></td><td><label id=\"flight' + i + 'dates\">' + date + '</label></td><td><label id=\"flight' + i + 'duration\">' + durationFloat + '</label></td></tr>';
+                        var newFlight = '<tr id=\"flight' + i + '\"><td id=\"addflight'+i+'\"><a href=\"itinerary\" onClick="goToItinPage(startend, date, departuretime, arrivaltime, duration, saletotal);"><button class=\"btn btn-info btn-sm\" type=\"button\">Add To Itinerary</button></a></td><td id=\"flight' + i + 'price\">' + saletotal + '</td><td><label id=\"flight'+i+'startend\">' + startend + '</label></label></td><td><label id=\"flight'+i+'departureTime\">' + departuretime + '</label></td><td><label id=\"flight'+i+'arrivalTime\">' + arrivaltime + '</label></label></td><td><label id=\"flight' + i + 'dates\">' + date + '</label></td><td><label id=\"flight' + i + 'duration\">' + durationFloat + '</label></td></tr>';
 
                         $('#flights').append(newFlight);
 
@@ -874,7 +874,7 @@ function getFlights(event) {
                 $.cookie("childCount", childCount);
 
 
-                window.location.href = "itinBuilder.html";
+                window.location.href = "itinerary";
 
 
             }
