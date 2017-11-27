@@ -438,7 +438,7 @@ function getTop5Locations(event) {
                     var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
 */
 
-                    var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center" style="display:none">' + value[0] + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td>><td class="text-center" style="display:none">' + value[6] + '</td>><td class="text-center" style="display:none">' + value[7] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td>><td class="text-center" style="display:none">' + value[10] + '</td>><td class="text-center" style="display:none">' + value[11] + '</td>><td class="text-center" style="display:none">' + value[12] + '</td>><td class="text-center" style="display:none">' + value[13] + '</td>><td class="text-center" style="display:none">' + value[14] + '</td>><td class="text-center" style="display:none">' + value[15] + '</td>><td class="text-center" style="display:none">' + value[16] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+                    var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center" style="display:none">' + value[0] + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td>><td class="text-center" style="display:none">' + value[6] + '</td>><td class="text-center" style="display:none">' + value[7] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + value[9] + '</td>><td class="text-center" style="display:none">' + value[10] + '</td>><td class="text-center" style="display:none">' + value[11] + '</td>><td class="text-center" style="display:none">' + value[12] + '</td>><td class="text-center" style="display:none">' + value[13] + '</td>><td class="text-center" style="display:none">' + value[14] + '</td>><td class="text-center" style="display:none">' + value[15] + '</td>><td class="text-center" style="display:none">' + value[16] + '</td><td class="text-center">' + value[17] + '</td></tr>';
 
                     /*console.log(locationObj);*/
                     i++;
@@ -479,7 +479,7 @@ function add_event_loc(x){
         $("#new_link").val(link);
         $("#new_cost").val(cost);
         /*need to change these id's so it will be able to go to template too*/
-
+        console.log()
 }
 
 /*<--------------------------------------------------------------------------------------------------------------->*/
@@ -540,7 +540,7 @@ function add_row(i)
  var table=document.getElementById(tID);
 
  var table_len=(table.rows.length)-1;
- var row=table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'><input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'><input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+ var row=table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td class='costT' id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'><input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'><input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
 
  document.getElementById("new_location").value="";
  document.getElementById("new_address").value="";
@@ -721,4 +721,58 @@ $(window).bind('beforeunload', function(){
     console.log("This method works")
 
 
+    });
+
+/*
+function getTotal() {
+    var sum=0;
+    var tableL = document.getElementById("day1T");
+
+    for(var i=1, row; row=tableL.rows[i]; i++)
+    {
+        sum=+sum + +tableL.rows[i].cells[3];
+    }
+    console.log(sum);
+
+}*/
+
+/*
+function getTotal() {
+    console.log("getTotal works");
+    var $dataRows=$("#sum_table tr:not('.titlerow')");
+
+    $dataRows.each(function() {
+        $(this).find('.costT').each(function(i){
+            totals[i]+=parseInt( $(this).html());
+        });
+    });
+    $(".showCost").each(function(i){
+        $(this).html("total:"+totals[i]);
+    });
+
+}*/
+
+$(document).ready(function(){
+        $('#totalRow').click(function(){
+            totalRow();
+        });
+
+
+
+
+        function totalRow()
+        {
+            var rowId = $('#day1T tr').length;
+            var val = 0;
+             $("#day1T [id^=new_cost]").each(function() {
+    			val += parseFloat($(this).val());
+			 });
+			/*$('#myTable > tbody:last-child').append(
+    			'<tr><th>T</th>' +
+    			'<td><input type="text" id="totalRow" value="TOTAL" /></td>' +
+                '<td><input type="text" id="totalCost" value="' + val +'" /></td></tr>'
+			);*/
+			document.getElementById("showCost").outerHTML="$"+val;
+			console.log("Total cost is "+val);
+		}
     });

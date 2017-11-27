@@ -199,7 +199,7 @@
                                  <th class="text-center">Address</th>
                                  <!--<th class="text-center">Phone Number</th>-->
                                  <th class="text-center">Website</th>
-                                 <th class="text-center">Cost</th>
+                                 <th class="text-center">Cost($)</th>
                                  <th class="text-center">Review</th>
                              </tr>
                          </table>
@@ -236,8 +236,14 @@
 
 
                      <button id="button" onClick="add_day()">Add Day</button>
-                     <button id="saveItin" onClick="saveToPDF()">Save Itinerary</button>
-                     <!--<button class="btn" id="export">Save</button>-->
+                     <button id="saveItin">Save Itinerary</button>
+                     <!--COST BUTTON HERE---------------------------------------------------------------->
+                     <button id="totalRow">Get Cost</button>
+                     <div style="background:white;">
+                         <p id="showCost">                  </p>
+                     </div>
+
+
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -252,7 +258,7 @@
                                      <th>Location</th>
                                      <th>Address</th>
                                      <th>Link</th>
-                                     <th>Cost</th>
+                                     <th>Cost($)</th>
                                  </tr>
                                  <tr>
                                      <td><input type="text" id="new_location_template"></td>
@@ -283,19 +289,21 @@
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
                          <div id="itinBuilder">
-                             <table class="Day1Table" align='center' cellspacing=2 cellpadding=5 id="data_table_1" border=2>
+
+                             <table class="Day1Table" id="day1T" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
                              <!--<table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>-->
-                                 <tr>
+                                 <tr class="titlerow">
                                      <th>Location</th>
                                      <th>Address</th>
                                      <th>Link</th>
-                                     <th>Cost</th>
+                                     <th>Cost($)</th>
                                  </tr>
                                  <tr>
                                      <td><input type="text" id="new_location"></td>
                                      <td><input type="text" id="new_address"></td>
                                      <td><input type="text" id="new_link"></td>
-                                     <td><input type="text" id="new_cost"></td>
+
+                                     <td><input class='costT' type="text" id="new_cost"></td>
                                      <td><input type="button" class="add" onClick="add_row(1);" value="Add New Activity"></td>
 
                                  </tr>
