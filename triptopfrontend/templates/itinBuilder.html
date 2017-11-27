@@ -236,7 +236,7 @@
 
 
                      <button id="button" onClick="add_day()">Add Day</button>
-                     <button id="saveItin">Save Itinerary</button>
+                     <button id="saveItin" onClick="saveToPDF()">Save Itinerary</button>
                      <!--COST BUTTON HERE---------------------------------------------------------------->
                      <button id="totalRow">Get Cost</button>
                      <div style="background:white;">
@@ -252,7 +252,7 @@
                          <h3 class="text-center">NOTE: A 30 minute gap will be added in between each event as travel time</h3>
 
                          <div id="itinBuildertemplate">
-                             <table align='center' cellspacing=2 cellpadding=5 id="data_table_template" border=2 style="background-color: white;">
+                             <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=2 style="background-color: white;">
 
                                  <!--<tr>
                                      <th>Location</th>
@@ -290,7 +290,7 @@
 
                          <div id="itinBuilder">
 
-                             <table class="Day1Table" id="day1T" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>
+                             <table class="Day1Table" align='center' cellspacing=2 cellpadding=5 id="data_table_1" border=2>
                              <!--<table class="DayTable" align='center' cellspacing=2 cellpadding=5 id="data_table" border=2>-->
                                  <tr class="titlerow">
                                      <th>Location</th>

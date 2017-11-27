@@ -751,20 +751,20 @@ function getTotal() {
     });
 
 }*/
-
-$(document).ready(function(){
         $('#totalRow').click(function(){
             totalRow();
         });
 
+$(document).ready(function(){
+        totalRow();
 
+    });
 
-
-        function totalRow()
+function totalRow()
         {
-            var rowId = $('#day1T tr').length;
+            var rowId = $('#data_table_1 tr').length;
             var val = 0;
-             $("#day1T [id^=new_cost]").each(function() {
+             $("#data_table_1 [id^=new_cost]").each(function() {
     			val += parseFloat($(this).val());
 			 });
 			/*$('#myTable > tbody:last-child').append(
@@ -775,4 +775,3 @@ $(document).ready(function(){
 			document.getElementById("showCost").outerHTML="$"+val;
 			console.log("Total cost is "+val);
 		}
-    });
