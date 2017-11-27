@@ -9,6 +9,14 @@ var l = 1;
 //to get top 5 locations
 $(document).ready(function() {
 
+    var userID = $.session.get("userID");
+
+    if(userID == null) {
+        $('#saveItin').hide();
+    } else {
+        $('#saveItin').show();
+    }
+
 original = document.getElementById('templateDIV');
 
 $(document).on('focus',".timepicker", function(){
@@ -20,15 +28,17 @@ $(document).on('focus',".timepicker", function(){
 });
 
 
-/* $('#saveItin').click(function() {
- console.log("save itin works");
-  var options = {
-  };
-  var pdf = new jsPDF();
-  pdf.fromHTML($('#mainX').HTML, 15, 15, options, function() {
-    pdf.save('myItinerary-file.pdf');
-  });
-});*/
+
+
+// $('#saveItin').click(function() {
+//  console.log("save itin works");
+//   var options = {
+//   };
+//   var pdf = new jsPDF();
+//   pdf.fromHTML($('#mainX').HTML, 15, 15, options, function() {
+//     pdf.save('myItinerary-file.pdf');
+//   });
+// });
 
 /*var doc = new jsPDF();
 var specialElementHandlers = {
@@ -680,6 +690,105 @@ function add_day() {
     original.parentNode.appendChild(clone);
 }*/
 
+function saveToPDF() {
+
+    var b = $.session.get('lastname');
+
+    var d = new Date();
+    var e = d.getTime();
+
+    // var pdf = new jsPDF('p', 'pt', 'a3');
+    //
+    // // Enable auto page wrap (there are still margin-top issues...)
+    // pdf.context2d.pageWrapY = pdf.internal.pageSize.height-20;
+    //
+    // // create a long table
+    // // var table = document.createElement('table');
+    // // for (var i=1; i<1000; i++){
+    // //     var tr=document.createElement('tr');
+    // //     var td=document.createElement('td');
+    // //     td.innerHTML = "Item " + i;
+    // //     tr.appendChild(td);
+    // //     table.appendChild(tr);
+    // // }
+    // // document.body.appendChild(table);
+    //
+    // // render body to pdf
+    // html2pdf($('#mainX'), pdf, function(){
+    //     pdf.save('Test.pdf');
+    //
+    // });
+
+
+        console.log("this");
+    // var useWidth = document.getElementById('mainX').getWidth();
+    var useHeight = $('#mainX')[0].scrollHeight;
+    var element = document.getElementById('mainX');
+
+    var positionInfo = element.getBoundingClientRect();
+
+    var useWidth = positionInfo.width;
+
+    html2canvas(element, {
+        width: useWidth,
+        height: useHeight,
+        onrendered: function(canvas) {
+            console.log("works");
+            theCanvas = canvas;
+
+            canvas.toBlob(function (blob) {
+                console.log("fine.");
+                var c = b + "Itinerary" + e +".png";
+                saveAs(blob, c);
+
+                var fd = {'fname': c,'data': blob};
+
+                console.log(fd);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/upload.php',
+                    data: fd,
+                    processData: false,
+                    contentType: false
+                }).done(function(data) {
+                       console.log(data);
+                });
+
+                });
+
+
+    // var img = canvas.toDataURL("image/png");
+    // var doc = new jsPDF("l", "pt", "letter");
+    // doc.addImage(img, 'JPEG',useWidth,useHeight);
+    // var file = doc.output('blob');
+    // var fd = new FormData();     // To carry on your data
+    // fd.append('mypdf',file);
+    //
+    // console.log(file);
+    // console.log(fd);
+    //
+    // console.log(JSON.stringify(fd));
+    //
+    // $.ajax({
+    //    url: '/model/send',   //here is also a problem, depends on your
+    //    data: fd,           //backend language, it may looks like '/model/send.php'
+    //    dataType: 'text',
+    //    processData: false,
+    //    contentType: false,
+    //    type: 'POST',
+    //    success: function (response) {
+    //      console.log("sent!");
+    //    },
+    //    error: function (jqXHR) {
+    //      console.log("error!");
+    //    }
+    // });
+    }
+});
+
+
+}
 
 function openRightMenu() {
     /*document.getElementById("rightMenu").style.display = "block";*/

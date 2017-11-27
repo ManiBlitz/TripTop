@@ -52,7 +52,6 @@ $(document).ready(function() {
             $.each(results, function (k, v) {
 
 
-                $('#inputOrigin2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
             });
         }
     });
@@ -72,7 +71,6 @@ $(document).ready(function() {
             $.each(results, function (k, v) {
 
 
-                $('#inputOrigin2').append('<option value=\"' + iata + '\">' + name + ' - ' + iata + '</option>');
             });
         }
     });
@@ -110,8 +108,6 @@ function hideForumPosts() {
 
 function scrollToAboutUs() {
 
-    window.location.href = "index.html";
-
 
      $('html, body').animate({
         scrollTop: $("#scrollToAboutUs").offset().top
@@ -121,8 +117,6 @@ function scrollToAboutUs() {
   };
 
   function scrollToTeam() {
-
-      window.location.href = "index.html";
 
 
      $('html, body').animate({
