@@ -494,6 +494,7 @@ function getFlights(event) {
 
                         var newFlight = '<tr id=\"flight' + i + '\"><td id=\"addflight'+i+'\"><a id=\"flightchoice'+i+'\" onClick="var flightchoice = this.id; goToItinPage(flightchoice);"><button class=\"btn btn-info btn-sm\" type=\"button\">Add To Itinerary</button></a></td><td id=\"flight' + i + 'price\">' + saletotal + '</td><td><label id=\"flight' + i + 'airline\">' + airline + '</label></td><td><label id=\"flight'+i+'startend\">' + startend + '</label></label></td><td><label id=\"flight'+i+'departureTime\">' + departuretime + '</label></td><td><label id=\"flight'+i+'arrivalTime\">' + arrivaltime + '</label></label></td><td><label id=\"flight' + i + 'dates\">' + date + '</label></td><td><label id=\"flight' + i + 'duration\">' + durationFloat + '</label></td></tr>';
 
+
                         $('#flights').append(newFlight);
 
 
