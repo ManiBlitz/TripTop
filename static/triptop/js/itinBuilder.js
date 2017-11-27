@@ -620,15 +620,12 @@ function saveToPDF() {
 
         console.log("this");
     // var useWidth = document.getElementById('mainX').getWidth();
-    var useHeight = $('#mainX')[0].scrollHeight;
-    var element = document.getElementById('mainX');
+    var useHeight = $('#elementIQ')[0].scrollHeight;
+    var element = document.getElementById('elementIQ');
 
-    var positionInfo = element.getBoundingClientRect();
-
-    var useWidth = positionInfo.width;
 
     html2canvas(element, {
-        width: useWidth,
+        width: 800,
         height: useHeight,
         onrendered: function(canvas) {
             console.log("works");
@@ -639,13 +636,19 @@ function saveToPDF() {
                 var c = b + "Itinerary" + e +".png";
                 saveAs(blob, c);
 
-                var fd = {'fname': c,'data': blob};
+                 var reader = new window.FileReader();
+                 reader.readAsDataURL(blob);
+                 reader.onloadend = function() {
+                var base64data = reader.result;
+                console.log(base64data);
+
+                var fd = {'fname': c,'data': base64data};
 
                 console.log(fd);
 
                 $.ajax({
                     type: 'POST',
-                    url: '/upload.php',
+                    url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/upload',
                     data: fd,
                     processData: false,
                     contentType: false
@@ -653,35 +656,13 @@ function saveToPDF() {
                        console.log(data);
                 });
 
+                };
+
+
                 });
 
 
-    // var img = canvas.toDataURL("image/png");
-    // var doc = new jsPDF("l", "pt", "letter");
-    // doc.addImage(img, 'JPEG',useWidth,useHeight);
-    // var file = doc.output('blob');
-    // var fd = new FormData();     // To carry on your data
-    // fd.append('mypdf',file);
-    //
-    // console.log(file);
-    // console.log(fd);
-    //
-    // console.log(JSON.stringify(fd));
-    //
-    // $.ajax({
-    //    url: '/model/send',   //here is also a problem, depends on your
-    //    data: fd,           //backend language, it may looks like '/model/send.php'
-    //    dataType: 'text',
-    //    processData: false,
-    //    contentType: false,
-    //    type: 'POST',
-    //    success: function (response) {
-    //      console.log("sent!");
-    //    },
-    //    error: function (jqXHR) {
-    //      console.log("error!");
-    //    }
-    // });
+
     }
 });
 
