@@ -521,7 +521,7 @@ function delete_row(no)
  document.getElementById("row"+no+"").outerHTML="";
 }
 
-function add_row()
+function add_row(i)
 {
 
 
@@ -530,8 +530,9 @@ function add_row()
  var new_link=document.getElementById("new_link").value;
  var new_cost=document.getElementById("new_cost").value;
 
+ tID = "data_table_"+i;
 
- var table=document.getElementById("data_table");
+ var table=document.getElementById(tID);
 
  var table_len=(table.rows.length)-1;
  var row=table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='location_row"+table_len+"'>"+new_location+"</td><td id='address_row"+table_len+"'>"+new_address+"</td><td id='link_row"+table_len+"'>"+new_link+"</td><td id='cost_row"+table_len+"'>"+new_cost+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'><input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'><input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
