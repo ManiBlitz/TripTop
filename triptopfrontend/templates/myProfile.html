@@ -134,15 +134,16 @@
 
 	<div id="itineraries" class="container-fluid">
         <button style="color: #f00; font-size: 3em; padding: 1px 3px 0 0;" class="close" onclick="hideItineraries()">&times;</button>
-		<div style="background:#333; color: #fff;" class="jumbotron">
+		<div id="itinjumbo" style="background:#333; color: #fff;" class="jumbotron text-center">
             <h2 class="text-center">Your Itineraries</h2>
-            <table class="table-responsive">
+            <table id="itintable" class="table-responsive">
                 <thead>
                     <tr>
                         <td>Title</td>
                         <td>Description</td>
                         <td>Total Cost</td>
                         <td>Date</td>
+                        <td>Link</td>
                     </tr>
                 </thead>
                 <tbody id="itinerarytable">
@@ -154,15 +155,16 @@
 
     <div id="forumposts" class="container-fluid">
         <button style="color: #f00; font-size: 3em; padding: 1px 3px 0 0;" class="close" onclick="hideForumPosts()">&times;</button>
-		<div style="background:#333; color: #fff;" class="jumbotron">
+		<div id="postjumbo" style="background:#333; color: #fff;" class="jumbotron text-center">
             <h2 class="text-center">Your Forum Posts</h2>
 
-            <table class="table-responsive">
+            <table id="posttable" class="table-responsive">
                 <thead>
                     <tr>
                         <td>Title</td>
                         <td>Description</td>
                         <td>Date</td>
+                        <td>Link</td>
                     </tr>
                 </thead>
                 <tbody id="itinerarytable">

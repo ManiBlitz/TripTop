@@ -177,10 +177,12 @@ console.log("Original "+original);
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
+/*
                     var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+*/
                     //console.log(locationObj);
                     i++;
-                    $('#locations').append(locationObj);
+                    /*$('#locations').append(locationObj);*/
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
@@ -199,7 +201,7 @@ $(document).ready(function() {
         var address = $('#currentAddress').val();
 
         var yourObject = {
-            "address": "560 Stedford Ln, Johns Creek, GA 30097"
+            "address": "1100 South Marietta Pkwy, Marietta, GA 30060"
 
 
         };
@@ -231,13 +233,13 @@ $(document).ready(function() {
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
-                    var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value + '</td></tr>';
 /*
-                    var locationObj = '<tr id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+                    var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value + '</td></tr>';
 */
+
                     //console.log(locationObj);
                     i++;
-                    $('#locations').append(locationObj);
+                    /*$('#locations').append(locationObj);*/
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
@@ -287,10 +289,12 @@ $(document).ready(function() {
 /*
                     var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
 */
+/*
                     var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+*/
                     //console.log(locationObj);
                     i++;
-                    $('#locations').append(locationObj);
+                    /*$('#locations').append(locationObj);*/
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
@@ -333,13 +337,13 @@ $(document).ready(function() {
                 var i = 0;
                 $.each(results, function(key, value){
                     /*console.log(value.0);*/
+
 /*
-                    var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
-*/
                     var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
-                    console.log(locationObj);
+*/
+                    //console.log(locationObj);
                     i++;
-                    $('#locations').append(locationObj);
+                    /*$('#locations').append(locationObj);*/
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
@@ -383,13 +387,13 @@ $(document).ready(function() {
                 var i = 0;
                 $.each(results, function(key, value){
                     /*console.log(value.0);*/
+
 /*
-                    var locationObj = '<tr><td class="text-center">' + '  ' + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td></tr>';
-*/
                     var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td><td class="text-center">' + value[17] + '</td></tr>';
+*/
                     //console.log(locationObj);
                     i++;
-                    $('#locations').append(locationObj);
+                    /*$('#locations').append(locationObj);*/
                     /*add 'add' button to add the event to the schedule*/
                     /*need to be able to filter choices*/
                 });
@@ -424,7 +428,8 @@ function getTop5Locations(event) {
                 console.log(results);
 
 
-                $('.db').empty();
+                /*$('.db').empty();*/
+                $('.db').hide();
                 var i = 0;
                 $.each(results, function(key, value){
                     /*console.log(value.0);*/
@@ -435,7 +440,7 @@ function getTop5Locations(event) {
 
                     var locationObj = '<tr class="db" id='+i+'><td class="text-center"><input class="add_eventL" onClick="add_event_loc('+i+');" type="button" value="Add"/></td><td class="text-center" style="display:none">' + value[0] + '</td><td class="text-center">' + value[1] + '</td><td class="text-center">' + value[2] +', ' + value[3] + ', ' + value[4] +' ' + value[5] + '</td>><td class="text-center" style="display:none">' + value[6] + '</td>><td class="text-center" style="display:none">' + value[7] + '</td><td class="text-center">' + value[8] + '</td><td class="text-center">' + '$' + value[9] + '</td>><td class="text-center" style="display:none">' + value[10] + '</td>><td class="text-center" style="display:none">' + value[11] + '</td>><td class="text-center" style="display:none">' + value[12] + '</td>><td class="text-center" style="display:none">' + value[13] + '</td>><td class="text-center" style="display:none">' + value[14] + '</td>><td class="text-center" style="display:none">' + value[15] + '</td>><td class="text-center" style="display:none">' + value[16] + '</td><td class="text-center">' + value[17] + '</td></tr>';
 
-                   // console.log(locationObj);
+                    /*console.log(locationObj);*/
                     i++;
                     $('#locations').append(locationObj);
                     //var adddd=locations.rows[i].cells[10].innerHTML;
@@ -462,11 +467,11 @@ function add_event_loc(x){
 
         console.log("add_event is working.");
 
-        var location = document.getElementById(x).cells[1].innerHTML;
+        var location = document.getElementById(x).cells[2].innerHTML;
         console.log("this is location "+location);
-        var address = document.getElementById(x).cells[2].innerHTML;
-        var link = document.getElementById(x).cells[3].innerHTML;
-        var cost = document.getElementById(x).cells[4].innerHTML;
+        var address = document.getElementById(x).cells[3].innerHTML;
+        var link = document.getElementById(x).cells[6].innerHTML;
+        var cost = document.getElementById(x).cells[7].innerHTML;
         /*var x = $("#new_location").val(locations[1]);*/
         /*console.log(name);*/
         $("#new_location").val(location);
@@ -703,6 +708,7 @@ function filterSelection(c)
                 }
             }
             else if(locations.rows[i].cells[10].innerHTML!=c )
+            /*else if(locations.rows[i].cells[10].outerHTML!=c )*/
             {
                 locations.rows[i].style.display="none";
             }

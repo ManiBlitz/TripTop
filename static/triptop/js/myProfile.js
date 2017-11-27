@@ -48,11 +48,31 @@ $(document).ready(function() {
         success: function (data) {
             var results = JSON.parse(data.body);
             console.log(results);
+            console.log(results[0]);
 
-            $.each(results, function (k, v) {
+            if(results[0] != undefined) {
 
+                $.each(results, function (k, v) {
+                    var date = v.date;
+                    var description = v.description;
+                    var totalcost = v.price;
+                    var name = v.name;
+                    var link = v.link;
 
-            });
+                    var a = "<tr id=\"row"+i+"\"><td>"+name+"</td><td>"+description+"</td><td>"+price+"</td><td id=\"date"+i+"\">"+date+"</td><td>"+link+"</td></tr>"
+
+                    $('#itintable').append(a);
+
+                });
+
+            } else {
+                $('#itintable').hide();
+
+                var p = "<p>No Itineraries Found.</p>";
+                var a = "<a href=\'itinerary\'>Click here to make one!</a>";
+
+                $('#itinjumbo').append(p, a);
+            }
         }
     });
 
@@ -68,10 +88,28 @@ $(document).ready(function() {
             var results = JSON.parse(data.body);
             console.log(results);
 
-            $.each(results, function (k, v) {
+             if(results[0] != undefined) {
+
+                $.each(results, function (k, v) {
+                    var date = v.date;
+                    var description = v.description;
+                    var totalcost = v.price;
+                    var name = v.title;
+                    var link = v.link;
+
+                    var a = "<tr id=\"row"+i+"\"><td>"+name+"</td><td>"+description+"</td><td id=\"date"+i+"\">"+date+"</td><td>"+link+"</td></tr>"
 
 
-            });
+                });
+
+            } else {
+                $('#posttable').hide();
+
+                var p = "<p>No Forum Posts Found.</p>";
+                var a = "<a href=\'https://www.forum.mytriptop.com/forum\'>Click here to go to the Forum!</a>";
+
+                $('#postjumbo').append(p, a);
+            }
         }
     });
 
