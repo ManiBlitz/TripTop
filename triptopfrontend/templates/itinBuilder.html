@@ -46,9 +46,7 @@
 
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 
-<!--<script type="text/javascript" src="./lib/jspdf/jspdf.debug.js"></script>
-     <script type="text/javascript" src="./lib/html2canvas/html2canvas.js"></script>
-     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>-->
+
 
 
 
@@ -182,9 +180,6 @@
   </header>
  <div class="container" id="itinContainer">
 
-     <!--<meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-
      <div class="sidenav" style="background-image: url('../../static/triptop/img/sunrise3.png')">
          <div  style="display:none;right:0;" id="rightMenu">
              <div class="sidenav_header">
@@ -230,8 +225,6 @@
          </div>
      </div>
 
-<!-- <input onclick="getFlightInfo(event); return false;" type="button" value="test2"/>-->
-
      <div class="main" id="mainX" style="background-image: url('../../static/triptop/img/sunset1.png')">
          <div class="main_header">
              <h1>My Itinerary</h1><button class="w3-button w3-black w3-xlarge w3-right" id="open_sidenav" onclick="openRightMenu()">&#9776;</button>
@@ -257,7 +250,7 @@
 
                      <button id="button" onClick="add_day()">Add Day</button>
                      <button id="saveItin">Save Itinerary</button>
-                     <button class="btn" id="export">Save</button>
+                     <!--<button class="btn" id="export">Save</button>-->
 
                      <div id="templateDIV" style="border: 1px solid black; margin-bottom: 10px; background-color: rgba(255, 255, 255, 0.6);">
                          <p id="templateP"></p>
@@ -329,7 +322,6 @@
              </div>
          </div>
      </div>
-     <!--<div id="editor"></div>-->
  </div>
  <!--    </div>
  </div>
@@ -341,99 +333,6 @@
 
     </div>
 
-    <!--Footer Links-->
-    <!--<div class="container">
-        <div class="row">
-
-            &lt;!&ndash;First column&ndash;&gt;
-            <div class="col-md-4">
-                <h5 class="title mb-4 mt-3 font-bold">Team TripTop is happy you're here!</h5>
-                <p>Please create an account so that we can share updates, special offers, and more with you!<br/><br/><br/>Happy Travels!</p>
-            </div>
-            &lt;!&ndash;/.First column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Second column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Second column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Third column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Third column&ndash;&gt;
-
-            <hr class="clearfix w-100 d-md-none">
-
-            &lt;!&ndash;Fourth column&ndash;&gt;
-            <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            &lt;!&ndash;/.Fourth column&ndash;&gt;
-        </div>
-    </div>
-    &lt;!&ndash;/.Footer Links&ndash;&gt;
-
-    <hr>
-
-    &lt;!&ndash;Call to action&ndash;&gt;
-    <div class="call-to-action">
-        <ul>
-            <li>
-                <h5 class="mb-1">Sign Up For Free!</h5>
-            </li>
-            <li><a href="" class="btn btn-primary btn-rounded">Create A TripTop Account</a></li>
-        </ul>
-    </div>
-    &lt;!&ndash;/.Call to action&ndash;&gt;
-
-    <hr>
-
-    &lt;!&ndash;Social buttons&ndash;&gt;
-    <div class="social-section text-center">
-        <ul>
-
-            <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
-            <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
-
-        </ul>
-    </div>
-    &lt;!&ndash;/.Social buttons&ndash;&gt;
-
-    &lt;!&ndash;Copyright&ndash;&gt;
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            © 2017 Copyright: <a href="https://mytriptop.com"> mytriptop.com </a>
-
-        </div>
-    </div>-->
-    <!--/.Copyright-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
 
     <script>
@@ -444,79 +343,6 @@
 <!--/.Footer-->
 
 
-
-
-
-
-<!--<script>
-
-var doc = new jsPDF();
-var specialElementHandlers = {
-'#editor': function (element, renderer) {
-        return true;
-};
-
-$('#saveItin').click(function () {
-    doc.fromHTML($('.main').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    console.log("saving is working");
-    doc.save('myItinerary-file.pdf');
-});
-
-</script>-->
-
-<!--<script>
-     $('#saveItin').click(function() {
- console.log("save itin works");
-  var options = {
-  };
-  var pdf = new jsPDF('p', 'pt', 'a4');
-  pdf.addHTML($('#mainX'), 15, 15, options, function() {
-    pdf.save('myItinerary-file.pdf');
-  });
-});
-
-</script>-->
- <script>
-document.getElementById('export').addEventListener('click',
-  exportPDF);
-
-var specialElementHandlers = {
-  '.no-export': function(element, renderer) {
-    return true;
-  }
-};
-
-function exportPDF() {
-
-  var doc = new jsPDF('p', 'pt', 'a4');
-
-  var source = document.getElementsByClassName('main_body').innerHTML;
-
-  var margins = {
-    top: 10,
-    bottom: 10,
-    left: 10,
-    width: 595
-  };
-
-  doc.fromHTML(
-    source,
-    margins.left,
-    margins.top, {
-      'width': margins.width,
-      'elementHandlers': specialElementHandlers
-    },
-
-    function(dispose) {
-      doc.save('Test.pdf');
-    }, margins);
-}
-
-
- </script>
 
  <script>
 
@@ -551,6 +377,8 @@ function add_day() {
 
 
  </script>
+
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 
