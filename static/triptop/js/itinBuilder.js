@@ -595,29 +595,6 @@ function saveToPDF() {
     var d = new Date();
     var e = d.getTime();
 
-    // var pdf = new jsPDF('p', 'pt', 'a3');
-    //
-    // // Enable auto page wrap (there are still margin-top issues...)
-    // pdf.context2d.pageWrapY = pdf.internal.pageSize.height-20;
-    //
-    // // create a long table
-    // // var table = document.createElement('table');
-    // // for (var i=1; i<1000; i++){
-    // //     var tr=document.createElement('tr');
-    // //     var td=document.createElement('td');
-    // //     td.innerHTML = "Item " + i;
-    // //     tr.appendChild(td);
-    // //     table.appendChild(tr);
-    // // }
-    // // document.body.appendChild(table);
-    //
-    // // render body to pdf
-    // html2pdf($('#mainX'), pdf, function(){
-    //     pdf.save('Test.pdf');
-    //
-    // });
-
-
         console.log("this");
     // var useWidth = document.getElementById('mainX').getWidth();
     var useHeight = $('#elementIQ')[0].scrollHeight;
@@ -633,41 +610,45 @@ function saveToPDF() {
 
             canvas.toBlob(function (blob) {
                 console.log("fine.");
-                var c = b + "Itinerary" + e +".png";
+                var c = b + "Itinerary" + e + ".png";
                 saveAs(blob, c);
 
-                 var reader = new window.FileReader();
-                 reader.readAsDataURL(blob);
-                 reader.onloadend = function() {
-                     var base64data = reader.result;
-                     console.log(base64data);
+                var reader = new window.FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
+                    console.log(base64data);
 
-                     var a = "data:image/png;base64,";
+                    var a = "data:image/png;base64,";
 
-                     base64data = base64data.replace(a, '');
+                    base64data = base64data.replace(a, '');
 
-                     var fd = {'fname': c, 'data': base64data};
+                    var fd = {'fname': c, 'data': base64data};
 
-                     console.log(fd);
+                    console.log(fd);
 
-                     $.ajax({
-                         type: 'POST',
-                         url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/upload',
-                         data: fd,
-                         processData: false,
-                         contentType: "application/json",
+                    $.ajax({
+                        type: 'POST',
+                        url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/upload',
+                        data: fd,
+                        processData: false,
+                        contentType: "application/json",
 
-                         success: function (data) {
-                             console.log(data);
-                         }
+                        success: function (data) {
+                            console.log(data);
+                        }
 
-                     });
+                    });
+                }
 
-             }
+            });
+
+        }
 
 
-});
+    });
 
+}
 
 
 
