@@ -639,39 +639,37 @@ function saveToPDF() {
                  var reader = new window.FileReader();
                  reader.readAsDataURL(blob);
                  reader.onloadend = function() {
-                var base64data = reader.result;
-                console.log(base64data);
+                     var base64data = reader.result;
+                     console.log(base64data);
 
-                var a = "data:image/png;base64,";
+                     var a = "data:image/png;base64,";
 
-                base64data = base64data.replace(a, '');
+                     base64data = base64data.replace(a, '');
 
-                var fd = {'fname': c,'data': base64data};
+                     var fd = {'fname': c, 'data': base64data};
 
-                console.log(fd);
+                     console.log(fd);
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/upload',
-                    data: fd,
-                    processData: false,
-                    contentType: false
-                }).done(function(data) {
-                       console.log(data);
-                });
+                     $.ajax({
+                         type: 'POST',
+                         url: 'https://oeij9npzf6.execute-api.us-east-2.amazonaws.com/prod/upload',
+                         data: fd,
+                         processData: false,
+                         contentType: "application/json",
 
-                };
+                         success: function (data) {
+                             console.log(data);
+                         }
+
+                     });
+
+             }
 
 
-                });
-
-
-
-    }
 });
 
 
-}
+
 
 
 function openRightMenu() {
