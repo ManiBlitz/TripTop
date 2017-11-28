@@ -644,7 +644,7 @@ function saveToPDF() {
 
                 var a = "data:image/png;base64,";
 
-                base64data.replace(a, '');
+                base64data = base64data.replace(a, '');
 
                 var fd = {'fname': c,'data': base64data};
 
