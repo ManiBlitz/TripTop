@@ -69,6 +69,7 @@
       });
 
 
+
   function roundtripEvent(event) {
       $('#retdate').show();
       flightsBool = true;
