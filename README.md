@@ -1,69 +1,8 @@
-Welcome to the AWS CodeStar sample web application
-==================================================
-
-This sample code helps get you started with a simple Django web application
-deployed by AWS Elastic Beanstalk.
-
-What's Here
------------
-
-This sample includes:
-
-* README.md - this file
-* ebdjango/ - this directory contains your Django project files
-* helloworld/ - this directory contains your Django application files
-* manage.py - this Python script is used to start your Django web application
-* static/ - this directory contains static web assets used by your application
-* .ebextensions/ - this directory contains the Django configuration file that
-  allows AWS Elastic Beanstalk to deploy your Django application
-
-
-Getting Started
----------------
-
-These directions assume you want to develop on your local computer, and not
-from the Amazon EC2 instance itself. If you're on the Amazon EC2 instance, the
-virtual environment is already set up for you, and you can start working on the
-code.
-
-To work on the sample code, you'll need to clone your project's AWS CodeCommit
-repository to your local computer. If you haven't, do that first. You can find
-instructions in the AWS CodeStar user guide.
-
-1. Create a Python virtual environment for your Django project. This virtual
-   environment allows you to isolate this project and install any packages you
-   need without affecting the system Python installation. At the terminal, type
-   the following command:
-
-        $ virtualenv .venv
-
-2. Activate the virtual environment:
-
-        $ activate ./venv/bin/activate
-
-3. Install Python dependencies for this project:
-
-        $ pip install -r requirements.txt
-
-4. Start the Django development server:
-
-        $ python manage.py runserver
-
-5. Open http://127.0.0.1:8000/ in a web browser to view your application.
-
-What Do I Do Next?
-------------------
-
-Once you have a virtual environment running, you can start making changes to
-the sample Django web application. We suggest making a small change to
-/helloworld/templates/index.html first, so you can see how changes pushed to
-your project's repository in AWS CodeCommit are automatically picked up and
-deployed to the Amazon EC2 instance by AWS Elastic Beanstalk. (You can watch
-the progress on your project dashboard.) Once you've seen how that works, start
-developing your own code, and have fun!
-
-Learn more about AWS CodeStar by reading the user guide.  Ask questions or make
-suggestions on our forum.
-
-User Guide: http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
-Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
+<h2>TripTop Itinerary Management Website</h2>
+<p>This website is a travel advisory website with the goal to help users create itineraries with ease and share itineraries with others. 
+On the homepage, users can login into our website using their Google account.  They would then be able to view saved itineraries and view their posts on the forum.  Logging in also gives users access to the forum.  Users can start building their itinerary by picking a flight, or can skip that and start building their itinerary without choosing a flight by click on “Start building your itinerary!” </p>
+<p>On the itinerary builder page, if users choose a flight, the flight information would be displayed, and if not, they can fill in the information. </p> <p>Our itinerary builder page is built to give users as much freedom as possible to create travel itineraries.  Notice the page is divided into two.  On the top right corner of the “My Itinerary” section, there is a black button that allows a sidebar to appear which shows our Top 5 Database.  Users can choose events from the Top 5 Database to add to the travel itinerary. </p>
+<p>On the user profile page, users can view saved itineraries and view forum posts.</p>
+<p>On the forum page, users can post new post and search posts by either country or category.</p>
+<p>There are some functionalities that are missing on the itinerary builder page and the forum.  We are working to fix those and have them available for users as soon as possible.
+Users can provide feedback/suggestions on the website and its functionalities.  Any feedback/suggestions would be greatly appreciated and will be taken into consideration as we further improve our website.</p>
